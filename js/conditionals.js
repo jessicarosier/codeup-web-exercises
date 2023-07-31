@@ -60,27 +60,27 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-// function analyzeColor(color) {
-//     switch(color.toLowerCase()) {
-//         case "blue":
-//             return("Blue is the color of the sky!");
-//             break;
-//         case "green":
-//             return("Green is the color of grass!");
-//             break;
-//         case "red":
-//             return("Red is the color of strawberries!");
-//             break;
-//         case "yellow":
-//             return("Yellow is the color of lemons!");
-//             break;
-//         case "purple":
-//             return("Purple is the color of grapes!");
-//             break;
-//         default:
-//             return("I do not know anything of the color " + color + ".");
-//
-//     }   }
+function analyzeColor(color) {
+    switch(color.toLowerCase()) {
+        case "blue":
+            return("Blue is the color of the sky!");
+            break;
+        case "green":
+            return("Green is the color of grass!");
+            break;
+        case "red":
+            return("Red is the color of strawberries!");
+            break;
+        case "yellow":
+            return("Yellow is the color of lemons!");
+            break;
+        case "purple":
+            return("Purple is the color of grapes!");
+            break;
+        default:
+            return("I do not know anything of the color " + color + ".");
+
+    }   }
 
 
 
@@ -91,8 +91,8 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
  * function to show it to the user.
  */
 //
-// let userColor = prompt("What is your favorite color?");
-// alert(analyzeColor(userColor));
+let userColor = prompt("What is your favorite color?");
+alert(analyzeColor(userColor));
 
 
 /* ########################################################################## */
@@ -117,20 +117,20 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
  * return value.
  */
 
-// function calculateTotal(luckyNum, totalAmount) {
-//     if (luckyNum === 0) {
-//         return totalAmount;
-//     } else if (luckyNum === 1) {
-//         return totalAmount - (.10 * totalAmount);
-//     } else if (luckyNum === 2) {
-//         return totalAmount - (.25 * totalAmount);
-//     } else if (luckyNum === 3) {
-//         return totalAmount - (.35 * totalAmount);
-//     } else if (luckyNum === 4) {
-//         return totalAmount - (.50 * totalAmount);
-//     } else {
-//         return "Everything is free!!!";
-//     }   }
+function calculateTotal(luckyNum, totalAmount) {
+    if (luckyNum === 0) {
+        return totalAmount;
+    } else if (luckyNum === 1) {
+        return totalAmount - (.10 * totalAmount);
+    } else if (luckyNum === 2) {
+        return totalAmount - (.25 * totalAmount);
+    } else if (luckyNum === 3) {
+        return totalAmount - (.35 * totalAmount);
+    } else if (luckyNum === 4) {
+        return totalAmount - (.50 * totalAmount);
+    } else {
+        return "Everything is free!!!";
+    }   }
 
 
 
@@ -144,11 +144,11 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
 //
-// let totalBill = prompt("What was your total bill?");
-//
-// alert("Your lucky number was " + luckyNumber + ". " + " Your price before the discount was " + totalBill + ". " + "Your new total with the discount applied is: " + calculateTotal(luckyNumber, totalBill));
+let totalBill = prompt("What was your total bill?");
+
+alert("Your lucky number was " + luckyNumber + ". " + " Your price before the discount was " + totalBill + ". " + "Your new total with the discount applied is: " + calculateTotal(luckyNumber, totalBill));
 
  // * TODO:
  // * Write some JavaScript that uses a `confirm` dialog to ask the user if they
