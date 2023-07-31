@@ -24,20 +24,16 @@
 function analyzeColor(color) {
     if (color === "blue") {
         console.log(color + " is the color of the sky!");
-    }
-    if (color === "green") {
+    } else if (color === "green") {
         console.log(color + " is the color of grass!");
-    }
-    if (color === "red") {
+    } else if (color === "red") {
         console.log(color + " is the color of strawberries!");
-    }
-    if (color === "yellow") {
+    } else if (color === "yellow") {
         console.log(color + " is the color of lemons!");
-    }
-    if (color === "purple") {
+    } else if (color === "purple") {
         console.log(color + " is the color of grapes!");
     } else {
-        console.log("I do not know anything of that " + color);
+        console.log("I do not know anything of the color " + color + ".");
     }
 
 }
@@ -53,7 +49,7 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
  * You should see a different message every time you refresh the page
  */
-
+console.log(analyzeColor(randomColor));
 /**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
