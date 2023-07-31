@@ -179,12 +179,14 @@ function userNumAlert(num){
         alert("Your number is negative!");
     }}
 
-    let userConfirm = confirm("Click OK if you would like to enter a number!");
+let userConfirm = confirm("Click OK if you would like to enter a number!");
 let userNumber = ""
 
 if (userConfirm) {
     userNumber = prompt("Enter a random number:") ;
+    //Used two "if" statements back to back because the second "if" relies on the userNumber variable that gets updated in the first "if" execution.
 } if (userConfirm) {
+    // userNumber was defined as a string, it needs to be converted into a Number before it can be passed into the userNumAlert function
     userNumAlert(Number(userNumber));
 } else {
     alert("I guess your didnt want to play!")
