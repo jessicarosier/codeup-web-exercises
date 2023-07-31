@@ -44,7 +44,7 @@ let itemsPurchased = prompt("How many items did you purchase?"),
     isPremiumMember = confirm("Click OK if your are a premium member, otherwise click Cancel."),
     offerNotExpired = confirm("Click OK is the offer is NOT expired, otherwise click Cancel."),
     productOfferIsApplied = ((Number(itemsPurchased)) > 2 || isPremiumMember) && offerNotExpired;
-alert("It is " + productOfferIsApplied + " that the offer can be applied.");
+alert("It is " + productOfferIsApplied + " that the offer can be applied."); n
 
 
 
