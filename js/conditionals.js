@@ -22,18 +22,21 @@
  * console.logging the function's return value
  */
 // function analyzeColor(color) {
-//     if (color === "blue") {
-//         console.log(color + " is the color of the sky!");
-//     } else if (color === "green") {
-//         console.log(color + " is the color of grass!");
-//     } else if (color === "red") {
-//         console.log(color + " is the color of strawberries!");
-//     } else if (color === "yellow") {
-//         console.log(color + " is the color of lemons!");
-//     } else if (color === "purple") {
-//         console.log(color + " is the color of grapes!");
+//     //declaring this variable will convert the user input to lower case. This will ensure the value being compared in the if statements below is accurate.
+//     let lowerCaseColor = color.toLowerCase();
+//
+//     if (lowerCaseColor === "blue") {
+//         return "Blue is the color of the sky!";
+//     } else if (lowerCaseColor === "green") {
+//         return "Green is the color of grass!";
+//     } else if (lowerCaseColor === "red") {
+//         return "Red is the color of strawberries!";
+//     } else if (lowerCaseColor === "yellow") {
+//         return "Yellow is the color of lemons!";
+//     } else if (lowerCaseColor === "purple") {
+//         return "Purple is the color of grapes!";
 //     } else {
-//         console.log("I do not know anything of the color " + color + ".");
+//         return "I do not know anything of the color " + color + ".";
 //     }   }
 
 //
@@ -58,28 +61,26 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
 function analyzeColor(color) {
-    switch(color) {
+    switch(color.toLowerCase()) {
         case "blue":
-            console.log(color + " is the color of the sky!");
+            return("Blue is the color of the sky!");
             break;
         case "green":
-            console.log(color + " is the color of grass!");
+            return("Green is the color of grass!");
             break;
         case "red":
-            console.log(color + " is the color of strawberries!");
+            return("Red is the color of strawberries!");
             break;
         case "yellow":
-            console.log(color + " is the color of lemons!");
+            return("Yellow is the color of lemons!");
             break;
         case "purple":
-            console.log(color + " is the color of grapes!");
+            return("Purple is the color of grapes!");
             break;
         default:
-            console.log("I do not know anything of the color " + color + ".");
+            return("I do not know anything of the color " + color + ".");
 
     }   }
-
-
 
 
 
@@ -91,7 +92,7 @@ function analyzeColor(color) {
  */
 //
 let userColor = prompt("What is your favorite color?");
-console.log(analyzeColor(userColor));
+alert(analyzeColor(userColor));
 
 
 /* ########################################################################## */
