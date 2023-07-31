@@ -60,27 +60,27 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-function analyzeColor(color) {
-    switch(color.toLowerCase()) {
-        case "blue":
-            return("Blue is the color of the sky!");
-            break;
-        case "green":
-            return("Green is the color of grass!");
-            break;
-        case "red":
-            return("Red is the color of strawberries!");
-            break;
-        case "yellow":
-            return("Yellow is the color of lemons!");
-            break;
-        case "purple":
-            return("Purple is the color of grapes!");
-            break;
-        default:
-            return("I do not know anything of the color " + color + ".");
-
-    }   }
+// function analyzeColor(color) {
+//     switch(color.toLowerCase()) {
+//         case "blue":
+//             return("Blue is the color of the sky!");
+//             break;
+//         case "green":
+//             return("Green is the color of grass!");
+//             break;
+//         case "red":
+//             return("Red is the color of strawberries!");
+//             break;
+//         case "yellow":
+//             return("Yellow is the color of lemons!");
+//             break;
+//         case "purple":
+//             return("Purple is the color of grapes!");
+//             break;
+//         default:
+//             return("I do not know anything of the color " + color + ".");
+//
+//     }   }
 
 
 
@@ -91,8 +91,8 @@ function analyzeColor(color) {
  * function to show it to the user.
  */
 //
-let userColor = prompt("What is your favorite color?");
-alert(analyzeColor(userColor));
+// let userColor = prompt("What is your favorite color?");
+// alert(analyzeColor(userColor));
 
 
 /* ########################################################################## */
@@ -117,20 +117,20 @@ alert(analyzeColor(userColor));
  * return value.
  */
 
-function calculateTotal(luckyNum, totalAmount) {
-    if (luckyNum === 0) {
-        return totalAmount;
-    } else if (luckyNum === 1) {
-        return totalAmount - (.10 * totalAmount);
-    } else if (luckyNum === 2) {
-        return totalAmount - (.25 * totalAmount);
-    } else if (luckyNum === 3) {
-        return totalAmount - (.35 * totalAmount);
-    } else if (luckyNum === 4) {
-        return totalAmount - (.50 * totalAmount);
-    } else {
-        return "Everything is free!!!";
-    }   }
+// function calculateTotal(luckyNum, totalAmount) {
+//     if (luckyNum === 0) {
+//         return totalAmount;
+//     } else if (luckyNum === 1) {
+//         return totalAmount - (.10 * totalAmount);
+//     } else if (luckyNum === 2) {
+//         return totalAmount - (.25 * totalAmount);
+//     } else if (luckyNum === 3) {
+//         return totalAmount - (.35 * totalAmount);
+//     } else if (luckyNum === 4) {
+//         return totalAmount - (.50 * totalAmount);
+//     } else {
+//         return "Everything is free!!!";
+//     }   }
 
 
 
@@ -144,11 +144,11 @@ function calculateTotal(luckyNum, totalAmount) {
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-var luckyNumber = Math.floor(Math.random() * 6);
-
-let totalBill = prompt("What was your total bill?");
-
-alert("Your lucky number was " + luckyNumber + ". " + " Your price before the discount was " + totalBill + ". " + "Your new total with the discount applied is: " + calculateTotal(luckyNumber, totalBill));
+// var luckyNumber = Math.floor(Math.random() * 6);
+//
+// let totalBill = prompt("What was your total bill?");
+//
+// alert("Your lucky number was " + luckyNumber + ". " + " Your price before the discount was " + totalBill + ". " + "Your new total with the discount applied is: " + calculateTotal(luckyNumber, totalBill));
 
  // * TODO:
  // * Write some JavaScript that uses a `confirm` dialog to ask the user if they
@@ -184,16 +184,21 @@ function userNumAlert(num){
     }}
 
 let userConfirm = confirm("Click OK if you would like to enter a number!");
-let userNumber = ""
 
-if (userConfirm === true) {
-    userNumber = prompt("Enter a random number:") ;
-    //Used two "if" statements back to back because the second "if" relies on the userNumber variable that gets updated in the first "if" execution.
-} if (userConfirm === true) {
-    // userNumber was defined as a string, it needs to be converted into a Number before it can be passed into the userNumAlert function
-    userNumAlert(Number(userNumber));
-} else {
-    alert("I guess your didnt want to play!")
+if (userConfirm) {
+    let userNumber = prompt("Enter a random number:");
+
+    let userNumberStringToNum = Number(userNumber);
+
+
+    if (isNaN(userNumberStringToNum)) {
+        alert("You did not enter a number!")
+            }
+    if (userConfirm && !isNaN(userNumberStringToNum)) {
+        userNumAlert(userNumberStringToNum);
+    } else {
+        alert("I guess your didnt want to play!")
+    }
 }
 
 
