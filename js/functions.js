@@ -9,7 +9,7 @@
  * > sayHello("codeup") // returns "Hello, codeup!"
  */
 function sayHello(name) {
-    return console.log("Hello, " + name + "!")
+    return ("Hello, " + name + "!")
 }
 
 /**
@@ -20,7 +20,7 @@ function sayHello(name) {
  * console.log 'helloMessage' to check your work
  */
 let helloMessage = sayHello("Jessica");
-
+console.log(helloMessage);
 /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that
@@ -28,7 +28,7 @@ let helloMessage = sayHello("Jessica");
  * console.
  */
 let myName = "Jessica";
-sayHello(myName)
+sayHello(myName);
 
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
