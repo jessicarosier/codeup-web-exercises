@@ -85,10 +85,14 @@ console.log(calculateTip(0.15, 33.42));
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
+//revised code after walkthrough, added tipPercentageDecimal to convert user whole number to decimal.
+// used .toFixed to make tipPercentageDecimal 2 decimal places
 let billTotal = prompt("Enter the bill total:");
-let tipPercentage = prompt("Enter the desired tip percentage in decimal format:")
+let tipPercentage = prompt("Enter the desired tip percentage:")
+let tipPercentageDecimal = tipPercentage / 100;
 
-alert("Your tip amount is: $" + calculateTip(billTotal, tipPercentage));
+
+alert("Your tip amount is: $" + calculateTip(billTotal, tipPercentageDecimal.toFixed(2)));
 
 /**
  * TODO:
@@ -104,8 +108,10 @@ alert("Your tip amount is: $" + calculateTip(billTotal, tipPercentage));
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
-
+//revised code after walkthrough. added variable on line 112 to make code comply with instructions on line 100 - 101.
+let discountPercentRandom = Math.random().toFixed(2);
 function applyDiscount (price, discountPercent) {
     return price - (price * discountPercent);
 }
-console.log(applyDiscount(45.99, 0.12));
+
+console.log(applyDiscount(100, discountPercentRandom));
