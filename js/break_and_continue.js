@@ -2,12 +2,14 @@
 //condition must stay true for it to keep looping
 //TODO: come back to this, how can I use a break statement in this?!?!
 
-let userNumber = parseFloat(prompt("Enter an odd number between 1 and 50:"));
+// let userNumber = parseFloat(prompt("Enter an odd number between 1 and 50:"));
+//
+// while (userNumber % 2 === 0 || userNumber < 1 || userNumber > 50) {
+//     alert("Invalid input");
+//     userNumber = parseFloat(prompt("Enter an odd number between 1 and 50:"));
+// }
 
-while (userNumber % 2 === 0 || userNumber <1 || userNumber > 50) {
-    alert("Invalid input");
-    userNumber = parseFloat(prompt("Enter an odd number between 1 and 50:"));
-}
+
 
 
 
