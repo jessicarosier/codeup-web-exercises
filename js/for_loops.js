@@ -37,8 +37,7 @@
 // }
 
 
-
-//TODO: come back to this one later....brain hurts
+//TODO: come back to this one later....brain hurts, this works but i dont completely understand it
 //4 - Create a for loop that uses console.log to create the output shown below.
 //     1
 //     22
@@ -51,14 +50,11 @@
 //     999999999
 
 // for(x = 1; x <= 9; x++) {
-//
-//     for(y = 1; y <= 9; y++) {
-//         if (y == 1) {
-//             continue;
-//         }
+//     for(y = 1; y <= x; y++) {
+//         console.log(x);
 //     }
-//     console.log(x,y)
-//     }
+// }
+
 
 
 
@@ -88,11 +84,6 @@
 // for (let x = 100; x >= 5; x -=5 ) {
 //   console.log(x)
 // }
-
-
-
-
-
 
 
 
