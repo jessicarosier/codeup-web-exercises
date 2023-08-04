@@ -35,28 +35,34 @@
 
 
 let allCones = Math.floor(Math.random() * 50) + 50;
+let conesSold = "";
+let conesLeft = "";
 
-// This expression will generate a random number between 1 and 5
 
+console.log(allCones);
 do {
-    let conesSold = Math.floor(Math.random() * 5) + 1;
-    if (conesSold <= allCones){
-        var conesLeft = allCones - conesSold;
-        conesLeft = allCones - conesSold;
-        console.log(`I have ${conesLeft} cones left.`);
-    }
-    if (conesSold >= allCones) {
+    conesSold = Math.floor(Math.random() * 5) + 1;
+    if (conesSold > allCones) {
         console.log(`Cannot sell you ${conesSold} cones I only have ${allCones}`);
-        break;
     }
-    console.log(allCones);
+
+    if (conesSold <= allCones){
+        conesLeft = allCones - conesSold;
+        // console.log(conesLeft);
+    }
+
+    allCones = conesLeft;
+        // console.log(allCones);
+
     if (conesLeft < conesSold) {
         console.log(`Cannot sell you ${conesSold} cones I only have ${conesLeft}`);
+        break;
     } else if (conesLeft > conesSold) {
         console.log(`${conesSold} cones sold...`);
     } else {
         console.log("Yay! I sold them all!");
     }
+    console.log(`I have ${conesLeft} cones left.`);
     allCones = conesLeft;
 } while (allCones >= 0)
 
