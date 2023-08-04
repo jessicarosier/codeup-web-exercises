@@ -49,11 +49,16 @@
 //     88888888
 //     999999999
 
-// for(x = 1; x <= 9; x++) {
-//     for(y = 1; y <= x; y++) {
-//         console.log(x);
-//     }
-// }
+
+
+    // for(i = 1; i <= 9; i++) {
+    //     let str = "";
+    //     for (let j = 0; j < i ; j++) {
+    //         str += `${i}`
+    //     }
+    //     console.log(str);
+    // }
+
 
 
 
@@ -81,8 +86,8 @@
 //     10
 //     5
 
-// for (let x = 100; x >= 5; x -=5 ) {
-//   console.log(x)
+// for (let i = 100; i >= 5; i -=5 ) {
+//   console.log(i)
 // }
 
 

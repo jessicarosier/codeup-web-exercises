@@ -39,7 +39,7 @@ let conesSold = "";
 let conesLeft = "";
 
 
-console.log(allCones);
+console.log(`I started with ${allCones} cones.`);
 do {
     conesSold = Math.floor(Math.random() * 5) + 1;
     if (conesSold > allCones) {
@@ -50,7 +50,6 @@ do {
         conesLeft = allCones - conesSold;
         // console.log(conesLeft);
     }
-
     allCones = conesLeft;
         // console.log(allCones);
 
