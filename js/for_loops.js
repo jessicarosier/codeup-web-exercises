@@ -1,4 +1,4 @@
-(function() {
+(function () {
     // Create a function named showMultiplicationTable that accepts a number and console.logs the multiplication table for that number (just multiply by the numbers 1 through 10)
 
     // 7 x 1 = 7
@@ -50,18 +50,13 @@
 //     999999999
 
 
-
-    // for(i = 1; i <= 9; i++) {
+    // for (i = 1; i <= 9; i++) {
     //     let str = "";
-    //     for (let j = 0; j < i ; j++) {
+    //     for (let j = 0; j < i; j++) {
     //         str += `${i}`
     //     }
     //     console.log(str);
     // }
-
-
-
-
 
 
 //5 - Create a for loop that uses console.log to create the output shown below.
@@ -89,9 +84,6 @@
 // for (let i = 100; i >= 5; i -=5 ) {
 //   console.log(i)
 // }
-
-
-
 
 
 })();

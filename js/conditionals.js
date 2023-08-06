@@ -83,7 +83,6 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
 //     }   }
 
 
-
 /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
@@ -133,8 +132,6 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
 //     }   }
 
 
-
-
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -150,26 +147,26 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
 //
 // alert("Your lucky number was " + luckyNumber + ". " + " Your price before the discount was " + totalBill + ". " + "Your new total with the discount applied is: " + calculateTotal(luckyNumber, totalBill));
 
- // * TODO:
- // * Write some JavaScript that uses a `confirm` dialog to ask the user if they
- // * would like to enter a number. If they click 'Ok', prompt the user for a
- // * number, then use 3 separate alerts to tell the user:
- // *
- // * - whether the number is even or odd
- // * - what the number plus 100 is
- // * - if the number is negative or positive
- // *
- // * Do *NOT* display any of the above information
- // * if the user enters a value that is not of the number data type.
- // * Instead, use an alert to inform them of the incorrect input data type.
- // *
- // *
- // * Can you refactor your code to use functions?
- // * HINT: The way we prompt for a value could be improved
+// * TODO:
+// * Write some JavaScript that uses a `confirm` dialog to ask the user if they
+// * would like to enter a number. If they click 'Ok', prompt the user for a
+// * number, then use 3 separate alerts to tell the user:
+// *
+// * - whether the number is even or odd
+// * - what the number plus 100 is
+// * - if the number is negative or positive
+// *
+// * Do *NOT* display any of the above information
+// * if the user enters a value that is not of the number data type.
+// * Instead, use an alert to inform them of the incorrect input data type.
+// *
+// *
+// * Can you refactor your code to use functions?
+// * HINT: The way we prompt for a value could be improved
 
 
-function userNumAlert(num){
-    if(num % 2 === 0) {
+function userNumAlert(num) {
+    if (num % 2 === 0) {
         alert("Your number is even!");
     } else {
         alert("Your number is odd!");
@@ -177,11 +174,12 @@ function userNumAlert(num){
 
     alert(num + 100);
 
-    if(num > 0) {
+    if (num > 0) {
         alert("Your number is positive!");
     } else {
         alert("Your number is negative!");
-    }}
+    }
+}
 
 let userConfirm = confirm("Click OK if you would like to enter a number!");
 
@@ -193,7 +191,7 @@ if (userConfirm) {
 
     if (isNaN(userNumberStringToNum)) {
         alert("You did not enter a number!")
-            }
+    }
     if (userConfirm && !isNaN(userNumberStringToNum)) {
         userNumAlert(userNumberStringToNum);
     } else {
