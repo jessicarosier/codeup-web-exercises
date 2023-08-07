@@ -60,12 +60,23 @@
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
 
+    function firstItemInArray(array) {
+        return array[0];
+    }
 
+    console.log(firstItemInArray(names));
 
+    function secondItemInArray(array) {
+        return array[1];
+    }
 
+    console.log(secondItemInArray(names));
 
+    function lastItemInArray(array) {
+        return array[array.length - 1];
+    }
 
-
+    console.log(lastItemInArray(names));
 
 
 })();
