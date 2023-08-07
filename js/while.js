@@ -33,7 +33,6 @@
 // Yay! I sold them all! // If there are no more cones
 
 
-
 let allCones = Math.floor(Math.random() * 50) + 50;
 let conesSold = "";
 let conesLeft = "";
@@ -46,12 +45,12 @@ do {
         console.log(`Cannot sell you ${conesSold} cones I only have ${allCones}`);
     }
 
-    if (conesSold <= allCones){
+    if (conesSold <= allCones) {
         conesLeft = allCones - conesSold;
-        // console.log(conesLeft);
+
     }
     allCones = conesLeft;
-        // console.log(allCones);
+
 
     if (conesLeft < conesSold) {
         console.log(`Cannot sell you ${conesSold} cones I only have ${conesLeft}`);
