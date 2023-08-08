@@ -19,19 +19,23 @@
      * TODO:
      * Create a string with <br> tags between each planet. console.log() your
      * results. Why might this be useful?
-     *
+     */
+    let planetsStringBreak = planetsArray.join("<br>");
+    console.log(planetsStringBreak);
+
+    /**
      * BONUS:
      * Create another string that would display your planets in an undordered
      * list. You will need an opening AND closing <ul> tags around the entire
      * string, and <li> tags around each planet.
      */
 
-    let planetsStringBreak = planetsArray.join("<br>");
-    console.log(planetsStringBreak);
+   let planetsListString = planetsArray.join("</li><li>")
+    console.log(planetsListString);
 
-    // var planetsStringUnorderedList = "<ul>\n" + "        <li>Mercury</li>\n" + "        <li>Venus</li>\n" + "        <li>Earth</li>\n" + "        <li>Mars</li>\n" + "        <li>Jupiter</li>\n" + "        <li>Saturn</li>\n" + "        <li>Uranus</li>\n" + "        <li>Neptune</li>\n" + "    </ul>";
+   let planetsUnorderedList = "<ul><li>" + planetsListString + "</li></ul>";
 
-    let planetsBreakList = "<ul>";
+   console.log(planetsUnorderedList);
 
 
 })();
