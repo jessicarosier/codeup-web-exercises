@@ -72,7 +72,8 @@
         let amountAfterDiscount = shoppers[i].amount * theDiscount;
         if (discountTrue) {
             console.log(`${shoppers[i].name} got a discount of ${theDiscount}%. Their total before the discount was $${shoppers[i].amount}. Their total after the discount was $${amountAfterDiscount}.`);
-        } else { console.log(`${shoppers[i].name} did not get a discount. Their total before the discount was $${shoppers[i].amount}.`);
+        } else {
+            console.log(`${shoppers[i].name} did not get a discount. Their total before the discount was $${shoppers[i].amount}.`);
         }
 
     }
@@ -90,6 +91,57 @@
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
+        //create 5 objects representing books
+        //each objects should have 2 properties
+        //property 1 = title, property 2 = object (firstName, lastName)
+        //create an array with all 5 book objects
+
+    let bookOne = {
+            title: "The Catcher in the Rye",
+            author: {
+                firstName: "Jerome",
+                lastName: "Salinger"
+            }
+        };
+
+    let bookTwo = {
+        title: "The Great Gatsby",
+        author: {
+            firstName: "Scott",
+            lastName: "Fitzgerald"
+        }
+    }
+
+    let bookThree = {
+        title: "Moby Dick",
+        author: {
+            firstName: "Herman",
+            lastName: "Melville"
+        }
+    }
+
+    let bookFour = {
+        title: "Hamlet",
+        author: {
+            firstName: "William",
+            lastName: "Shakespeare"
+        }
+    }
+
+    let bookFive = {
+        title: "Pride and Prejudice",
+        author: {
+            firstName: "Jane",
+            lastName: "Austen"
+        }
+    }
+
+    let books =
+        [bookOne, bookTwo, bookThree, bookFour, bookFive];
+
+
+    console.log(books);
+
 
     /**
      * TODO:
@@ -116,15 +168,50 @@
      *      ...
      */
 
-    /**
+    // for (let i = 0; i < books.length; i++) {
+    //     console.log(`Book #${i + 1}`);
+    //     console.log(`Title: ${books[i].title}`);
+    //     console.log(`Author: ${books[i].author.firstName} ${books[i].author.lastName}`);
+    // }
+
+    //refactored loop using informationLog function!
+    for (let i = 0; i < books.length; i++) {
+        console.log(`Book #${i + 1}`);
+        console.log(informationLog(books[i]));
+    }
+
+
+    /** TODO:
      * Bonus:
-     * - Create a function named `createBook` that accepts a title and author
+     *   Create a function named `createBook` that accepts a title and author
      *   name and returns a book object with the properties described
      *   previously. Refactor your code that creates the books array to instead
-     *   use your function.
-     * - Create a function named `showBookInfo` that accepts a book object and
-     *   outputs the information described above. Refactor your loop to use your
+     *   use your function. */
+    function createBook(title, author) {
+        for (let i = 0; i < books.length; i++) {
+            if (title === books[i].title && author === (books[i].author.firstName + " " + books[i].author.lastName)) {
+                console.log(books[i]);
+                break;
+            }
+        }
+    }
+
+    //testing createBook function
+    //createBook("Moby Dick", "Herman Melville");
+
+
+    /**TODO:
+     *    Create a function named `showBookInfo` that accepts a book object and
+     *    outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+
+
+    function informationLog(object) {
+        return `Title: ${object.title} \nAuthor: ${object.author.firstName} ${object.author.lastName}`
+    };
+    //testing informationLog function
+    //console.log(informationLog(bookOne));
+
 
 })();
