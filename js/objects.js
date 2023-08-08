@@ -215,7 +215,7 @@
         return `Title: ${object.title} \nAuthor: ${object.author.firstName} ${object.author.lastName}`
     };
     //testing informationLog function
-    //console.log(informationLog(bookOne));
+    //console.log(showBookInfo(bookOne));
 
 
 
