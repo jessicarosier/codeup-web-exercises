@@ -96,48 +96,46 @@
         //property 1 = title, property 2 = object (firstName, lastName)
         //create an array with all 5 book objects
 
-    let bookOne = {
+    let books = [{
             title: "The Catcher in the Rye",
             author: {
                 firstName: "Jerome",
                 lastName: "Salinger"
             }
-        };
+        },
 
-    let bookTwo = {
+     {
         title: "The Great Gatsby",
         author: {
             firstName: "Scott",
             lastName: "Fitzgerald"
         }
-    }
+    },
 
-    let bookThree = {
+    {
         title: "Moby Dick",
         author: {
             firstName: "Herman",
             lastName: "Melville"
         }
-    }
+    },
 
-    let bookFour = {
+    {
         title: "Hamlet",
         author: {
             firstName: "William",
             lastName: "Shakespeare"
         }
-    }
+    },
 
-    let bookFive = {
+    {
         title: "Pride and Prejudice",
         author: {
             firstName: "Jane",
             lastName: "Austen"
         }
-    }
+    }]
 
-    let books =
-        [bookOne, bookTwo, bookThree, bookFour, bookFive];
 
 
     console.log(books);
