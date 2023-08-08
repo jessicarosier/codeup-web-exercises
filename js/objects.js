@@ -177,7 +177,7 @@
     //refactored loop using informationLog function!
     for (let i = 0; i < books.length; i++) {
         console.log(`Book #${i + 1}`);
-        console.log(informationLog(books[i]));
+        console.log(showBookInfo(books[i]));
     }
 
 
@@ -187,17 +187,21 @@
      *   name and returns a book object with the properties described
      *   previously. Refactor your code that creates the books array to instead
      *   use your function. */
-    function createBook(title, author) {
-        for (let i = 0; i < books.length; i++) {
-            if (title === books[i].title && author === (books[i].author.firstName + " " + books[i].author.lastName)) {
-                console.log(books[i]);
-                break;
+    function createBook(title, firstname, lastname) {
+        return {
+            title: title,
+            author: {
+                firstName: firstname,
+                lastName: lastname
             }
         }
     }
 
-    //testing createBook function
-    //createBook("Moby Dick", "Herman Melville");
+    books.push(createBook("The Perks of Being a Wallflower", "Stephen", "Chbosky"))
+
+    console.log(books);
+
+
 
 
     /**TODO:
@@ -207,11 +211,13 @@
      */
 
 
-    function informationLog(object) {
+    function showBookInfo(object) {
         return `Title: ${object.title} \nAuthor: ${object.author.firstName} ${object.author.lastName}`
     };
     //testing informationLog function
     //console.log(informationLog(bookOne));
+
+
 
 
 })();
