@@ -60,21 +60,23 @@
         //George 320
 
 
-
-
     var shoppers = [
             {name: 'Cameron', amount: 180},
             {name: 'Ryan', amount: 250},
             {name: 'George', amount: 320}
         ];
-let getsDiscount =
-    if (shoppers[i].amount > 200) {
 
-    }
-
+    let theDiscount = 0.12;
     for (let i = 0; i < shoppers.length; i++) {
-        `${shoppers[i].name} ${shoppers[i].amount}`
+        let discountTrue = shoppers[i].amount > 200;
+        let amountAfterDiscount = shoppers[i].amount * theDiscount;
+        if (discountTrue) {
+            console.log(`${shoppers[i].name} got a discount of ${theDiscount}%. Their total before the discount was $${shoppers[i].amount}. Their total after the discount was $${amountAfterDiscount}.`);
+        } else { console.log(`${shoppers[i].name} did not get a discount. Their total before the discount was $${shoppers[i].amount}.`);
+        }
+
     }
+
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
