@@ -66,17 +66,39 @@
             {name: 'George', amount: 320}
         ];
 
-    let theDiscount = 0.12;
-    for (let i = 0; i < shoppers.length; i++) {
-        let discountTrue = shoppers[i].amount > 200;
-        let amountAfterDiscount = shoppers[i].amount * theDiscount;
-        if (discountTrue) {
-            console.log(`${shoppers[i].name} got a discount of ${theDiscount}%. Their total before the discount was $${shoppers[i].amount}. Their total after the discount was $${amountAfterDiscount}.`);
-        } else {
-            console.log(`${shoppers[i].name} did not get a discount. Their total before the discount was $${shoppers[i].amount}.`);
-        }
+    // let theDiscount = 0.12;
+    // for (let i = 0; i < shoppers.length; i++) {
+    //     let discountTrue = shoppers[i].amount > 200;
+    //     let amountAfterDiscount = shoppers[i].amount * theDiscount;
+    //     if (discountTrue) {
+    //         console.log(`${shoppers[i].name} got a discount of ${theDiscount}%. Their total before the discount was $${shoppers[i].amount}. Their total after the discount was $${amountAfterDiscount}.`);
+    //     } else {
+    //         console.log(`${shoppers[i].name} did not get a discount. Their total before the discount was $${shoppers[i].amount}.`);
+    //     }
+    //
+    // }
 
-    }
+    //TODO: Directions ask use to use a FOR EACH LOOP, second attempt.
+
+    shoppers.forEach(function (shopper) {
+        let discount = 0.12;
+        let discountTrue = shopper.amount > 200;
+        let amountAfterDiscount = discount * shopper.amount;
+
+        if (discountTrue) {
+            console.log(
+                `${shopper.name} is eligible for a discount. The discount is ${
+                    discount * 100
+                }%. The total before the discount was $${
+                    shopper.amount
+                }. The amount after the discount is $${amountAfterDiscount.toFixed(2)}`,
+            );
+        } else {
+            console.log(
+                `${shopper.name} is not eligible for a discount. The total amount is $${shopper.amount}.`,
+            );
+        }
+    });
 
 
     /** TODO:
