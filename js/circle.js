@@ -15,7 +15,6 @@
             this.area = areaCalc;
             // TODO: return the proper value
             return areaCalc;
-
         },
 
         logInfo: function (doRounding) {
