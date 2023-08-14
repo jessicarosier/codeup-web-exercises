@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registration</title>
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        font-size: x-large;
+      }
+      #bio {
+        height: 250px;
+        width: 500px;
+      }
+    </style>
+    <h1>Register With Us!</h1>
+    <form method="POST" action="https://request-inspector.glitch.me/">
+      <label
+        >Email:
+        <input type="email" name="email" placeholder="email@example.com" />
+      </label>
+      <label
+        >Password:
+        <input type="password" name="password" placeholder="Enter a password" />
+      </label>
+      <br />
+      <br />
+      <label
+        >Bio:
+        <textarea
+          id="bio"
+          name="bio"
+          placeholder="Tell us about yourself..."
+        ></textarea>
+      </label>
+      <br />
+      <br />
+
+      <h3>How did you hear about us?</h3>
+      <label
+        >Billboard
+        <input type="checkbox" name="how-did-you-hear" value="billboard" />
+      </label>
+      <label
+        >Radio advertisement
+        <input type="checkbox" name="how-did-you-hear" value="radio-ad" />
+      </label>
+      <label
+        >Internet advertisement
+        <input type="checkbox" name="how-did-you-hear" value="internet-ad" />
+      </label>
+      <label
+        >Other
+        <input type="checkbox" name="how-did-you-hear4" value="other" />
+      </label>
+      <br /><br />
+      <label
+        >Select your browser:
+        <select id="Web-browser" name="Web-browser">
+          <option selected disabled></option>
+          <option>Safari</option>
+          <option>Microsoft Edge</option>
+          <option>Google Chrome</option>
+          <option>Mozilla Firefox</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <br />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
