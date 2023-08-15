@@ -3,7 +3,7 @@
 
 function logUser(username) {
   if (typeof username !== "string" || !isNaN(username)) {
-    return `Invalid input.`;
+    return `Invalid username.`;
   } else {
     return `${username} has logged in for the day.`;
   }
