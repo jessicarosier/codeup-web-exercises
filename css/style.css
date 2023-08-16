@@ -1,49 +1,45 @@
-/*body {*/
-/*  font-family: sans-serif;*/
-/*  padding: 50px;*/
-/*}*/
-/*.fancy-header,*/
-/*.fancy-nav {*/
-/*  border-style: solid;*/
-/*  border-radius: 10px;*/
-/*  margin-bottom: 10px;*/
-/*  text-align: center;*/
-/*}*/
-#main-header {
-  color: rgba(142, 60, 213, 0.87);
-  font-size: xx-large;
+:root {
+  --default-font: "Bricolage Grotesque", sans-serif;
 }
-/*.fancy-header {*/
-/*  padding: 50px;*/
-/*  background-color: lavender;*/
-/*}*/
 
-/*.fancy-nav,*/
-/*.ulist,*/
-/*.olist {*/
-/*  padding: 25px;*/
-/*  margin-bottom: 10px;*/
-/*}*/
+#navigation,
+#main-head {
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+h2 {
+  color: rgba(10, 48, 198, 0.87);
+  text-decoration: underline;
+}
 
-/*#values,*/
-/*#process,*/
-/*#vision {*/
-/*  height: auto;*/
-/*  width: 300px;*/
-/*  border-style: groove;*/
-/*  border-radius: 10px;*/
-/*  text-align: center;*/
-/*}*/
+body {
+  background-color: lavender;
+  /*background-image: url("https://images.pexels.com/photos/15272405/pexels-photo-15272405/free-photo-of-aerial-photo-of-the-ocean.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center center;*/
+  font-family: var(--default-font);
+}
 
-/*#main-section {*/
-/*  float: left;*/
-/*}*/
-/*#values,*/
-/*#process,*/
-/*#vision {*/
-/*  float: right;*/
-/*}*/
+li {
+  list-style-type: disc;
+}
 
-/*li {*/
-/*  list-style-type: none;*/
-/*}*/
+table,
+tr,
+td {
+  padding: 10px;
+  font-size: 20px;
+}
+
+a:link {
+  color: red;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: green;
+}
