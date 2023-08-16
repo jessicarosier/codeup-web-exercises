@@ -2,74 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome</title>
     <link rel="stylesheet" href="css/style.css">
-<!--    <style>-->
-<!--        h1 {-->
-<!--            color: red;-->
-<!--        }-->
-<!--    </style>-->
+    <!--    <style>-->
+    <!--        h1 {-->
+    <!--            color: red;-->
+    <!--        }-->
+    <!--    </style>-->
 </head>
 <body>
-<nav>
-    <a href="forms.html">Register</a>
-</nav>
-<header>
-    <h1 id = "fancy-header">Welcome to Veridian Dynamics!</h1>
-    <p>At Veridian Dymancis, <strong>we</strong> solve <em>your</em> problems with <strong><em>technology.</em></strong></p>
-    <hr>
-</header>
+<div id="navigation" class="div">
+    <nav class="fancy-nav">
+        <a href="#" target="_blank">Home</a>
+        <a href="#" target="_blank">About</a>
+        <a href="#" target="_blank">Contact</a>
+        <a href="forms.html" target="_blank">Register</a>
+
+    </nav>
+</div>
+<div id="main-head" class="div">
+    <header class="fancy-header">
+        <h1 id="main-header">Welcome to Veridian Dynamics!</h1>
+        <p id="fancy-p">At Veridian Dymancis, <strong>we</strong> solve <em>your</em> problems with
+            <strong><em>technology.</em></strong></p>
+        <hr>
+    </header>
+</div>
 <main>
-<h2>Core Values</h2>
-<ul>
-    <li>Competence</li>
-    <li>Involvement</li>
-    <li>Technology</li>
-</ul>
-<h2>Our Process</h2>
-<ol>
-    <li>Plan</li>
-    <li>Evaluate</li>
-    <li>Implement</li>
-</ol>
-<h2>2020 Vision</h2>
-<ul>
-    <li>Become #1 in Technology</li>
-    <li>Increase Success by 20%</li>
-    <li>Increase Business by 30%</li>
-</ul>
-<hr>
+    <div id="main-section">
+    <div id="values">
+    <h2 class="h2" id="valuelist">Core Values</h2>
+    <ul class="ulist">
+        <li>Competence</li>
+        <li>Involvement</li>
+        <li>Technology</li>
+    </ul>
+    </div>
+    <div id="process">
+    <h2 class="h2" id="processlist">Our Process</h2>
+    <ol class="olist">
+        <li>Plan</li>
+        <li>Evaluate</li>
+        <li>Implement</li>
+    </ol>
+    </div>
+    <div id="vision">
+    <h2 class="h2" id="visionlist">2020 Vision</h2>
+    <ul class="ulist">
+        <li>Become #1 in Technology</li>
+        <li>Increase Success by 20%</li>
+        <li>Increase Business by 30%</li>
+    </ul>
+    </div>
+    </div>
+    <br>
+    <hr>
     <section>
-<h2>Company Vision</h2>
-<img src="img/image1.jpeg" alt="company culture"/>
-<img src="img/image2.jpeg" alt="company culture"/>
-<br>
-<img src="img/image3.jpeg" alt="company culture"/>
-<img src="img/image4.jpeg" alt="company culture"/>
+        <h2 class="h2">Company Vision</h2>
+        <img src="img/image1.jpeg" alt="company culture"/>
+        <img src="img/image2.jpeg" alt="company culture"/>
+        <br>
+        <img src="img/image3.jpeg" alt="company culture"/>
+        <img src="img/image4.jpeg" alt="company culture"/>
     </section>
-<h2>Our Product</h2>
-<table>
-    <thead>
-    <th>Plan</th>
-    <th>Price</th>
-    <th>Features</th>
-    </thead>
-    <tr>
-        <td>Starter</td>
-        <td>$99</td>
-        <td>Base Technology</td>
-    </tr>
-    <tr>
-        <td>Advanced</td>
-        <td>$199</td>
-        <td>Additional Features</td>
-    </tr>
-    <tr>
-        <td>Premium</td>
-        <td>$499</td>
-        <td>Unlimited Support</td>
-    </tr>
-</table>
+    <h2 class="h2">Our Product</h2>
+    <table>
+        <thead>
+        <th>Plan</th>
+        <th>Price</th>
+        <th>Features</th>
+        </thead>
+        <tr>
+            <td>Starter</td>
+            <td>$99</td>
+            <td>Base Technology</td>
+        </tr>
+        <tr>
+            <td>Advanced</td>
+            <td>$199</td>
+            <td>Additional Features</td>
+        </tr>
+        <tr>
+            <td>Premium</td>
+            <td>$499</td>
+            <td>Unlimited Support</td>
+        </tr>
+    </table>
 </main>
 <footer>
     <p><em>All products come with our quality gaurantee&#153.</em></p>

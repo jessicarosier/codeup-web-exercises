@@ -1,0 +1,134 @@
+:root {
+  --main-red: #0059ff;
+  --picture: url("https://media.licdn.com/dms/image/C4E03AQEI7jPFjT7iKQ/profile-displayphoto-shrink_200_200/0/1576859165131?e=1697673600&v=beta&t=TB8FFSxb8zxDwgkcaE08aHZyZoNXGs3xesDm_nbWJ70");
+}
+
+/* Ignore the above, I'll show it off */
+
+/* selector {
+    property: value;
+    property: value;
+}*/
+
+/* Watch me add a color property and padding to our footer */
+
+/* You do:
+
+TODO: Add a selector to change the background color of the footer element to black and a text-align property of center*/
+
+footer {
+  color: rgba(68, 0, 128, 0.94);
+  background-color: lavender;
+  text-align: center;
+}
+
+/*
+ Watch me add a fancy-header and a pair of fonts to my page - one serif (font-family: 'Crimson Text', serif;); one sans (font-family: 'Bricolage Grotesque', sans-serif)
+ */
+.fancy-header {
+  font-style: italic;
+}
+.serif-font {
+  font-family: Arial, Serif;
+}
+
+/*
+    You do:
+    TODO: Select the class of no-decoration and add a property that would remove that list item's bullet.
+
+    TODO: Select the class of highlight and add a background-color of yellow.
+    Observe the li on 55 with both classes as opposed to the li on 56 with only one class.
+
+ */
+.no-decoration {
+  list-style-type: none;
+}
+
+.highlight {
+  background-color: yellow;
+}
+/* Watch me target all h3s under the main */
+main h3 {
+  border: 3px solid black;
+}
+
+/* Watch me target the h3 that is the direct descendent of the main */
+section > h3 {
+  color: pink;
+}
+
+/* TODO: Target all descendent lis of the aside element and change their color */
+aside li {
+  color: green;
+}
+
+aside > ul > li {
+  color: var(--main-red);
+}
+
+/* TODO: Target the direct descendents of the aside element's unordered list element'ss list items and change their color from the above example
+
+    Note: This should not change the color of the header ul's children li elements */
+
+/* Watch me change the h2.fancy-header color + text-indent of 10px and the h3.fancy-header to a different color and text-indent of 50px */
+
+h2.fancy-header {
+  background-color: orange;
+}
+h3.fancy-header {
+  background-color: lightcyan;
+}
+
+/*TODO: Target the different elements with the class of header-list and give them different font colors. Decorate one with a underline that is dotted and red; and the other with a underline that is green and wavy */
+
+ul.header-list {
+  color: brown;
+  text-decoration: underline wavy;
+}
+
+ol.header-list {
+  color: lime;
+  text-decoration: underline dotted;
+}
+
+/* Watch me set a background image to my paragraph with an ID of mainParagraph*/
+
+/* TODO: Use the pexels website and find an image to add to an element on your page: try messing with the background-repeat or background-size properties */
+
+#container {
+  background-image: url("https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg");
+  /*background-image: var(--picture);*/
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/* Watch me adjust the anchor tags pseudo-classes */
+/* Watch me adjust the anchor tags pseudo-classes */
+a:hover {
+  padding: 50px;
+  border: 10px solid var(--main-red);
+  background-color: pink;
+}
+a:visited {
+  color: orangered;
+}
+
+/* Watch me teach you about variables */
+
+/* TODO: Try variables out on your own - is there a common color you could make into a CSS variable or create one to experiment with? What about a picture in multiple spots?
+
+Remember D ~ R ~ Y ; CSS variables help you achieve that!
+ */
+
+/* Worksheet Bonuses:
+
+
+    TODO: Look up your own font like I did on Google Fonts - replace the link elements on lines 8-9-10 with your own.
+
+    TODO: Use the "CSS rules. . ." code snippet with your selector to test your new font */
+
+h1,
+h2,
+h3,
+p {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
