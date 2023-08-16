@@ -1,3 +1,5 @@
+@import "resets.css";
+
 :root {
   --default-font: "Bricolage Grotesque", sans-serif;
 }
@@ -8,16 +10,9 @@
   margin-bottom: 10px;
   text-align: center;
 }
-h2 {
-  color: rgba(10, 48, 198, 0.87);
-  text-decoration: underline;
-}
 
 body {
-  background-color: lavender;
-  /*background-image: url("https://images.pexels.com/photos/15272405/pexels-photo-15272405/free-photo-of-aerial-photo-of-the-ocean.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");*/
-  /*background-repeat: no-repeat;*/
-  /*background-position: center center;*/
+  background-color: #7b9e7f;
   font-family: var(--default-font);
 }
 
@@ -42,4 +37,33 @@ a:hover {
 
 a:visited {
   color: green;
+}
+
+#main-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-elements {
+  margin: 0 auto;
+  padding: 50px;
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 400px;
+  background-color: #addfb3;
+}
+
+.main-elements h2 {
+  text-align: center;
+  font-size: 30px;
+  color: black;
+}
+
+.main-elements li {
+  text-align: center;
+  list-style-type: none;
+}
+
+#image-box {
+  display: flex;
 }

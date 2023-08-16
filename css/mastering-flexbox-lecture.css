@@ -1,0 +1,39 @@
+@import "mastering-flexbox-base.css";
+
+/* This is the file we will use to experiment with flexbox */
+.container {
+  height: 700px;
+  display: flex;
+  /*flex-direction: column;*/
+  /*below is used for aligning on the main axis */
+  justify-content: space-between;
+  /*below is used for aligning on the cross axis */
+  align-items: center;
+  /* gap creates space between children so you dont have to use margins which can cause issues */
+  gap: 10px;
+  /*!* flex wrap allows you to wrap the children inside the parent element so they dont bleed outside *!*/
+  flex-wrap: wrap;
+  /*!*align content only works once you use flex wrap *!*/
+  /*align-content: center;*/
+}
+
+.item {
+}
+
+/* the selector below demonstrates how to target every other element inside of its parent element*/
+.item:nth-child(even) {
+  align-self: start;
+}
+
+/*#item-2 {*/
+/*  flex: 0 0 250px;*/
+/*}*/
+
+/*#item-7 {*/
+/*  !* is property allows us to position any child element anywhere we want inside the parent, regaurdless of its position in the HTML document *!*/
+/*  order: -1;*/
+/*}*/
+
+/*#item-11 {*/
+/*  flex: 0 1 auto;*/
+/*}*/
