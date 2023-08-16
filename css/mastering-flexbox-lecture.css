@@ -2,28 +2,29 @@
 
 /* This is the file we will use to experiment with flexbox */
 .container {
-  height: 700px;
+  max-width: 100%;
   display: flex;
-  /*flex-direction: column;*/
+  flex-direction: row;
   /*below is used for aligning on the main axis */
-  justify-content: space-between;
+  justify-content: space-evenly;
   /*below is used for aligning on the cross axis */
-  align-items: center;
+  align-items: stretch;
   /* gap creates space between children so you dont have to use margins which can cause issues */
   gap: 10px;
-  /*!* flex wrap allows you to wrap the children inside the parent element so they dont bleed outside *!*/
+  /*/* flex wrap allows you to wrap the children inside the parent element so they dont bleed outside */
   flex-wrap: wrap;
-  /*!*align content only works once you use flex wrap *!*/
+  /*/*align content only works once you use flex wrap */
   /*align-content: center;*/
 }
 
 .item {
+  flex: 0 0 250px;
 }
 
 /* the selector below demonstrates how to target every other element inside of its parent element*/
-.item:nth-child(even) {
-  align-self: start;
-}
+/*.item:nth-child(even) {*/
+/*  align-self: start;*/
+/*}*/
 
 /*#item-2 {*/
 /*  flex: 0 0 250px;*/
