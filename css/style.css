@@ -2,29 +2,83 @@
 
 :root {
   --default-font: "Bricolage Grotesque", sans-serif;
+  --other-font: 'Lato', sans-serif;
+}
+
+body {
+  background-color: #4B5842;
+  font-family: var(--other-font);
 }
 
 #navigation,
 #main-head {
   padding: 10px;
   margin-bottom: 10px;
-  text-align: center;
 }
 
-body {
-  background-color: #7b9e7f;
-  font-family: var(--default-font);
+#navigation {
+  background-color: #DADDD8;
+  display: flex;
+  justify-content: end;
 }
 
-li {
-  list-style-type: disc;
+#fancy-nav {
+  display: flex;
+  gap: 20px;
+}
+#fancy-nav div a {
+  display: flex;
+  gap:300px
+  justify-content: center;
+  border: solid black 1px;
 }
 
-table,
-tr,
-td {
-  padding: 10px;
+#main-head {
+  width: 1000px;
+  background-color: #8FB339;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap:10px
+  font-size: 100px;
+  max-width: 100%;
+}
+
+.fancy-header {
+  max-width: 100%;
+
+}
+#main-header {
+  display: flex;
+  font-size: 100px;
+  max-width: 100%;
+}
+
+.fancy-header p {
+  display: flex;
   font-size: 20px;
+
+}
+
+#image-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.img-box-element {
+  width: 300px;
+  max-width: 100%;
+}
+
+#imghead {
+  align-self: start;
+}
+
+.img-box-div {
+  flex: 0 0 250px;
 }
 
 a:link {
@@ -40,17 +94,24 @@ a:visited {
 }
 
 #main-section {
+  max-width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.main-elements {
+#img1 {
+  flex-grow: 1 0 0;
+  align-self: start;
+}
+#values, #process, #vision {
   margin: 0 auto;
   padding: 50px;
   border: solid black 1px;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 400px;
-  background-color: #addfb3;
+  background-color: #B7CE63;
 }
 
 .main-elements h2 {
@@ -62,8 +123,4 @@ a:visited {
 .main-elements li {
   text-align: center;
   list-style-type: none;
-}
-
-#image-box {
-  display: flex;
 }

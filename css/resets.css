@@ -47,3 +47,16 @@ td {
   padding: 10px;
   border: solid black 1px;
 }
+
+/*display: flex;*/
+/*flex-direction: row;*/
+/*!*below is used for aligning on the main axis *!*/
+/*justify-content: space-evenly;*/
+/*!*below is used for aligning on the cross axis *!*/
+/*align-items: stretch;*/
+/*!* gap creates space between children so you dont have to use margins which can cause issues *!*/
+/*gap: 10px;*/
+/*!*!* flex wrap allows you to wrap the children inside the parent element so they dont bleed outside *!*/
+/*flex-wrap: wrap;*/
+/*!*!*align content only works once you use flex wrap *!*/
+/*!*align-content: center;*!*/
