@@ -1,0 +1,152 @@
+@import "position-lecture-base.css";
+
+/* This is the file we will use to experiment with position */
+.container {
+  position: relative;
+  /*border-radius: 50px;*/
+  /* the overflow property will hide the literal over flow of an element that is positioned on top of it with a z-index.*/
+  overflow: hidden;
+  background-color: white;
+  /*z-index: 1;*/
+}
+
+/*#item-9 {*/
+/*  !* the default position for all elements is Static unless we specify otherwise*!*/
+/*  position: relative;*/
+/*  left: -126px;*/
+/*  top: 100px;*/
+/*}*/
+
+/*#item-8 {*/
+/*  !* positions the element outside of the normal flow of the document*/
+/*  When you set a left right top or bottom property, it will base its position relative to the first parent element that has a property of absolute*!*/
+/*  position: absolute;*/
+/*  top: 0px;*/
+/*  left: 0px;*/
+/*}*/
+
+/*#item-5 {*/
+/*  position: absolute;*/
+/*  top: 10px;*/
+/*  left: 10px;*/
+/*  z-index: 2;*/
+/*}*/
+
+/*#item-1 {*/
+/*  position: absolute;*/
+/*  top: 20px;*/
+/*  left: 20px;*/
+/*  z-index: 1;*/
+/*}*/
+
+.overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  /*pointer events none allows you to click on the elements underneath the current element */
+  pointer-events: none;
+  opacity: 0;
+  transition: all ease 0.3s;
+  z-index: 4;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#item-9 {
+  position: absolute;
+  top: 0px;
+  right: -200px;
+  height: 100%;
+  transition: all ease 0.3s;
+  z-index: 5;
+}
+
+.container:hover #item-9 {
+  right: 0px;
+}
+
+.thumbnail-wrapper {
+  margin-top: 20px;
+  width: 300px;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.thumbnail-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: all ease 0.3s;
+}
+
+.thumbnail-wrapper:hover img {
+  transform: scale(1.2);
+}
+
+.thumbnail-overlay img {
+  max-width: 30px;
+  height: 30px;
+}
+
+.thumbnail-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+
+.thumbnail-wrapper:hover .thumbnail-overlay {
+  opacity: 1;
+}
+
+.bg-element {
+  position: absolute;
+  height: 100px;
+  width: 300px;
+  background-color: grey;
+  top: 20%;
+  left: 50px;
+  z-index: 2;
+}
+
+.item {
+  position: relative;
+  z-index: 3;
+}
+
+/* z-index values are inherited from their parent, children cannot override the z-index value of their parent!*/
+
+.page-banner {
+  width: 100%;
+  height: 50px;
+  background-color: red;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #eee;
+  border: 1px solid black;
+  width: 100%;
+  position: sticky;
+  bottom: 0px;
+  z-index: 9;
+}
+
+/* position fixed is always relative to the viewport*/
