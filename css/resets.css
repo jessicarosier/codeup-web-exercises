@@ -1,62 +1,15 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  line-height: 1.5;
 }
 
 img,
-picture,
-video,
-canvas,
 svg {
-  display: block;
   max-width: 100%;
+  display: block;
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
+button {
+  cursor: pointer;
 }
-
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-td {
-  margin: 0 auto;
-  padding: 10px;
-  border: solid black 1px;
-}
-
-/*display: flex;*/
-/*flex-direction: row;*/
-/*!*below is used for aligning on the main axis *!*/
-/*justify-content: space-evenly;*/
-/*!*below is used for aligning on the cross axis *!*/
-/*align-items: stretch;*/
-/*!* gap creates space between children so you dont have to use margins which can cause issues *!*/
-/*gap: 10px;*/
-/*!*!* flex wrap allows you to wrap the children inside the parent element so they dont bleed outside *!*/
-/*flex-wrap: wrap;*/
-/*!*!*align content only works once you use flex wrap *!*/
-/*!*align-content: center;*!*/
