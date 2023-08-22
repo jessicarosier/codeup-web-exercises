@@ -5,6 +5,13 @@ body {
   font-family: sans-serif;
 }
 
+.row {
+  max-width: 900px;
+}
+
+.hidden-on-desktop {
+  display: none;
+}
 .header-row {
   padding: 20px 20px;
   align-items: center;
@@ -25,7 +32,7 @@ li {
 }
 
 .header-img {
-  min-width: 100%;
+  max-width: 900px;
   justify-content: center;
 }
 
@@ -63,11 +70,11 @@ li {
   justify-content: space-between;
 }
 
-@media screen and (min-width: 700px) {
-  .hidden-on-desktop {
-    display: none;
-  }
-}
+/*@media screen and (min-width: 700px) {*/
+/*  .hidden-on-desktop {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
 
 @media screen and (max-width: 425px) {
   .hidden-on-desktop {
