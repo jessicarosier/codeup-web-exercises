@@ -1,0 +1,14 @@
+.page-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.jumbotron {
+  height: 30vh;
+  background-image: url("../img/pizza.png");
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+}
