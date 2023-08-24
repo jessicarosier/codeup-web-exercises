@@ -5,10 +5,11 @@
 }
 
 .jumbotron {
-  height: 30vh;
+  height: 346px;
   background-image: url("../img/pizza.png");
   background-size: cover;
-  background-position: center;
-  justify-content: center;
-  align-items: center;
+}
+
+p {
+  margin: 0;
 }

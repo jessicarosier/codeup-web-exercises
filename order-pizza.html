@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="page-wrapper">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg bg-body-white">
         <div class="container">
           <a class="navbar-brand" href="#">Pizza World</a>
           <button
@@ -61,7 +61,9 @@
         </div>
       </nav>
       <header class="container h-100 main-container">
-        <div class="d-flex w-100 jumbotron">
+        <div
+          class="d-flex justify-content-center align-items-center w-100 jumbotron"
+        >
           <h1 class="bg-white opacity-75 w-100 text-center">
             Welcome to Pizza World!
           </h1>
@@ -78,7 +80,8 @@
               aria-current="page"
               href="#tab1"
               data-bs-toggle="list"
-              ><img src="img/1-circle-fill.svg" /> Size and Crust</a
+              ><span class="badge rounded-pill bg-secondary">1</span> Size and
+              Crust</a
             >
           </li>
           <li class="nav-item">
@@ -87,7 +90,8 @@
               data-toggle="tab"
               href="#tab2"
               data-bs-toggle="list"
-              ><img src="img/2-circle-fill.svg" /> Cheese and Sauce</a
+              ><span class="badge rounded-pill bg-secondary">2</span> Cheese and
+              Sauce</a
             >
           </li>
           <li class="nav-item">
@@ -96,7 +100,8 @@
               data-toggle="tab"
               href="#tab3"
               data-bs-toggle="list"
-              ><img src="img/3-circle-fill.svg" /> Toppings</a
+              ><span class="badge rounded-pill bg-secondary">3</span>
+              Toppings</a
             >
           </li>
         </ul>
@@ -109,13 +114,18 @@
             <p class="text-white bg-primary p-2 justify-self-start">
               Choose Size and Crust
             </p>
-            <div class="border border-2 border-light rounded mx-3 mb-3">
-              <div class="border border-light">
-                <p class="bg-light p-2">Hand Tossed</p>
-                <p border border-2 border-light p>
-                  Garlic seasoned crust with a rich, buttery taste.
-                </p>
+            <ul
+              class="list-group border border-2 border-light rounded mx-3 my-3"
+            >
+              <li class="list-group-item bg-light">
+                <p>Hand Tossed</p>
+              </li>
 
+              <li class="list-group-item">
+                <p>Garlic seasoned crust with a rich, buttery taste.</p>
+              </li>
+
+              <li class="list-group-item">
                 <div class="form-check">
                   <input
                     class="form-check-input"
@@ -127,6 +137,8 @@
                     Small (10")
                   </label>
                 </div>
+              </li>
+              <li class="list-group-item">
                 <div class="form-check">
                   <input
                     class="form-check-input"
@@ -139,175 +151,244 @@
                     Medium (12")
                   </label>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
 
-            <div class="border border-2 border-light rounded mx-3 mb-3">
-              <p class="bg-light p-2">Crispy Thin</p>
-              <p>Thin enough for optimum crispy to crunchy ratio.</p>
-
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="thin-crust"
-                  id="medium-thin"
-                />
-                <label class="form-check-label" for="medium-thin">
-                  Medium (12")
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="thin-crust"
-                  id="large-thin"
-                  checked
-                />
-                <label class="form-check-label" for="large-thin">
-                  Large (14")
-                </label>
-              </div>
-            </div>
+            <ul
+              class="list-group border border-2 border-light rounded mx-3 mb-3"
+            >
+              <li class="list-group-item bg-light">
+                <p>Crispy Thin</p>
+              </li>
+              <li class="list-group-item">
+                <p>Thin enough for optimum crispy to crunchy ratio.</p>
+              </li>
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="thin-crust"
+                    id="medium-thin"
+                  />
+                  <label class="form-check-label" for="medium-thin">
+                    Medium (12")
+                  </label>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="thin-crust"
+                    id="large-thin"
+                    checked
+                  />
+                  <label class="form-check-label" for="large-thin">
+                    Large (14")
+                  </label>
+                </div>
+              </li>
+            </ul>
             <div class="bg-light d-flex justify-content-end p-2">
               <button type="button" class="btn btn-primary d-block">
                 Next Step >
               </button>
             </div>
           </div>
-          <div class="tab-pane" id="tab2" role="tabpanel">
-            <p class="text-white bg-primary p-2">Choose Cheese and Sauce</p>
+          <div
+            class="tab-pane w-100 border border-3 border-light rounded overflow-hidden"
+            id="tab2"
+            role="tabpanel"
+          >
+            <p class="text-white bg-primary p-2 justify-self-start">
+              Choose Cheese and Sauce
+            </p>
 
-            <div>
-              <p class="bg-light">Cheese</p>
-              <p>How Much?</p>
-              <select class="form-select" aria-label="amount-cheese">
-                <option selected>Normal</option>
-                <option value="1">Light</option>
-                <option value="2">Extra</option>
-              </select>
-            </div>
+            <ul
+              class="list-group border border-2 border-light rounded mx-3 my-3"
+            >
+              <li class="list-group-item bg-light">
+                <p>Cheese</p>
+              </li>
+              <li class="list-group-item">
+                <p>How Much?</p>
+              </li>
+              <li class="list-group-item">
+                <select class="form-select" aria-label="amount-cheese">
+                  <option value="1">Light</option>
+                  <option selected>Normal</option>
+                  <option value="2">Extra</option>
+                  <option value="2">Double</option>
+                </select>
+              </li>
+            </ul>
 
-            <div>
-              <p class="bg-light">Sauce</p>
-              <p>What type?</p>
-              <select class="form-select" aria-label="type-sauce">
-                <option selected>Tomato</option>
-                <option value="1">Pesto</option>
-                <option value="2">BBQ</option>
-              </select>
-            </div>
+            <ul
+              class="list-group border border-2 border-light rounded mx-3 mb-3"
+            >
+              <li class="list-group-item bg-light">
+                <p>Sauce</p>
+              </li>
+              <li class="list-group-item">
+                <p>What type?</p>
+              </li>
+              <li class="list-group-item">
+                <select class="form-select" aria-label="type-sauce">
+                  <option selected>Tomato</option>
+                  <option value="1">Marinara</option>
+                  <option value="2">BBQ</option>
+                  <option value="2">Alfredo</option>
+                </select>
+              </li>
+            </ul>
 
-            <div>
-              <p>How Much?</p>
-              <select class="form-select" aria-label="amount-sauce">
-                <option selected>Normal</option>
-                <option value="1">Light</option>
-                <option value="2">Extra</option>
-              </select>
-            </div>
-            <div class="d-flex d-flex justify-content-end bg-light">
-              <button type="button" class="btn btn-primary d-block">
-                < Previous
-              </button>
-
-              <button type="button" class="btn btn-primary d-block">
-                Next >
-              </button>
+            <ul
+              class="list-group border border-2 border-light rounded mx-3 mb-3"
+            >
+              <li class="list-group-item bg-light">
+                <p>How Much?</p>
+              </li>
+              <li class="list-group-item">
+                <select class="form-select" aria-label="amount-sauce">
+                  <option value="1">Light</option>
+                  <option selected>Normal</option>
+                  <option value="2">Extra</option>
+                </select>
+              </li>
+            </ul>
+            <div class="d-flex justify-content-end bg-light p-2">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary">
+                  < Previous
+                </button>
+                <button type="button" class="btn btn-primary">Next ></button>
+              </div>
             </div>
           </div>
-          <div class="tab-pane" id="tab3" role="tabpanel">
+          <div
+            class="tab-pane w-100 border border-3 border-light rounded overflow-hidden"
+            id="tab3"
+            role="tabpanel"
+          >
             <p class="text-white bg-primary p-2">Choose Toppings</p>
 
-            <div>
-              <p class="bg-light">Choose Meats</p>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="beef"
-                  id="beef"
-                />
-                <label class="form-check-label" for="beef"> Beef </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="ham"
-                  id="ham"
-                />
-                <label class="form-check-label" for="ham"> Ham </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="steak"
-                  id="steak"
-                />
-                <label class="form-check-label" for="steak">
-                  Philly Steak
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="bacon"
-                  id="bacon"
-                />
-                <label class="form-check-label" for="bacon"> Bacon </label>
-              </div>
-            </div>
+            <ul
+              class="list-group border border-2 border-light rounded mx-3 my-3"
+            >
+              <li class="list-group-item bg-light">
+                <p>Choose Meats</p>
+              </li>
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="beef"
+                    id="beef"
+                  />
+                  <label class="form-check-label" for="beef"> Beef </label>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="ham"
+                    id="ham"
+                  />
+                  <label class="form-check-label" for="ham"> Ham </label>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="steak"
+                    id="steak"
+                  />
+                  <label class="form-check-label" for="steak">
+                    Philly Steak
+                  </label>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="bacon"
+                    id="bacon"
+                  />
+                  <label class="form-check-label" for="bacon"> Bacon </label>
+                </div>
+              </li>
+            </ul>
 
-            <div>
-              <p class="bg-light">Choose Non-Meats</p>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="green-pepper"
-                  id="green-pepper"
-                />
-                <label class="form-check-label" for="green-pepper">
-                  Green Peppers
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="mushrooms"
-                  id="mushrooms"
-                />
-                <label class="form-check-label" for="mushrooms">
-                  Mushrooms
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="onions"
-                  id="onions"
-                />
-                <label class="form-check-label" for="onions"> Onions </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="jalapeno"
-                  id="jalapeno"
-                />
-                <label class="form-check-label" for="jalapeno">
-                  Jalapeno Peppers
-                </label>
-              </div>
-            </div>
-            <div class="d-flex d-flex justify-content-end bg-light">
+            <ul
+              class="list-group border border-2 border-light rounded mx-3 mb-3 p-0"
+            >
+              <li class="list-group-item bg-light">
+                <p class="bg-light">Choose Non-Meats</p>
+              </li>
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="green-pepper"
+                    id="green-pepper"
+                  />
+                  <label class="form-check-label" for="green-pepper">
+                    Green Peppers
+                  </label>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="mushrooms"
+                    id="mushrooms"
+                  />
+                  <label class="form-check-label" for="mushrooms">
+                    Mushrooms
+                  </label>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="onions"
+                    id="onions"
+                  />
+                  <label class="form-check-label" for="onions"> Onions </label>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="jalapeno"
+                    id="jalapeno"
+                  />
+                  <label class="form-check-label" for="jalapeno">
+                    Jalapeno Peppers
+                  </label>
+                </div>
+              </li>
+            </ul>
+            <div class="bg-light d-flex justify-content-end p-2">
               <button type="button" class="btn btn-primary d-block">
                 Checkout
                 <svg
