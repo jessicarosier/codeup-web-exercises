@@ -55,20 +55,8 @@
               </button>
             </form>
           </div>
-          <a href="#">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-person-fill text-dark"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-              />
-            </svg>
-            Sign Up!</a
+          <a href="#" class="text-decoration-none text-dark">
+            <img src="img/person-fill.svg" /> Sign Up!</a
           >
         </div>
       </nav>
@@ -90,7 +78,7 @@
               aria-current="page"
               href="#tab1"
               data-bs-toggle="list"
-              >Size and Crust</a
+              ><img src="img/1-circle-fill.svg" /> Size and Crust</a
             >
           </li>
           <li class="nav-item">
@@ -99,7 +87,7 @@
               data-toggle="tab"
               href="#tab2"
               data-bs-toggle="list"
-              >Cheese and Sauce</a
+              ><img src="img/2-circle-fill.svg" /> Cheese and Sauce</a
             >
           </li>
           <li class="nav-item">
@@ -108,18 +96,25 @@
               data-toggle="tab"
               href="#tab3"
               data-bs-toggle="list"
-              >Toppings</a
+              ><img src="img/3-circle-fill.svg" /> Toppings</a
             >
           </li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="tab1" role="tabpanel">
-            <div>
-              <p class="text-white bg-primary">Choose Size and Crust</p>
-
+          <div
+            class="tab-pane active w-100 border border-3 border-light rounded overflow-hidden"
+            id="tab1"
+            role="tabpanel"
+          >
+            <p class="text-white bg-primary p-2 justify-self-start">
+              Choose Size and Crust
+            </p>
+            <div class="border border-2 border-light rounded mx-3 mb-3">
               <div class="border border-light">
-                <p class="bg-light">Hand Tossed</p>
-                <p>Garlic seasoned crust with a rich, buttery taste.</p>
+                <p class="bg-light p-2">Hand Tossed</p>
+                <p border border-2 border-light p>
+                  Garlic seasoned crust with a rich, buttery taste.
+                </p>
 
                 <div class="form-check">
                   <input
@@ -147,8 +142,8 @@
               </div>
             </div>
 
-            <div>
-              <p class="bg-light">Crispy Thin</p>
+            <div class="border border-2 border-light rounded mx-3 mb-3">
+              <p class="bg-light p-2">Crispy Thin</p>
               <p>Thin enough for optimum crispy to crunchy ratio.</p>
 
               <div class="form-check">
@@ -175,14 +170,14 @@
                 </label>
               </div>
             </div>
-            <div class="d-flex align-end justify-end bg-light">
+            <div class="bg-light d-flex justify-content-end p-2">
               <button type="button" class="btn btn-primary d-block">
                 Next Step >
               </button>
             </div>
           </div>
           <div class="tab-pane" id="tab2" role="tabpanel">
-            <p class="text-white bg-primary">Choose Cheese and Sauce</p>
+            <p class="text-white bg-primary p-2">Choose Cheese and Sauce</p>
 
             <div>
               <p class="bg-light">Cheese</p>
@@ -212,7 +207,7 @@
                 <option value="2">Extra</option>
               </select>
             </div>
-            <div class="d-flex align-end justify-space-between bg-light">
+            <div class="d-flex d-flex justify-content-end bg-light">
               <button type="button" class="btn btn-primary d-block">
                 < Previous
               </button>
@@ -223,7 +218,7 @@
             </div>
           </div>
           <div class="tab-pane" id="tab3" role="tabpanel">
-            <p class="text-white bg-primary">Choose Toppings</p>
+            <p class="text-white bg-primary p-2">Choose Toppings</p>
 
             <div>
               <p class="bg-light">Choose Meats</p>
@@ -312,7 +307,7 @@
                 </label>
               </div>
             </div>
-            <div class="d-flex align-end justify-end bg-light">
+            <div class="d-flex d-flex justify-content-end bg-light">
               <button type="button" class="btn btn-primary d-block">
                 Checkout
                 <svg
