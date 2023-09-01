@@ -3,11 +3,8 @@
 let book = {
   title: "To Kill a Mockingbird",
   author: { firstName: "Harper", lastName: "Lee" },
-  genre: "fiction",
+  genre: "Fiction",
 };
-// books.title = "To Kill a Mockingbird";
-// books.author = { firstName: "Harper", lastName: "Lee" };
-// books.genre = "fiction";
 
 //TODO: Uncomment the following variable - fill in the string interpolation expressions to access the properties of your book to finish the following card.
 
@@ -57,6 +54,12 @@ arrayOfBooks.push(
   ),
 );
 
+arrayOfBooks.push(
+  createBook("Cant Hurt Me", "David", "Goggins", "Motivational"),
+);
+
+arrayOfBooks.push(createBook("Start With Why", "Simon", "Sinek", "Self-help"));
+
 //TODO: Refactor your above code - our HTML needs to build three HTML cards with the information from the objects. Hint: We would want to iterate through the array and add each fresh bit of HTML into the variable of allCards set up below.
 
 let allCards = [];
@@ -72,7 +75,7 @@ for (let i = 0; i < arrayOfBooks.length; i++) {
 let bookButton = document.getElementById("open-books");
 
 bookButtonListener = (e) => {
-  document.getElementById("container").innerHTML = allCards.join("");
+  document.getElementById("container").innerHTML = myCard + allCards.join("");
 };
 
 bookButton.addEventListener(`click`, bookButtonListener);
