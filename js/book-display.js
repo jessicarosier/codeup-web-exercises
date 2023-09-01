@@ -8,7 +8,7 @@ let book = {
 
 //TODO: Uncomment the following variable - fill in the string interpolation expressions to access the properties of your book to finish the following card.
 
-let myCard = `<div class="bookCard">
+let myCard = `<div class="bookCard f-flex flex-column justify-content-center align-items-center">
     <div>Book Title: ${book.title}.</div>
     <div>Book Author: ${book.author.firstName}.</div>
     <div>Book Genre: ${book.genre}.</div>
@@ -65,28 +65,34 @@ arrayOfBooks.push(createBook("Start With Why", "Simon", "Sinek", "Self-help"));
 let allCards = [];
 
 for (let i = 0; i < arrayOfBooks.length; i++) {
-  allCards.push(`<div class="bookCard">
-    <div>Book Title: ${arrayOfBooks[i].title}.</div>
-     <div>Book Author: ${arrayOfBooks[i].author.firstName} ${arrayOfBooks[i].author.lastName}.</div>
-     <div>Book Genre: ${arrayOfBooks[i].genre}.</div>
+  allCards.push(`<div class="bookCard d-flex flex-column justify-content-center align-items-start" style="min-width: 600px;">
+    <div><span class="fw-bold">Book Title:</span> ${arrayOfBooks[i].title}.</div>
+     <div><span class="fw-bold">Book Author:</span> ${arrayOfBooks[i].author.firstName} ${arrayOfBooks[i].author.lastName}.</div>
+     <div><span class="fw-bold">Book Genre:</span> ${arrayOfBooks[i].genre}.</div>
  </div>`);
 }
 
-// for (let i = 0; i < arrayOfBooks.length; i++) {
-//   allCards.push(`<div className="card" style="width: 18rem;">
-//     <div className="card-body">
-//       <h5 className="card-title">Book Title: ${arrayOfBooks[i].title}.</h5>
-//       <p className="card-text mb-0">Book Author: ${arrayOfBooks[i].author.firstName} ${arrayOfBooks[i].author.lastName}.</p>
-//       <p className="card-text mb-0">Book Genre: ${arrayOfBooks[i].genre}.</p>
-//       <a href="#" className="btn btn-primary">Buy this book.</a>
-//     </div>
-// </div>`);
-// }
+// console.log(allCards);
+//
+// document.getElementById("container").innerHTML = allCards;
 
-let bookButton = document.getElementById("open-books");
+let container = document.getElementById("container");
+let openBookButton = document.getElementById("open-books");
+let closeBookButton = document.getElementById("close-books");
 
-bookButtonListener = (e) => {
-  document.getElementById("container").innerHTML = myCard + allCards.join("");
+openBookButtonListener = (e) => {
+  container.innerHTML = allCards.join("");
+  // openBookButton.innerHTML = hideOpenButton;
+  openBookButton.classList.add("d-none");
+  closeBookButton.classList.remove("d-none");
 };
 
-bookButton.addEventListener(`click`, bookButtonListener);
+openBookButton.addEventListener(`click`, openBookButtonListener);
+
+closeBookButtonListener = (e) => {
+  container.innerHTML = "";
+  openBookButton.classList.remove("d-none");
+  closeBookButton.classList.add("d-none");
+};
+
+closeBookButton.addEventListener(`click`, closeBookButtonListener);

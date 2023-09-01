@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>=></title>
+</head>
+<body>
+
+<h1>Let's look at arrow functions (open console, ref script tag)</h1>
+
+<script>
+    // Examples of arrow function syntax:
+    //
+    // () => expression
+    //
+    // param => expression
+    //
+    // (param) => expression
+    //
+    // (param1, paramN) => expression
+    //
+    // () => {
+    //     statements
+    // }
+    //
+    // param => {
+    //     statements
+    // }
+    //
+    // (param1, paramN) => {
+    //     statements
+    // }
+
+
+
+    // Side by side comparisons:
+
+    //Expression (not multiple lines)
+    let helloLog = function(){
+        console.log("Hello - no arrows here");
+    }
+
+    let helloLogArrows = () => console.log("Hello - arrows here");
+
+    console.log(`~~expression logs below:`);
+    helloLog();
+    helloLogArrows();
+
+    //Statements (multiple lines)
+
+    let helloHelloLog = function(){
+        console.log("Hello no arrows please");
+        console.log("Hello again - plz. . plz no arrows!");
+    }
+
+    let helloHelloLogArrows = () => {
+        console.log("Hello - love me some arrows!");
+        console.log("Arrows here for me too!");
+    }
+
+    console.log("~~statement logs below:");
+    helloHelloLog();
+    helloHelloLogArrows();
+
+    //Param(s) + Expression
+    let helloNameLog = function(name){
+        console.log(`Hello hello, ${name} hates arrows`);
+    }
+
+    let helloNameLogArrows = (name) => console.log(`${name} is a big fan of arrows!`);
+
+    console.log(`~~single param + expression below`);
+    helloNameLog("a guard from Whiterun");
+    helloNameLogArrows("Cupid");
+
+    let combineNamesLog = function(firstName, lastName){
+        console.log(`${firstName + ' ' + lastName} is arrow free`);
+    }
+
+    let combineNamesLogArrow = (firstName, lastName) =>  console.log(`${firstName + ' ' + lastName} is riddled with arrows - ouch!`);
+
+    console.log(`~~multi params + expression below`);
+    combineNamesLog("Arrowfree", "McMann");
+    combineNamesLogArrow("Albert", "Arrowlover");
+
+    //Param(s) + Statements
+    let tacoBoutItLog = function(tacoType){
+        if(tacoType.includes("puffy taco")){
+            console.log(`${tacoType}? puro san antonio`);
+        } else {
+        console.log(`${tacoType}? Sounds good`);
+        }
+    }
+
+    let tacoBoutItLogArrow = (tacoType) => {
+        if(tacoType.includes("puffy taco")){
+            console.log(`${tacoType}? puro san antonio`);
+        } else {
+            console.log(`${tacoType}? Sounds good`);
+        }
+    }
+
+    console.log(`~~param plus stmt below`);
+    tacoBoutItLog("chicken puffy taco");
+    tacoBoutItLogArrow("crispy tacos");
+
+</script>
+</body>
+</html>
