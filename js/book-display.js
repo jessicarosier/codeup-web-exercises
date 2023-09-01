@@ -8,7 +8,7 @@ let book = {
 
 //TODO: Uncomment the following variable - fill in the string interpolation expressions to access the properties of your book to finish the following card.
 
-let myCard = `<div class="card">
+let myCard = `<div class="bookCard">
     <div>Book Title: ${book.title}.</div>
     <div>Book Author: ${book.author.firstName}.</div>
     <div>Book Genre: ${book.genre}.</div>
@@ -65,12 +65,23 @@ arrayOfBooks.push(createBook("Start With Why", "Simon", "Sinek", "Self-help"));
 let allCards = [];
 
 for (let i = 0; i < arrayOfBooks.length; i++) {
-  allCards.push(`<div class="card">
+  allCards.push(`<div class="bookCard">
     <div>Book Title: ${arrayOfBooks[i].title}.</div>
      <div>Book Author: ${arrayOfBooks[i].author.firstName} ${arrayOfBooks[i].author.lastName}.</div>
      <div>Book Genre: ${arrayOfBooks[i].genre}.</div>
  </div>`);
 }
+
+// for (let i = 0; i < arrayOfBooks.length; i++) {
+//   allCards.push(`<div className="card" style="width: 18rem;">
+//     <div className="card-body">
+//       <h5 className="card-title">Book Title: ${arrayOfBooks[i].title}.</h5>
+//       <p className="card-text mb-0">Book Author: ${arrayOfBooks[i].author.firstName} ${arrayOfBooks[i].author.lastName}.</p>
+//       <p className="card-text mb-0">Book Genre: ${arrayOfBooks[i].genre}.</p>
+//       <a href="#" className="btn btn-primary">Buy this book.</a>
+//     </div>
+// </div>`);
+// }
 
 let bookButton = document.getElementById("open-books");
 
