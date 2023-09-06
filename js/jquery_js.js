@@ -46,7 +46,7 @@ listItems
     $(this).css("font-size", "20px");
   });
 
-$("p").on("dblclick", function () {
+paragraphs.on("dblclick", function () {
   $(this).css("font-size", "18px");
 });
 
