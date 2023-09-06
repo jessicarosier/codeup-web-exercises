@@ -1,28 +1,25 @@
+//declares variable to target all h1, p, and li elements
+let header = $("h1");
+let paragraphs = $("p");
+let listItems = $("li");
+
 $(function () {
-  alert("Document has loaded!");
-  console.log($("p"));
+  // alerts the content of the element with an id of #main-header
+  alert($("#main-header").html());
 });
 
-//console.log the innerHTML of a p tag
-console.log($("p").html());
+//overrides the css properties of all elements with a class of .codeup and applies a specified border
+$(".codeup").css("border", "1px solid red");
 
-//logs the innerHTML of the element with the #ice-cream-list id
-console.log($("#ice-cream-list").html());
+$("#red-item").css("color", "red");
+$("#orange-item").css("color", "orange");
+$("#yellow-item").css("color", "yellow");
 
-//logs the css value of a specific css attribute
-console.log($("p").css("border"));
+//overrides the css properties of all list items and sets the font size to the specified value
+listItems.css("font-size", "20px");
 
-//these jQuery "gets" can be stored in a variable
-let test = $("p").css("border");
-console.log(test);
-
-//you can also use these to set information by passing an argument into the parenthesis
-let myNewParagraph =
-  "One day I was in class at Codeup in San Antonio and this crazy thing happened....I learned about jQuery!";
-$("p").html(myNewParagraph);
-
-//Method chaining example
-$("p")
-  .css("color", "cornflowerblue")
-  .css("border", "1px black dashed")
-  .css("background", "purple");
+//overrides the css properties of all elements captured in each variable and sets the background-color to the specified value
+header.css("background-color", "yellow");
+header.css("text-transform", "uppercase");
+paragraphs.css("background-color", "dogerblue");
+listItems.css("background-color", "limegreen");

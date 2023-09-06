@@ -15,36 +15,31 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
-    <style>
-      p {
-        color: crimson;
-      }
-    </style>
   </head>
   <body>
-    <h1>jQuery</h1>
-
-    <h2>Hello World</h2>
-    <p class="p-3">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      <span class="span"
-        >Accusamus assumenda molestias numquam repellendus tempore ullam.</span
-      >
-      Accusantium atque debitis dignissimos eligendi est expedita, laboriosam
-      nobis possimus, quaerat ratione reprehenderit,
-      <span class="span">sint voluptate.</span>
-    </p>
-
-    <h3>Student's Fav Ice Creams</h3>
-    <ul id="ice-cream-list">
-      <li class="list-item">"Banana Royal"</li>
-      <li class="list-item">"Banana Caramel Crunch"</li>
-      <li class="list-item">
-        "Almond Joy Type of Thing *IDK*. . chocolate kind of thing. . ya know"
-      </li>
-    </ul>
-
+    <div
+      class="d-flex justify-content-center align-items-center"
+      id="header-wrapper"
+    >
+      <h1 id="main-header">jQuery is fun</h1>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <p class="border border-dark rounded"></p>
+    </div>
+    <div
+      class="d-flex justify-content-center align-items-center codeup"
+      id="list-wrapper"
+    >
+      <ul class="list" id="rainbow-list">
+        <li class="not-codeup" id="red-item">Codeup</li>
+        <li class="codeup" id="orange-item">Codeup</li>
+        <li class="codeup" id="yellow-item">Codeup</li>
+      </ul>
+    </div>
+    <div
+      class="d-flex justify-content-center align-items-center image-wrapper"
+      id="main-image-wrapper"
+    ></div>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
