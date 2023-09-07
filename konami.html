@@ -11,17 +11,41 @@
   </head>
   <body>
     <style>
-      #konami-span {
-        color: red;
-        font-size: 100px;
+      body {
+        margin-top: 100px;
+        font-family: sans-serif;
+        color: white;
+        background-color: black;
+        font-size: 20px;
+      }
+
+      button {
+        border: none;
+        background-color: red;
+        color: white;
+        border-radius: 999px;
+        padding: 5px 15px;
+        font-family: inherit;
+        font-size: inherit;
       }
     </style>
-    <h1 class="text-center fs-1 fw-bolder">Can you crack the Konami Code?</h1>
-    <div class="d-flex justify-content-center vh-100" id="page-wrapper">
+    <h1 class="text-center fs-1 fw-bolder">
+      Can you crack the <span id="konami-header">Konami Code?</span>
+    </h1>
+    <div
+      class="d-flex flex-column justify-content-center align-items-center gap-5"
+      id="page-wrapper"
+    >
       <div
-        class="d-flex flex-column justify-content-center align-items-center fs-3 fw-bold"
+        class="d-flex flex-column justify-content-center align-items-center fs-3 fw-bold py-5 border border-1 w-50"
         id="text-appear"
-      ></div>
+      >
+        Begin typing...
+      </div>
+      <div>
+        <button id="get-hint">Get hint</button>
+        <button id="reset">Reset</button>
+      </div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
