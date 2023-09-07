@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>keyboard events</title>
+  </head>
+  <body>
+    <h1>currently you've typed:</h1>
+    <div id="currentTypingCode"></div>
+    <br />
+    <div id="currentTypingStr"></div>
+
+    <button id="refresh">Reset Page (click here)</button>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(function () {
+        let secretPwKeyCode = "7210112170101110114105114";
+        let inputStrKeyCode = "";
+
+        let secretPwCharacters = "makeitred";
+        let inputStrCharacters = "";
+
+        $("body").on("keypress", (e) => {
+          console.log("event object property 'originalEvent':");
+          console.log(e.originalEvent);
+          console.log("keycode: " + e.originalEvent.keyCode);
+          console.log("key: " + e.originalEvent.key);
+
+          inputStrKeyCode += e.originalEvent.keyCode;
+
+          inputStrCharacters += e.originalEvent.key;
+
+          if (inputStrKeyCode === secretPwKeyCode) {
+            alert("AWOOOOO FENRIR YOU GOT THE KEYS TO ME CODE");
+            inputStrKeyCode = "";
+            inputStrCharacters = "";
+          }
+
+          if (inputStrCharacters === secretPwCharacters) {
+            $("body").css("background-color", "red");
+            inputStrKeyCode = "";
+            inputStrCharacters = "";
+          }
+
+          $("#currentTypingStr").text(inputStrCharacters);
+          $("#currentTypingCode").text(inputStrKeyCode);
+        });
+
+        $("#refresh").on("click", () => {
+          location.reload();
+        });
+      });
+    </script>
+  </body>
+</html>
