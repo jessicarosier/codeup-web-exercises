@@ -34,14 +34,20 @@ let passcodes = [
   {
     key: "pokemon",
     passcode: "80797569777978",
-    img: "img/konami/pikachu.jpg",
-    audio: "audio/pikachu.mp3",
+    img: "img/konami/pokemon.jpeg",
+    audio: "audio/pokemon.mp3",
   },
   {
     key: "spongebob",
     passcode: "838079787169667966",
-    img: "img/konami/spongebob.jpg",
-    audio: "audio/pikachu.mp3",
+    img: "img/konami/spongebob.png",
+    audio: "audio/spongebob.mp3",
+  },
+  {
+    key: "mario",
+    passcode: "7765827379",
+    img: "img/konami/mario.jpg",
+    audio: "audio/mario.mp3",
   },
 ];
 
@@ -55,14 +61,13 @@ function displayPasscode(passcode) {
 
 $("body").on(`keyup`, (event) => {
   event.preventDefault();
-  $("#konami-header").css("color", "red");
+  textDisplay.css("color", "blue");
   let code = event.keyCode;
   secretCode += code;
   textDisplay.html(secretCode);
   console.log(secretCode);
 
   for (let i = 0; i < passcodes.length; i++) {
-    // textDisplay.html(secretCode);
     if (passcodes[i].passcode === secretCode) {
       console.log(passcodes[i].passcode);
       html = "";
@@ -79,7 +84,16 @@ refreshButton.on(`click`, (event) => {
   location.reload();
 });
 
+$("#konami-header")
+  .on("mouseenter", function () {
+    $(this).css("color", "red");
+  })
+  .on("mouseleave", function () {
+    $(this).css("color", "white");
+  });
+
 hintButton.on(`click`, (event) => {
+  secretCode = "";
   let hints = [
     "Who lives in a pineapple under the sea?",
     "Gotta catch em all!",
@@ -87,7 +101,38 @@ hintButton.on(`click`, (event) => {
     "woof!",
     "chirp chirp",
     "NES 1986",
+    "ITSA MEEEE",
   ];
   let hintHtml = `<p>${hints[Math.floor(Math.random() * hints.length)]}</p>`;
   textDisplay.html(hintHtml);
 });
+
+hintButton
+  .on(`mouseenter`, function () {
+    $(this).css("font-size", "50px").css("background-color", "blue");
+  })
+  .on(`mouseleave`, function () {
+    $(this).css("font-size", "inherit").css("background-color", "red");
+  });
+
+//you can store css properties inside an object variable and pass the variable into the .css() method.
+//Example below:
+let h1StyleObj = {
+  color: "grey",
+};
+
+$("h1").css(h1StyleObj);
+
+//toggle
+//will turn something on and off
+//example: use on a button
+
+// $("li").each(function (index) {
+//   if (index % 2 === 0) {
+//     $(this).html(` haha - hacked you`);
+//   }
+// });
+//
+// $("li").first().css("font-size", "60px");
+//
+// $("li").last().css("background-color", "blue");
