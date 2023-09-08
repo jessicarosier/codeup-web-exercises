@@ -32,8 +32,8 @@
             giant sequoias are among the largest trees by volume in the world
             and are a remarkable natural wonder within the park.
           </p>
-          <button id="button1-hide" style="display: block">Hide fact</button>
-          <button id="button1-show" style="display: none">Show fact</button>
+          <!--          <button id="button1-hide" style="display: block">Hide fact</button>-->
+          <!--          <button id="button1-show" style="display: none">Show fact</button>-->
         </li>
         <li
           id="list-item-2"
@@ -49,8 +49,8 @@
             Mexico, and it's a unique aspect of the park's landscape and
             cultural history.
           </p>
-          <button id="button2-hide" class="visible">Hide fact</button>
-          <button id="button2-show" class="invisible">Show fact</button>
+          <!--          <button id="button2-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button2-show" class="invisible">Show fact</button>-->
         </li>
         <li
           id="list-item-3"
@@ -65,8 +65,8 @@
             serves as the residence for the park's superintendent and is an
             iconic part of the park's history and architecture.
           </p>
-          <button id="button3-hide" class="visible">Hide fact</button>
-          <button id="button3-show" class="invisible">Show fact</button>
+          <!--          <button id="button3-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button3-show" class="invisible">Show fact</button>-->
         </li>
         <li
           id="list-item-4"
@@ -82,8 +82,8 @@
             popularity. The unique geology and beauty of "The Subway" make it a
             must-see for many visitors to the park.
           </p>
-          <button id="button4-hide" class="visible">Hide fact</button>
-          <button id="button4-show" class="invisible">Show fact</button>
+          <!--          <button id="button4-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button4-show" class="invisible">Show fact</button>-->
         </li>
         <li
           id="list-item-5"
@@ -100,8 +100,8 @@
             elevation within the park. Trail Ridge Road is a popular attraction
             for visitors seeking stunning mountain vistas.
           </p>
-          <button id="button5-hide" class="visible">Hide fact</button>
-          <button id="button5-show" class="invisible">Show fact</button>
+          <!--          <button id="button5-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button5-show" class="invisible">Show fact</button>-->
         </li>
         <li
           id="list-item-6"
@@ -117,8 +117,8 @@
             profound glacial influence on the landscape. This glacial history
             has left a lasting mark on the park's stunning natural beauty.
           </p>
-          <button id="button6-hide" class="visible">Hide fact</button>
-          <button id="button6-show" class="invisible">Show fact</button>
+          <!--          <button id="button6-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button6-show" class="invisible">Show fact</button>-->
         </li>
         <li
           id="list-item-7"
@@ -134,8 +134,8 @@
             The Grand Canyon's geology and its complex history make it a
             fascinating subject of study for scientists from around the world.
           </p>
-          <button id="button7-hide" class="visible">Hide fact</button>
-          <button id="button7-show" class="invisible">Show fact</button>
+          <!--          <button id="button7-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button7-show" class="invisible">Show fact</button>-->
         </li>
         <li
           id="list-item-8"
@@ -152,8 +152,8 @@
             and people through the area and contributed to the growth of nearby
             communities.
           </p>
-          <button id="button8-hide" class="visible">Hide fact</button>
-          <button id="button8-show" class="invisible">Show fact</button>
+          <!--          <button id="button8-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button8-show" class="invisible">Show fact</button>-->
         </li>
         <li
           id="list-item-9"
@@ -169,8 +169,8 @@
             Jordan Pond and the surrounding mountains. It's a delightful and
             tasty tradition for visitors to the park.
           </p>
-          <button id="button9-hide" class="visible">Hide fact</button>
-          <button id="button9-show" class="invisible">Show fact</button>
+          <!--          <button id="button9-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button9-show" class="invisible">Show fact</button>-->
         </li>
         <li
           id="list-item-10"
@@ -186,8 +186,8 @@
             the high levels of precipitation, making it a fascinating and
             ecologically significant part of the park.
           </p>
-          <button id="button10-hide" class="visible">Hide fact</button>
-          <button id="button10-show" class="invisible">Show fact</button>
+          <!--          <button id="button10-hide" class="visible">Hide fact</button>-->
+          <!--          <button id="button10-show" class="invisible">Show fact</button>-->
         </li>
       </ul>
     </div>
@@ -205,19 +205,17 @@
     <script>
       $("#hide-all").on("click", function () {
         $("p").toggleClass("invisible");
+        toggleButtonText();
       });
 
-      $("#button1-hide").on("click", function () {
-        $("#p1").toggleClass("invisible");
-        $("#button1-show").css("display", "block");
-        $(this).css("display", "none");
-      });
-
-      $("#button1-show").on("click", function () {
-        $("#p1").toggleClass("visible");
-        $(this).toggleClass("display", "none");
-        $("#button1-hide").css("display", "block");
-      });
+      function toggleButtonText() {
+        if ($("p").hasClass("invisible")) {
+          $("#hide-all").text("Show all");
+        } else {
+          $("#hide-all").text("Hide all");
+        }
+      }
+      toggleButtonText();
     </script>
   </body>
 </html>
