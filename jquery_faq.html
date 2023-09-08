@@ -192,6 +192,38 @@
       </ul>
     </div>
 
+    <div>
+      <h3>first header</h3>
+      <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+      </ul>
+
+      <h3>second header</h3>
+      <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+      </ul>
+
+      <h3>third header</h3>
+      <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+      </ul>
+
+      <button id="make-yellow">yellow</button>
+    </div>
+
+    <div id="frame1"></div>
+    <div id="frame2"></div>
+    <div id="frame3"></div>
+
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -216,6 +248,24 @@
         }
       }
       toggleButtonText();
+
+      $("h1").on("click", (e) => {
+        $(e.target).css("background-color", "yellow");
+      });
+
+      $("#make-yellow").on("click", function () {
+        $("ul").each((index, element) => {
+          $(element).children().last().css("background-color", "yellow");
+        });
+      });
+
+      $("h3").on("click", function () {
+        $(this).next().css("font-weight", "bold");
+      });
+
+      $("li").on("click", function () {
+        $(this).parent().children().first().css("color", "blue");
+      });
     </script>
   </body>
 </html>
