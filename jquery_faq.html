@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery faq</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div
+      class="container-fluid d-flex flex-column justify-content-center align-items-center"
+    >
+      <ul
+        class="list-unstyled d-flex flex-column justify-content-center align-items-center text-center"
+      >
+        <button id="hide-all">Hide all</button>
+        <li
+          id="list-item-1"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Yosemite National Park</h1>
+          <p class="visible" id="p1">
+            While Yosemite is famous for its stunning granite cliffs and
+            waterfalls, it's also home to a grove of ancient giant sequoia trees
+            known as the Mariposa Grove. One of the trees in this grove, named
+            the "Grizzly Giant," is estimated to be between 1,900 and 2,400
+            years old, making it one of the oldest living trees on Earth. These
+            giant sequoias are among the largest trees by volume in the world
+            and are a remarkable natural wonder within the park.
+          </p>
+          <button id="button1-hide" style="display: block">Hide fact</button>
+          <button id="button1-show" style="display: none">Show fact</button>
+        </li>
+        <li
+          id="list-item-2"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Big Bend National Park</h1>
+          <p class="visible">
+            Big Bend National Park has a distinctive geographic feature—it forms
+            a natural border between the United States and Mexico, following the
+            meandering course of the Rio Grande River. This makes it one of the
+            few national parks in the world that shares an international
+            boundary. Visitors to the park can often see across the river to
+            Mexico, and it's a unique aspect of the park's landscape and
+            cultural history.
+          </p>
+          <button id="button2-hide" class="visible">Hide fact</button>
+          <button id="button2-show" class="invisible">Show fact</button>
+        </li>
+        <li
+          id="list-item-3"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Yellowstone National Park</h1>
+          <p class="visible">
+            Yellowstone National Park is home to the oldest, and one of the most
+            picturesque, superintendent's houses of any national park. This
+            historic building, known as the "Superintendent's Residence," is
+            located at Mammoth Hot Springs and was constructed in 1884. It
+            serves as the residence for the park's superintendent and is an
+            iconic part of the park's history and architecture.
+          </p>
+          <button id="button3-hide" class="visible">Hide fact</button>
+          <button id="button3-show" class="invisible">Show fact</button>
+        </li>
+        <li
+          id="list-item-4"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Zion National Park</h1>
+          <p class="visible">
+            One of the most famous and unique hikes in Zion National Park is
+            "The Subway." This hike takes you through a stunning slot canyon
+            with narrow passages and turquoise pools. What's interesting is that
+            you need a permit to hike "The Subway," and the permit is so sought
+            after that it's distributed through a lottery system due to its
+            popularity. The unique geology and beauty of "The Subway" make it a
+            must-see for many visitors to the park.
+          </p>
+          <button id="button4-hide" class="visible">Hide fact</button>
+          <button id="button4-show" class="invisible">Show fact</button>
+        </li>
+        <li
+          id="list-item-5"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Rocky Mountain National Park</h1>
+          <p class="visible">
+            Rocky Mountain National Park boasts Trail Ridge Road, which is the
+            highest continuously paved road in the United States. The road
+            reaches an elevation of 12,183 feet (3,713 meters) above sea level.
+            Traveling along this scenic route provides breathtaking panoramic
+            views of the Rocky Mountains, including alpine tundra landscapes,
+            wildlife, and an opportunity to experience the dramatic changes in
+            elevation within the park. Trail Ridge Road is a popular attraction
+            for visitors seeking stunning mountain vistas.
+          </p>
+          <button id="button5-hide" class="visible">Hide fact</button>
+          <button id="button5-show" class="invisible">Show fact</button>
+        </li>
+        <li
+          id="list-item-6"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Grand Teton National Park</h1>
+          <p class="visible">
+            Grand Teton National Park is known for its rugged mountain scenery,
+            and many of the park's iconic features were shaped by glaciers
+            during the last ice age. The Grand Tetons themselves are jagged
+            peaks carved by glacial activity. The U-shaped valleys and pristine
+            alpine lakes found throughout the park are also evidence of the
+            profound glacial influence on the landscape. This glacial history
+            has left a lasting mark on the park's stunning natural beauty.
+          </p>
+          <button id="button6-hide" class="visible">Hide fact</button>
+          <button id="button6-show" class="invisible">Show fact</button>
+        </li>
+        <li
+          id="list-item-7"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Grand Canyon National Park</h1>
+          <p class="visible">
+            The age of the Grand Canyon is a subject of ongoing scientific
+            debate, but the most widely accepted estimate suggests that the
+            Colorado River began carving the canyon about 6 million years ago.
+            However, the exact timeline and processes involved in its formation
+            continue to be a topic of research and discussion among geologists.
+            The Grand Canyon's geology and its complex history make it a
+            fascinating subject of study for scientists from around the world.
+          </p>
+          <button id="button7-hide" class="visible">Hide fact</button>
+          <button id="button7-show" class="invisible">Show fact</button>
+        </li>
+        <li
+          id="list-item-8"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Cuyahoga Valley National Park</h1>
+          <p class="visible">
+            Cuyahoga Valley National Park preserves a portion of the historic
+            Ohio & Erie Canal, which played a crucial role in the economic
+            development of Ohio and the Midwest in the 19th century. Visitors to
+            the park can explore remnants of the canal, including locks and a
+            canal towpath, providing a glimpse into the region's transportation
+            history. This canal system once facilitated the movement of goods
+            and people through the area and contributed to the growth of nearby
+            communities.
+          </p>
+          <button id="button8-hide" class="visible">Hide fact</button>
+          <button id="button8-show" class="invisible">Show fact</button>
+        </li>
+        <li
+          id="list-item-9"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Acadia National Park</h1>
+          <p class="visible">
+            Acadia National Park features a popular hiking trail known as the
+            Jordan Pond Path. What makes it unique is the tradition of serving
+            popovers at the Jordan Pond House, which is located along the trail.
+            Hikers often stop at the Jordan Pond House to enjoy these light,
+            fluffy pastries with jam and tea while taking in scenic views of
+            Jordan Pond and the surrounding mountains. It's a delightful and
+            tasty tradition for visitors to the park.
+          </p>
+          <button id="button9-hide" class="visible">Hide fact</button>
+          <button id="button9-show" class="invisible">Show fact</button>
+        </li>
+        <li
+          id="list-item-10"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1>Olympic National Park</h1>
+          <p class="visible">
+            Olympic National Park is one of the few places in the United States
+            where you can find a temperate rainforest. The Hoh Rainforest,
+            located within the park, receives an average of 140 to 170 inches
+            (3.5 to 4.3 meters) of rainfall annually. This lush, green
+            environment is home to unique plant and animal species adapted to
+            the high levels of precipitation, making it a fascinating and
+            ecologically significant part of the park.
+          </p>
+          <button id="button10-hide" class="visible">Hide fact</button>
+          <button id="button10-show" class="invisible">Show fact</button>
+        </li>
+      </ul>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $("#hide-all").on("click", function () {
+        $("p").toggleClass("invisible");
+      });
+
+      $("#button1-hide").on("click", function () {
+        $("#p1").toggleClass("invisible");
+        $("#button1-show").css("display", "block");
+        $(this).css("display", "none");
+      });
+
+      $("#button1-show").on("click", function () {
+        $("#p1").toggleClass("visible");
+        $(this).toggleClass("display", "none");
+        $("#button1-hide").css("display", "block");
+      });
+    </script>
+  </body>
+</html>
