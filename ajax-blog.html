@@ -65,11 +65,11 @@
 
           //loops through the array of objects
           for (let i = 0; i < data.length; i++) {
-            insertPosts += `<div class="d-flex flex-column align-items-center border border-black rounded m-2 p-3 bg-dark bg-opacity-25 w-75 blog-post">`;
-            insertPosts += `<h3 class="text-success fs-1">${data[i].title}</h3>`;
+            insertPosts += `<div class="d-flex flex-column align-items-center rounded m-2 p-4 bg-dark bg-opacity-75 text-white w-75">`;
+            insertPosts += `<h3 class="text-primary fs-1">${data[i].title}</h3>`;
             insertPosts += `<p>${data[i].date}</p>`;
             insertPosts += `<p>${data[i].content}</p>`;
-            insertPosts += `<p>Category: ${data[i].categories}</p>`;
+            insertPosts += `<p class="text-capitalize">Category: ${data[i].categories}</p>`;
             insertPosts += `</div>`;
           }
 
