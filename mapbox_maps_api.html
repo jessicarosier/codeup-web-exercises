@@ -18,12 +18,30 @@
     <style>
       #map {
         min-width: 100%;
-        min-height: 100vh;
+        min-height: 50vh;
+      }
+
+      #zoom,
+      label {
+        font-size: 20px;
+        font-family: sans-serif;
       }
     </style>
     <div id="map"></div>
+    <form>
+      <label for="zoom">Select zoom rate:</label>
+      <select name="zoom" id="zoom">
+        <option value="5">5</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+    </form>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
     <script src="js/keys.js"></script>
     <script src="js/mapbox_api.js"></script>
-    <script src="js/mapbox-geocoder-utils.js"></script>
   </body>
 </html>
