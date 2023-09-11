@@ -1,7 +1,69 @@
-<!--Ajax Blog-->
-<!--Create a new html file called ajax-blog.html.-->
-<!--At minimum, your Ajax blog will need an empty <div> with an id of posts.-->
-<!--  Add your own Bootstrap theme to this file as well. Feel free to use the same one as your store or choose a different one.-->
-<!--  Download blog.json to your data directory from before.-->
-<!--  Use Ajax to load the contents of blog.json and add the data from it to your #posts div.-->
-<!--  Add additional entries to blog.json and make sure your changes are reflected on the page.-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AJAX Blog</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <style>
+      .page-wrapper {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+    </style>
+    <main class="page-wrapper justify-content-center align-items-center">
+      <div
+        id="posts"
+        class="d-flex flex-column justify-content-center align-items-center"
+      ></div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      (function () {
+        //target elements
+        let blogPosts = $("#posts");
+        let insertPosts = "";
+
+        //ajax request, grabs post objects
+        $.ajax("data/blog.json").done(function (data) {
+          console.log(data);
+
+          for (let i = 0; i < data.length; i++) {
+            insertPosts += `<div class="d-flex flex-column align-items-center">`;
+            insertPosts += `<p>${data[i].date}</p>`;
+            insertPosts += `<h3>${data[i].title}</h3>`;
+            insertPosts += `<p>${data[i].content}</p>`;
+            insertPosts += `<p>${data[i].categories}</p>`;
+            insertPosts += `</div>`;
+          }
+
+          blogPosts.html(insertPosts);
+        });
+      })();
+    </script>
+  </body>
+</html>
