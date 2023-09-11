@@ -2,21 +2,33 @@
 <html>
   <head>
     <title>Online Store</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <h1>My Tool Store</h1>
 
-    <table id="products">
+    <table id="products" class="border border-black bg-light mb-4">
       <thead>
-        <tr>
-          <th>Title</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Categories</th>
+        <tr class="border border-black text-center">
+          <th class="me-5 w-25 border border-black">Title</th>
+          <th class="me-5 w-25 border border-black">Quantity</th>
+          <th class="me-5 w-25 border border-black">Price</th>
+          <th class="me-5 w-25">Categories</th>
         </tr>
       </thead>
-      <tbody id="insertProducts"></tbody>
+      <tbody id="insertProducts" class="text-center"></tbody>
     </table>
+    <button
+      id="refresh"
+      class="py-2 px-3 border border-black rounded bg-primary"
+    >
+      Refresh Inventory
+    </button>
 
     <script
       src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -24,24 +36,39 @@
       crossorigin="anonymous"
     ></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+
     <script>
       (function () {
         "use strict";
         // TODO: Create an AJAX GET request for the file under data/inventory.json
+        $.ajax("data/inventory.json").done(function (data) {
+          console.log(data);
+          console.log(data[0].categories);
+          //HINT: You will want to target #insertProducts for your new HTML elements
+          let productDisplayEl = $("#insertProducts");
 
-        // TODO: Take the data from inventory.json and append it to the products table
-        //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-        //             its contents and fields
-        //       HINT: You will want to target #insertProducts for your new HTML elements
+          // TODO: Take the data from inventory.json and append it to the products table
+          let insertProducts = "";
+          for (let i = 0; i < data.length; i++) {
+            insertProducts += `<tr>`;
+            insertProducts += `<td class="me-5 border-end border-black">${data[i].title}</td>`;
+            insertProducts += `<td class="me-5 border-end border-black">${data[i].quantity}</td>`;
+            insertProducts += `<td class="me-5 border-end border-black">${data[i].price}</td>`;
+            insertProducts += `<td class="me-5 border-end border-black">${data[i].categories}</td>`;
+            insertProducts += `</tr>`;
+          }
+          productDisplayEl.html(insertProducts);
+        });
+
+        $("#refresh").on("click", function () {
+          location.reload();
+        });
       })();
     </script>
   </body>
 </html>
-
-<!--Ajax Store-->
-<!--Download and save ajax-store.html.-->
-<!--Create a data directory and download inventory.json to that folder.-->
-<!--Your online tool store should load data from the JSON file using a get request and append the data to the table. You will need to use either $.ajax() or $.get(), and a .done() callback.-->
-<!--Add some new entries to inventory.json and see how the data on the page gets updated.-->
-<!--Add a "Refresh" button that will load inventory.json for you without having to refresh the entire page.-->
-<!--Add Twitter Bootstrap to your online store with some custom CSS to make the style your own.-->

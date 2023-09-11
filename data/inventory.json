@@ -30,5 +30,30 @@
             "tool"
         ],
         "price": 10
+    },
+    {
+        "title": "Table Saw",
+        "quantity": 2,
+        "categories": [
+            "tool",
+            "powered"
+        ],
+        "price": 300
+    },
+    {
+        "title": "Wrench",
+        "quantity": 15,
+        "categories": [
+            "tool"
+        ],
+        "price": 5
+    },
+    {
+        "title": "Socket Set",
+        "quantity": 6,
+        "categories": [
+            "tool"
+        ],
+        "price": 80
     }
 ]
