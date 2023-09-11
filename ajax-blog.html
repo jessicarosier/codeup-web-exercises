@@ -24,6 +24,7 @@
       }
     </style>
     <main class="page-wrapper justify-content-center align-items-center">
+      <h1 class="p-5 display-1 fw-bolder">Blog Posts</h1>
       <div
         id="posts"
         class="d-flex flex-column justify-content-center align-items-center w-50"
@@ -53,7 +54,7 @@
           console.log(data);
 
           for (let i = 0; i < data.length; i++) {
-            insertPosts += `<div class="d-flex flex-column align-items-center">`;
+            insertPosts += `<div class="d-flex flex-column align-items-center border border-black rounded m-2 p-3 bg-primary bg-opacity-50">`;
             insertPosts += `<h3>${data[i].title}</h3>`;
             insertPosts += `<p>${data[i].date}</p>`;
             insertPosts += `<p>${data[i].content}</p>`;
