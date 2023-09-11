@@ -16,5 +16,16 @@
             "sugar"
         ],
         "date": "February 14, 2015"
+    },
+    {
+        "title": "Custom Post",
+        "content": "This weekend I flew to California to go to a Gwen Stefani concert! I had a great time! I just wish I could have stayed in California a little longer.",
+        "categories": [
+            "family",
+            "music",
+            "travel",
+            "fun"
+        ],
+        "date": "September 11, 2023"
     }
 ]
