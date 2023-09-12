@@ -1,5 +1,3 @@
-const zoomSelectEl = $("#zoom");
-
 mapboxgl.accessToken = MAPBOX_API_TOKEN;
 const map = new mapboxgl.Map({
   container: "map", // container ID
@@ -20,18 +18,18 @@ const map = new mapboxgl.Map({
 // alamoMarker.setPopup(alamoPopup);
 
 //TODO: Generate a map that shows the city with your favorite restaurant using geocoding
-geocode("The Whole Enchilada, Placentia, CA", MAPBOX_API_TOKEN).then(
-  function (results) {
-    // do something with results
-    let anaheimMarker = new mapboxgl.Marker().setLngLat(results).addTo(map);
-    let anaheimPopup = new mapboxgl.Popup().setHTML(
-      "<p>The Whole Enchilada, Placentia, CA</p>",
-    );
-    anaheimMarker.setPopup(anaheimPopup);
-    map.setZoom(15);
-    map.setCenter(results);
-  },
-);
+// geocode("The Whole Enchilada, Placentia, CA", MAPBOX_API_TOKEN).then(
+//   function (results) {
+//     // do something with results
+//     let anaheimMarker = new mapboxgl.Marker().setLngLat(results).addTo(map);
+//     let anaheimPopup = new mapboxgl.Popup().setHTML(
+//       "<p>The Whole Enchilada, Placentia, CA</p>",
+//     );
+//     anaheimMarker.setPopup(anaheimPopup);
+//     map.setZoom(15);
+//     map.setCenter(results);
+//   },
+// );
 
 // geocode("San Antonio", API_TOKEN_HERE).then(function(results) {
 //   // do something with results
@@ -63,8 +61,8 @@ function geocode(search, token) {
 // })
 
 function reverseGeocode(coordinates, token) {
-  var baseUrl = "https://api.mapbox.com";
-  var endPoint = "/geocoding/v5/mapbox.places/";
+  let baseUrl = "https://api.mapbox.com";
+  let endPoint = "/geocoding/v5/mapbox.places/";
   return (
     fetch(
       baseUrl +
@@ -89,8 +87,8 @@ function reverseGeocode(coordinates, token) {
 
 function placeMarkerAndPopup(info, token, map) {
   geocode(info.address, token).then(function (coordinates) {
-    var popup = new mapboxgl.Popup().setHTML(info.popupHTML);
-    var marker = new mapboxgl.Marker()
+    let popup = new mapboxgl.Popup().setHTML(info.popupHTML);
+    let marker = new mapboxgl.Marker()
       .setLngLat(coordinates)
       .addTo(map)
       .setPopup(popup);
@@ -100,7 +98,7 @@ function placeMarkerAndPopup(info, token, map) {
 
 //TODO: Display at least 3 restaurants on the map.Create and array of objects with information about each, use a forEach loop
 
-let favoriteCoffee = [
+const favoriteCoffee = [
   {
     address: "109 W Santa Fe Ave, Placentia, CA 92870",
     popupHTML:
@@ -118,21 +116,54 @@ let favoriteCoffee = [
 
 //creates a marker and popup for each object in the favoriteCoffee array
 favoriteCoffee.forEach((element) => {
-  console.log(element.address);
   placeMarkerAndPopup(element, MAPBOX_API_TOKEN, map);
 });
 
+//TODO: Add a select input that allows the user to change the zoom level to 5, 15, or 20.
+//targets the "select zoom rate" select element
+const zoomSelectEl = $("#zoom");
+//Event handler for map zoom selection dropdown
 zoomSelectEl.on("change", function () {
   if ($(this).val() === "5") {
-    console.log("5 is selected");
     map.setZoom(5);
   }
   if ($(this).val() === "15") {
-    console.log("15 is selected");
     map.setZoom(15);
   }
   if ($(this).val() === "20") {
-    console.log("20 is selected");
     map.setZoom(20);
   }
+});
+
+//TODO: Add a text box for the user to enter an address that will use geocoding to center the map and place a marker on that location.
+//targets the address search input element
+const searchButton = document.getElementById("address-search-button");
+let searchForm = document.getElementById("address-search-form");
+//search address form event listener
+searchForm.addEventListener(`submit`, function (event) {
+  event.preventDefault();
+  let formData = new FormData(searchForm, searchButton);
+  console.log(formData);
+  937;
+  let formObj = Object.fromEntries(formData);
+  console.log(formObj);
+  let searchStr = formObj.address;
+  console.log(searchStr);
+
+  geocode(searchStr, MAPBOX_API_TOKEN).then(function (results) {
+    // do something with results
+    let newMarker = "";
+    newMarker = new mapboxgl.Marker().setLngLat(results).addTo(map);
+    map.setZoom(15);
+    map.setCenter(results);
+  });
+});
+
+//TODO: Add a button that will hide all markers.
+const hideMarkerButton = $("hide-markers");
+let mapMarkers = map._markers;
+
+hideMarkerButton.on("click", function () {
+  let hiddenMarkers = [];
+  hiddenMarkers.push(mapMarkers);
 });

@@ -18,7 +18,7 @@
     <style>
       #map {
         min-width: 100%;
-        min-height: 50vh;
+        min-height: 70vh;
       }
 
       #zoom,
@@ -28,14 +28,26 @@
       }
     </style>
     <div id="map"></div>
-    <form>
-      <label for="zoom">Select zoom rate:</label>
-      <select name="zoom" id="zoom">
-        <option value="5">5</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-      </select>
+
+    <label for="zoom">Select zoom rate:</label>
+    <select name="zoom" id="zoom">
+      <option value="5">5</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+    </select>
+
+    <form id="address-search-form">
+      <label for="address">Address:</label>
+      <input
+        id="address"
+        type="text"
+        name="address"
+        placeholder="Enter an address"
+      />
+      <button id="address-search-button">Search</button>
     </form>
+
+    <button id="hide-markers">Hide Marker</button>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
