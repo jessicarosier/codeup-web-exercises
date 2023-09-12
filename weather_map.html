@@ -7,15 +7,71 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--    Bootstrap CSS CDN   -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <!--    MapBox API stylesheet     -->
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <!--    Custom CSS    -->
+    <link rel="stylesheet" href="css/weather_map_style.css" />
     <title>Weather Map Project</title>
   </head>
   <body>
+    <div class="page-wrapper">
+      <div class="container-fluid">
+        <!--        Navbar      -->
+        <nav class="navbar navbar-light bg-light justify-content-between">
+          <a class="navbar-brand">Weather</a>
+          <form class="form-inline d-flex gap-2">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              id="weather-search-input"
+            />
+            <button
+              class="btn btn-outline-dark my-2 my-sm-0"
+              type="submit"
+              id="weather-search-button"
+            >
+              Search
+            </button>
+          </form>
+        </nav>
+
+        <div class="d-flex justify-content-center mt-5">
+          <div
+            id="insert-weather"
+            class="d-flex w-100 gap-2 justify-content-evenly"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <!--    jQuery CDN    -->
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
+    <!--    Bootstrap JS CDN    -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <!--    MapBox API JS-->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <!--    API Keys    -->
     <script src="js/keys.js"></script>
+    <!--    Custom JS   -->
     <script src="js/weather_map.js"></script>
   </body>
 </html>
