@@ -8,6 +8,12 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mapbox</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
@@ -16,6 +22,11 @@
   </head>
   <body>
     <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
       #map {
         min-width: 100%;
         min-height: 70vh;
@@ -26,17 +37,26 @@
         font-size: 20px;
         font-family: sans-serif;
       }
+
+      .marker {
+        background-image: url("img/coffee.jpg");
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
     </style>
     <div id="map"></div>
 
-    <label for="zoom">Select zoom rate:</label>
+    <label for="zoom" class="m-2">Select zoom rate:</label>
     <select name="zoom" id="zoom">
       <option value="5">5</option>
       <option value="15">15</option>
       <option value="20">20</option>
     </select>
 
-    <form id="address-search-form">
+    <form id="address-search-form" class="m-2">
       <label for="address">Address:</label>
       <input
         id="address"
@@ -44,10 +64,15 @@
         name="address"
         placeholder="Enter an address"
       />
-      <button id="address-search-button">Search</button>
+      <button id="address-search-button" class="rounded">Search</button>
     </form>
 
-    <button id="hide-markers">Hide Marker</button>
+    <button id="hide-markers" class="m-2 rounded">Hide/Show Markers</button>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
