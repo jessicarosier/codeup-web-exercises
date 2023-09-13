@@ -30,19 +30,21 @@
         <nav class="navbar navbar-light bg-light justify-content-between">
           <a class="navbar-brand">Weather</a>
           <form class="form-inline d-flex gap-2" id="search-form">
+            <label for="address"></label>
             <input
               class="form-control mr-sm-2"
               type="search"
-              placeholder="Search"
+              placeholder="City"
               aria-label="Search"
               id="address"
+              name="address"
             />
             <button
               class="btn btn-outline-dark my-2 my-sm-0"
               type="submit"
               id="weather-search-button"
             >
-              Search
+              <box-icon name="search"></box-icon>
             </button>
           </form>
         </nav>
@@ -80,6 +82,8 @@
     ></script>
     <!--    MapBox API JS-->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <!--    Box Icons JS      -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <!--    API Keys    -->
     <script src="js/keys.js"></script>
     <!--    Custom JS   -->

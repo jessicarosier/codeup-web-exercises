@@ -5,8 +5,8 @@
 }
 
 #map {
-  max-width: 80vw;
-  min-height: 500px;
+  max-width: 60vw;
+  min-height: 400px;
 }
 
 .weather-icon-img {
@@ -22,5 +22,5 @@
 #todays-weather-hero {
   margin-left: 600px;
   margin-right: 600px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
