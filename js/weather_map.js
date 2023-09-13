@@ -102,7 +102,7 @@ function getFiveDayForecast(url) {
       } else if (data.list[i].weather[0].description.includes("clear")) {
         weatherImg = "img/weather/brightness-high.svg";
       }
-      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 w-25 border border-black rounded p-2">`;
+      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 border border-black rounded p-2 w-75 five-day-square">`;
       fiveDayHtml += `<p class="text-center p-1">${data.list[
         i
       ].dt_txt.substring(0, data.list[i].dt_txt.indexOf(" "))}</p>`;
@@ -173,10 +173,11 @@ searchForm.addEventListener(`submit`, function (event) {
     // let newMarker = "";
     // newMarker = new mapboxgl.Marker().setLngLat(results).addTo(map);
     draggableMarker.setLngLat(results);
-    map.setZoom(10);
-    map.setCenter(results);
-    // console.log(results[0]);
-    // console.log(results[1]);
+    map.flyTo({
+      center: results,
+      zoom: 11,
+      speed: 0.7,
+    });
     FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${results[1]}&lon=${results[0]}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
     BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
 
@@ -219,6 +220,7 @@ function updateMarkerLocation() {
   FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
   map.setZoom(10);
   map.setCenter(markerLngLat);
+  map.setZoom(5);
   getCurrentWeather(BASE_WEATHER_URL);
   getFiveDayForecast(FIVE_DAY_URL);
 }
@@ -228,14 +230,24 @@ function onDragEnd() {
   markerLngLat = draggableMarker.getLngLat();
   BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
   FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
-  map.setZoom(10);
-  map.setCenter(markerLngLat);
+  map.setZoom(5);
+  map.flyTo({
+    center: markerLngLat,
+    zoom: 11,
+    speed: 0.7,
+  });
   getCurrentWeather(BASE_WEATHER_URL);
   getFiveDayForecast(FIVE_DAY_URL);
 }
 
+//event listener that runs onDragEnd function on marker drag end
 draggableMarker.on("dragend", onDragEnd);
 
-$(".detailed-weather").on("click", function (event) {
+let fiveDaySquare = $(".five-day-square");
+fiveDaySquare.on("click", function (event) {
   $(".detailed-weather").toggleClass("d-none");
+});
+
+$("body").on("hover", fiveDaySquare, function (event) {
+  event.target.css("background-color", "blue");
 });
