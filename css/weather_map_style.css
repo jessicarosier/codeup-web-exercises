@@ -4,9 +4,10 @@
   flex-direction: column;
 }
 
-#map {
-  max-width: 60vw;
-  min-height: 400px;
+#map,
+.mapboxgl-canvas {
+  width: 800px;
+  height: 400px;
 }
 
 .weather-icon-img {
@@ -20,7 +21,17 @@
 }
 
 #todays-weather-hero {
-  margin-left: 600px;
-  margin-right: 600px;
-  padding-bottom: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+#hero-p {
+  font-size: 80px;
+}
+
+.main-wrapper {
+  min-width: 96vw;
+  min-height: 90vh;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

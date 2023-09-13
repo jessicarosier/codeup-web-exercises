@@ -1,3 +1,16 @@
+//variables to store html that will be displayed on click event
+let dayOneHtml = "";
+let dayTwoHtml = "";
+let dayThreeHtml = "";
+let dayFourHtml = "";
+let dayFiveHtml = "";
+
+const date = new Date();
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+let currentDate = `${month}/${day}/${year}`;
+
 //Constant variable holding Open Weather Map API URL for API call to current weather conditions
 let BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?&units=imperial&appid=${OPEN_WEATHER_APPID}&q=Converse,TX,USA`;
 
@@ -37,11 +50,12 @@ addEventListener("load", function (event) {
 function getCurrentWeather(url) {
   $.get(url).done(function (data) {
     let currentWeatherHtml = ``;
-    currentWeatherHtml += `<div>`;
-    currentWeatherHtml += `<p>${data.name}</p>`;
-    currentWeatherHtml += `<p>Current Temp: <span class="fw-bold">${data.main.temp.toFixed(
+    currentWeatherHtml += `<div class="d-flex flex-column">`;
+    currentWeatherHtml += `<h1 class="text-center">${data.name}</h1>`;
+    currentWeatherHtml += `<p class="text-center" id="hero-p"><span class="fw-bold">${data.main.temp.toFixed(
       0,
     )}°F</p></span>`;
+    currentWeatherHtml += `<p class="text-center fs-1">${currentDate}</p>`;
     let currentWeatherImg = "";
 
     if (data.weather[0].description.includes("light rain")) {
@@ -88,17 +102,18 @@ function getFiveDayForecast(url) {
       } else if (data.list[i].weather[0].description.includes("clear")) {
         weatherImg = "img/weather/brightness-high.svg";
       }
-      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 w-25">`;
-      fiveDayHtml += `<p class="bg-light text-center p-1">${data.list[
+      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 w-25 border border-black rounded p-2">`;
+      fiveDayHtml += `<p class="text-center p-1">${data.list[
         i
       ].dt_txt.substring(0, data.list[i].dt_txt.indexOf(" "))}</p>`;
-      fiveDayHtml += `<p class="d-flex justify-content-center"> High: ${data.list[
+      fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
+      fiveDayHtml += `<p class="d-flex justify-content-center"> ${data.list[
         i
-      ].main.temp_max.toFixed(0)}°F / Low: ${data.list[i].main.temp_min.toFixed(
+      ].main.temp_max.toFixed(0)}°F / ${data.list[i].main.temp_min.toFixed(
         0,
       )}°F</p>`;
-      fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
-      fiveDayHtml += `<div class="p-3">`;
+      // fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
+      fiveDayHtml += `<div class="p-3 d-none detailed-weather">`;
       fiveDayHtml += `<p>Description: <span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
       fiveDayHtml += `<p>Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
       fiveDayHtml += `<p>Real Feel: <span class="fw-bold">${data.list[
@@ -220,3 +235,7 @@ function onDragEnd() {
 }
 
 draggableMarker.on("dragend", onDragEnd);
+
+$(".detailed-weather").on("click", function (event) {
+  $(".detailed-weather").toggleClass("d-none");
+});
