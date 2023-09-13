@@ -3,3 +3,13 @@
   min-height: 100vh;
   flex-direction: column;
 }
+
+#map {
+  max-width: 80vw;
+  min-height: 500px;
+}
+
+.weather-icon-img {
+  height: 50px;
+  width: 50px;
+}
