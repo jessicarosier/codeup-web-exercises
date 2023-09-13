@@ -13,3 +13,14 @@
   height: 50px;
   width: 50px;
 }
+
+#current-weather-img {
+  height: 100px;
+  width: 200px;
+}
+
+#todays-weather-hero {
+  margin-left: 600px;
+  margin-right: 600px;
+  padding-bottom: 50px;
+}

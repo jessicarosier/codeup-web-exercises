@@ -7,14 +7,35 @@ const MY_MOMS_HOUSE = [33.8596246116055, -117.878436750891];
 
 $.get(BASE_WEATHER_URL + `&q=Converse,TX,USA`).done(function (data) {
   console.log(data);
+  console.log(data.weather[0].description);
   let currentWeatherHtml = ``;
   currentWeatherHtml += `<div>`;
   currentWeatherHtml += `<p>${data.name}</p>`;
   currentWeatherHtml += `<p>Current Temp: <span class="fw-bold">${data.main.temp.toFixed(
     0,
   )}°F</p></span>`;
+  let currentWeatherImg = "";
+
+  if (data.weather[0].description.includes("light rain")) {
+    currentWeatherImg = "img/weather/cloud-drizzle.svg";
+  } else if (data.weather[0].description.includes("clouds")) {
+    currentWeatherImg = "img/weather/cloud.svg";
+  } else if (data.weather[0].description.includes("snow")) {
+    currentWeatherImg = "img/weather/cloud-snow.svg";
+  } else if (data.weather[0].description.includes("lightning")) {
+    currentWeatherImg = "img/weather/lightning.svg";
+  } else if (data.weather[0].description.includes("windy")) {
+    currentWeatherImg = "img/weather/wind.svg";
+  } else if (data.weather[0].description.includes("clear")) {
+    currentWeatherImg = "img/weather/brightness-high.svg";
+  } else if (data.weather[0].description.includes("rain")) {
+    currentWeatherImg = "img/weather/cloud-rain.svg";
+  }
 
   $("#todays-weather").html(currentWeatherHtml);
+  $("#todays-img").html(
+    `<img src=${currentWeatherImg} id="current-weather-img" />`,
+  );
 });
 
 //Constant variable holding Open Weather Map API URL for API call to 5 day forecast
@@ -28,20 +49,20 @@ $.get(FIVE_DAY_URL + `&zip=78109,US`).done(function (data) {
 
   //conditional logic determines weatherImg displayed in card html
   for (let i = 0; i < data.list.length; i += 8) {
-    if (data.list[i].weather[0].description.includes("rain")) {
-      weatherImg = "img/weather/drizzle.svg";
+    if (data.list[i].weather[0].description.includes("light rain")) {
+      weatherImg = "img/weather/cloud-drizzle.svg";
     } else if (data.list[i].weather[0].description.includes("clouds")) {
-      weatherImg = "img/weather/sun-cloud.svg";
+      weatherImg = "img/weather/cloud.svg";
     } else if (data.list[i].weather[0].description.includes("snow")) {
-      weatherImg = "img/weather/snow.svg";
+      weatherImg = "img/weather/cloud-snow.svg";
     } else if (data.list[i].weather[0].description.includes("lightning")) {
       weatherImg = "img/weather/lightning.svg";
     } else if (data.list[i].weather[0].description.includes("windy")) {
       weatherImg = "img/weather/wind.svg";
     } else if (data.list[i].weather[0].description.includes("clear")) {
-      weatherImg = "img/weather/sunny.svg";
+      weatherImg = "img/weather/brightness-high.svg";
     }
-    fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center border border-black rounded gap-2 w-25">`;
+    fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 w-25">`;
     fiveDayHtml += `<p class="bg-light text-center p-1">${data.list[
       i
     ].dt_txt.substring(0, data.list[i].dt_txt.indexOf(" "))}</p>`;
