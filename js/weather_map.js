@@ -1,10 +1,4 @@
 //variables to store html that will be displayed on click event
-let dayOneHtml = "";
-let dayTwoHtml = "";
-let dayThreeHtml = "";
-let dayFourHtml = "";
-let dayFiveHtml = "";
-
 const date = new Date();
 let day = date.getDate();
 let month = date.getMonth() + 1;
@@ -51,27 +45,29 @@ function getCurrentWeather(url) {
   $.get(url).done(function (data) {
     let currentWeatherHtml = ``;
     currentWeatherHtml += `<div class="d-flex flex-column">`;
-    currentWeatherHtml += `<h1 class="text-center">${data.name}</h1>`;
+    currentWeatherHtml += `<h1 class="text-center" id="hero-city">${data.name}</h1>`;
     currentWeatherHtml += `<p class="text-center" id="hero-p"><span class="fw-bold">${data.main.temp.toFixed(
       0,
     )}°F</p></span>`;
     currentWeatherHtml += `<p class="text-center fs-1">${currentDate}</p>`;
     let currentWeatherImg = "";
 
-    if (data.weather[0].description.includes("light rain")) {
-      currentWeatherImg = "img/weather/cloud-drizzle.svg";
+    if (data.weather[0].description.includes("rain")) {
+      currentWeatherImg = "img/weather/sun-clouds-rain.svg";
     } else if (data.weather[0].description.includes("clouds")) {
-      currentWeatherImg = "img/weather/cloud.svg";
+      currentWeatherImg = "img/weather/clouds.svg";
     } else if (data.weather[0].description.includes("snow")) {
-      currentWeatherImg = "img/weather/cloud-snow.svg";
+      currentWeatherImg = "img/weather/clouds-snow.svg";
     } else if (data.weather[0].description.includes("lightning")) {
       currentWeatherImg = "img/weather/lightning.svg";
     } else if (data.weather[0].description.includes("windy")) {
       currentWeatherImg = "img/weather/wind.svg";
     } else if (data.weather[0].description.includes("clear")) {
-      currentWeatherImg = "img/weather/brightness-high.svg";
+      currentWeatherImg = "img/weather/sun.svg";
     } else if (data.weather[0].description.includes("rain")) {
-      currentWeatherImg = "img/weather/cloud-rain.svg";
+      currentWeatherImg = "img/weather/sun-clouds-rain.svg";
+    } else {
+      weatherImg = "img/weather/sun.svg";
     }
 
     $("#todays-weather").html(currentWeatherHtml);
@@ -86,23 +82,26 @@ function getFiveDayForecast(url) {
   $.get(url).done(function (data) {
     let fiveDayHtml = ``;
     let weatherImg = "";
+    let detailedHtml = ``;
 
     //conditional logic determines weatherImg displayed in card html
     for (let i = 0; i < data.list.length; i += 8) {
-      if (data.list[i].weather[0].description.includes("light rain")) {
-        weatherImg = "img/weather/cloud-drizzle.svg";
+      if (data.list[i].weather[0].description.includes("rain")) {
+        weatherImg = "img/weather/sun-clouds-rain.svg";
       } else if (data.list[i].weather[0].description.includes("clouds")) {
-        weatherImg = "img/weather/cloud.svg";
+        weatherImg = "img/weather/clouds.svg";
       } else if (data.list[i].weather[0].description.includes("snow")) {
-        weatherImg = "img/weather/cloud-snow.svg";
+        weatherImg = "img/weather/clouds-snow.svg";
       } else if (data.list[i].weather[0].description.includes("lightning")) {
         weatherImg = "img/weather/lightning.svg";
       } else if (data.list[i].weather[0].description.includes("windy")) {
         weatherImg = "img/weather/wind.svg";
       } else if (data.list[i].weather[0].description.includes("clear")) {
-        weatherImg = "img/weather/brightness-high.svg";
+        weatherImg = "img/weather/sun.svg";
+      } else {
+        weatherImg = "img/weather/sun.svg";
       }
-      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 border border-black rounded p-2 w-75 five-day-square">`;
+      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 rounded p-2 w-75 five-day-square">`;
       fiveDayHtml += `<p class="text-center p-1">${data.list[
         i
       ].dt_txt.substring(0, data.list[i].dt_txt.indexOf(" "))}</p>`;
@@ -112,23 +111,26 @@ function getFiveDayForecast(url) {
       ].main.temp_max.toFixed(0)}°F / ${data.list[i].main.temp_min.toFixed(
         0,
       )}°F</p>`;
-      // fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
-      fiveDayHtml += `<div class="p-3 d-none detailed-weather">`;
-      fiveDayHtml += `<p>Description: <span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
-      fiveDayHtml += `<p>Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
-      fiveDayHtml += `<p>Real Feel: <span class="fw-bold">${data.list[
-        i
-      ].main.feels_like.toFixed(0)}°F</span></p>`;
-      fiveDayHtml += `<p>Wind <span class="fw-bold">${data.list[
-        i
-      ].wind.speed.toFixed(0)}mph</span></p>`;
-      fiveDayHtml += `<p>Pressure: <span class="fw-bold">${(
-        data.list[i].main.pressure / 33.864
-      ).toFixed(2)} inHg</span></p>`;
-      fiveDayHtml += `</div>`;
       fiveDayHtml += `</div>`;
     }
     $("#insert-weather").html(fiveDayHtml);
+
+    for (let i = 0; i < data.list.length; i += 8) {
+      detailedHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 p-2 w-75 detailed-weather">`;
+      detailedHtml += `<p><span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
+      detailedHtml += `<p>Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
+      detailedHtml += `<p>Real Feel: <span class="fw-bold">${data.list[
+        i
+      ].main.feels_like.toFixed(0)}°F</span></p>`;
+      detailedHtml += `<p>Wind <span class="fw-bold">${data.list[
+        i
+      ].wind.speed.toFixed(0)}mph</span></p>`;
+      detailedHtml += `<p>Pressure: <span class="fw-bold">${(
+        data.list[i].main.pressure / 33.864
+      ).toFixed(2)} inHg</span></p>`;
+      detailedHtml += `</div>`;
+    }
+    $("#insert-detail").html(detailedHtml);
   });
 }
 
@@ -213,24 +215,11 @@ function reverseGeocode(coordinates, token) {
   );
 }
 
-//set default display when search occurs, change get request URL
-function updateMarkerLocation() {
-  markerLngLat = draggableMarker.getLngLat();
-  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
-  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
-  map.setZoom(10);
-  map.setCenter(markerLngLat);
-  map.setZoom(5);
-  getCurrentWeather(BASE_WEATHER_URL);
-  getFiveDayForecast(FIVE_DAY_URL);
-}
-
 // Event listener that fires on marker drag end.
 function onDragEnd() {
   markerLngLat = draggableMarker.getLngLat();
   BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
   FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
-  map.setZoom(5);
   map.flyTo({
     center: markerLngLat,
     zoom: 11,
@@ -242,12 +231,3 @@ function onDragEnd() {
 
 //event listener that runs onDragEnd function on marker drag end
 draggableMarker.on("dragend", onDragEnd);
-
-let fiveDaySquare = $(".five-day-square");
-fiveDaySquare.on("click", function (event) {
-  $(".detailed-weather").toggleClass("d-none");
-});
-
-$("body").on("hover", fiveDaySquare, function (event) {
-  event.target.css("background-color", "blue");
-});
