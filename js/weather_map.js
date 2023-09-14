@@ -76,6 +76,7 @@ function getCurrentWeather(url) {
       weatherImg = "img/weather/sun.svg";
     }
 
+    //TODO: change todays weather background based on weather conditions
     // $("#todays-weather-hero").css(
     //   "background-image",
     //   `url(${currentBackground})`,
@@ -127,7 +128,7 @@ function getFiveDayForecast(url) {
       } else {
         weatherImg = "img/weather/sun.svg";
       }
-      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 rounded p-2 w-75 five-day-square">`;
+      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 rounded p-2 five-day-square w-75 h-100">`;
       fiveDayHtml += `<p class="text-center p-1">${data.list[
         i
       ].dt_txt.substring(0, data.list[i].dt_txt.indexOf(" "))}</p>`;
@@ -137,26 +138,37 @@ function getFiveDayForecast(url) {
       ].main.temp_max.toFixed(0)}°F / ${data.list[i].main.temp_min.toFixed(
         0,
       )}°F</p>`;
+      fiveDayHtml += `<p><span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
+      fiveDayHtml += `<p>Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
+      fiveDayHtml += `<p>Real Feel: <span class="fw-bold">${data.list[
+        i
+      ].main.feels_like.toFixed(0)}°F</span></p>`;
+      fiveDayHtml += `<p>Wind <span class="fw-bold">${data.list[
+        i
+      ].wind.speed.toFixed(0)}mph</span></p>`;
+      fiveDayHtml += `<p>Pressure: <span class="fw-bold">${(
+        data.list[i].main.pressure / 33.864
+      ).toFixed(2)} inHg</span></p>`;
       fiveDayHtml += `</div>`;
     }
     $("#insert-weather").html(fiveDayHtml);
 
-    for (let i = 0; i < data.list.length; i += 8) {
-      detailedHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 p-2 w-75 detailed-weather">`;
-      detailedHtml += `<p><span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
-      detailedHtml += `<p>Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
-      detailedHtml += `<p>Real Feel: <span class="fw-bold">${data.list[
-        i
-      ].main.feels_like.toFixed(0)}°F</span></p>`;
-      detailedHtml += `<p>Wind <span class="fw-bold">${data.list[
-        i
-      ].wind.speed.toFixed(0)}mph</span></p>`;
-      detailedHtml += `<p>Pressure: <span class="fw-bold">${(
-        data.list[i].main.pressure / 33.864
-      ).toFixed(2)} inHg</span></p>`;
-      detailedHtml += `</div>`;
-    }
-    $("#insert-detail").html(detailedHtml);
+    // for (let i = 0; i < data.list.length; i += 8) {
+    //   detailedHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 p-2 w-75 detailed-weather">`;
+    //   detailedHtml += `<p><span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
+    //   detailedHtml += `<p>Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
+    //   detailedHtml += `<p>Real Feel: <span class="fw-bold">${data.list[
+    //     i
+    //   ].main.feels_like.toFixed(0)}°F</span></p>`;
+    //   detailedHtml += `<p>Wind <span class="fw-bold">${data.list[
+    //     i
+    //   ].wind.speed.toFixed(0)}mph</span></p>`;
+    //   detailedHtml += `<p>Pressure: <span class="fw-bold">${(
+    //     data.list[i].main.pressure / 33.864
+    //   ).toFixed(2)} inHg</span></p>`;
+    //   detailedHtml += `</div>`;
+    // }
+    // $("#insert-detail").html(detailedHtml);
   });
 }
 

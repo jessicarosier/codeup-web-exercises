@@ -13,11 +13,9 @@
 }
 
 #map {
-  min-width: 100%;
-  min-height: 400px;
+  min-width: 100vw;
+  min-height: 100vh;
   border-radius: 10px;
-  justify-self: start;
-  z-index: 4;
 }
 
 .weather-icon-img {
@@ -30,10 +28,6 @@
   width: 200px;
 }
 
-#todays-weather-hero {
-  height: 100vh;
-  background-image: url("../img/weather/hero-bg.jpg");
-}
 #hero-city {
   font-size: 50px;
 }
@@ -42,31 +36,9 @@
   font-size: 90px;
 }
 
-.main-wrapper {
-  /*min-width: 96vw;*/
-  /*min-height: 99vh;*/
-  /*margin-top: 20px;*/
-  /*margin-bottom: 20px;*/
-}
-
 .five-day-square {
   background-image: linear-gradient(to bottom, #2565ae, #3c99dc, #66d3fa);
   color: white;
-}
-
-#insert-weather {
-  z-index: 3;
-}
-
-#weather-holder {
-  overflow: hidden;
-}
-
-#insert-detail {
-  z-index: 2;
-  /*position: absolute;*/
-  /*top: -260px;*/
-  /*left: 0px;*/
 }
 
 .detailed-weather {
@@ -85,4 +57,27 @@
 .daily {
   min-width: 150px;
   min-height: 150px;
+}
+
+#map-five-day-wrapper {
+  position: relative;
+}
+
+#todays-weather-hero {
+  height: 100vh;
+  background-image: url("../img/weather/hero-bg.jpg");
+  z-index: 2;
+}
+
+#map-holder-row {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#weather-holder-row {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
 }
