@@ -43,6 +43,7 @@ addEventListener("load", function (event) {
 
 function getCurrentWeather(url) {
   $.get(url).done(function (data) {
+    console.log(data);
     let currentWeatherHtml = ``;
     currentWeatherHtml += `<div class="d-flex flex-column">`;
     currentWeatherHtml += `<h1 class="text-center" id="hero-city">${data.name}</h1>`;
@@ -51,6 +52,7 @@ function getCurrentWeather(url) {
     )}°F</p></span>`;
     currentWeatherHtml += `<p class="text-center fs-1">${currentDate}</p>`;
     let currentWeatherImg = "";
+    let currentBackground = "";
 
     if (data.weather[0].description.includes("rain")) {
       currentWeatherImg = "img/weather/sun-clouds-rain.svg";
@@ -70,10 +72,44 @@ function getCurrentWeather(url) {
       weatherImg = "img/weather/sun.svg";
     }
 
+    // $("#todays-weather-hero").css(
+    //   "background-image",
+    //   `url(${currentBackground})`,
+    // );
+
+    let todaysConditionsHtml = ``;
+    todaysConditionsHtml += `<div class="d-flex gap-2 flex-wrap justify-content-center mt-5">`;
+    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
+    todaysConditionsHtml += `${data.main.temp_min.toFixed(0)}°F `;
+    todaysConditionsHtml += `<p class="text-center">Low</p>`;
+    todaysConditionsHtml += `</div>`;
+    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
+    todaysConditionsHtml += `${data.main.temp_max.toFixed(0)}°F `;
+    todaysConditionsHtml += `<p class="text-center">High</p>`;
+    todaysConditionsHtml += `</div>`;
+    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
+    todaysConditionsHtml += `${data.main.feels_like.toFixed(0)}°F `;
+    todaysConditionsHtml += `<p class="text-center">Feels Like</p>`;
+    todaysConditionsHtml += `</div>`;
+    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
+    todaysConditionsHtml += `${data.wind.speed.toFixed(0)} mph`;
+    todaysConditionsHtml += `<p class="text-center">Wind Speed</p>`;
+    todaysConditionsHtml += `</div>`;
+    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
+    todaysConditionsHtml += `${data.main.humidity}%`;
+    todaysConditionsHtml += `<p class="text-center">Humidity</p>`;
+    todaysConditionsHtml += `</div>`;
+    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
+    todaysConditionsHtml += `${(data.main.pressure / 33.864).toFixed(2)} inHg`;
+    todaysConditionsHtml += `<p class="text-center">Pressure</p>`;
+    todaysConditionsHtml += `</div>`;
+    todaysConditionsHtml += `</div>`;
+
     $("#todays-weather").html(currentWeatherHtml);
     $("#todays-img").html(
       `<img src=${currentWeatherImg} id="current-weather-img" />`,
     );
+    $("#todays-conditions").html(todaysConditionsHtml);
   });
 }
 
