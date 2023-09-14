@@ -50,6 +50,10 @@ function getCurrentWeather(url) {
     currentWeatherHtml += `<p class="text-center" id="hero-p"><span class="fw-bold">${data.main.temp.toFixed(
       0,
     )}°F</p></span>`;
+    currentWeatherHtml += `<p class="text-center">${data.weather[0].description}</p>`;
+    currentWeatherHtml += `<p class="text-center">H: ${data.main.temp_max.toFixed(
+      0,
+    )}°    L:${data.main.temp_min.toFixed(0)}°</p> `;
     currentWeatherHtml += `<p class="text-center fs-1">${currentDate}</p>`;
     let currentWeatherImg = "";
     let currentBackground = "";
@@ -78,31 +82,17 @@ function getCurrentWeather(url) {
     // );
 
     let todaysConditionsHtml = ``;
-    todaysConditionsHtml += `<div class="d-flex gap-2 flex-wrap justify-content-center mt-5">`;
-    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
-    todaysConditionsHtml += `${data.main.temp_min.toFixed(0)}°F `;
-    todaysConditionsHtml += `<p class="text-center">Low</p>`;
-    todaysConditionsHtml += `</div>`;
-    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
-    todaysConditionsHtml += `${data.main.temp_max.toFixed(0)}°F `;
-    todaysConditionsHtml += `<p class="text-center">High</p>`;
-    todaysConditionsHtml += `</div>`;
-    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
-    todaysConditionsHtml += `${data.main.feels_like.toFixed(0)}°F `;
-    todaysConditionsHtml += `<p class="text-center">Feels Like</p>`;
-    todaysConditionsHtml += `</div>`;
-    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
-    todaysConditionsHtml += `${data.wind.speed.toFixed(0)} mph`;
-    todaysConditionsHtml += `<p class="text-center">Wind Speed</p>`;
-    todaysConditionsHtml += `</div>`;
-    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
-    todaysConditionsHtml += `${data.main.humidity}%`;
-    todaysConditionsHtml += `<p class="text-center">Humidity</p>`;
-    todaysConditionsHtml += `</div>`;
-    todaysConditionsHtml += `<div class="d-flex flex-column justify-content-center align-items-center border rounded px-4 py-3 fw-bold daily">`;
-    todaysConditionsHtml += `${(data.main.pressure / 33.864).toFixed(2)} inHg`;
-    todaysConditionsHtml += `<p class="text-center">Pressure</p>`;
-    todaysConditionsHtml += `</div>`;
+    todaysConditionsHtml += `<div class="d-flex gap-2 flex-column justify-content-center mt-1">`;
+    todaysConditionsHtml += `<p class="text-center">Feels Like: ${data.main.feels_like.toFixed(
+      0,
+    )}°F</p>`;
+    todaysConditionsHtml += `<p class="text-center">Wind Speed: ${data.wind.speed.toFixed(
+      0,
+    )} mph</p>`;
+    todaysConditionsHtml += `<p class="text-center">Humidity: ${data.main.humidity}%</p>`;
+    todaysConditionsHtml += `<p class="text-center">Pressure: ${(
+      data.main.pressure / 33.864
+    ).toFixed(2)} inHg</p>`;
     todaysConditionsHtml += `</div>`;
 
     $("#todays-weather").html(currentWeatherHtml);

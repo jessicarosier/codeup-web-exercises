@@ -2,9 +2,9 @@
   --pri-font: "Paytone One", sans-serif;
 }
 
-body {
-  background-color: lightblue;
-}
+/*body {*/
+/*  background-color: lightblue;*/
+/*}*/
 
 .page-wrapper {
   display: flex;
@@ -20,10 +20,6 @@ body {
   z-index: 4;
 }
 
-/*.mapboxgl-canvas {*/
-/*  width: 100%;*/
-/*}*/
-
 .weather-icon-img {
   height: 50px;
   width: 50px;
@@ -35,9 +31,7 @@ body {
 }
 
 #todays-weather-hero {
-  border: 1px solid black;
-  border-radius: 10px;
-  height: 90vh;
+  height: 100vh;
   background-image: url("../img/weather/hero-bg.jpg");
 }
 #hero-city {
@@ -49,10 +43,10 @@ body {
 }
 
 .main-wrapper {
-  min-width: 96vw;
-  min-height: 99vh;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /*min-width: 96vw;*/
+  /*min-height: 99vh;*/
+  /*margin-top: 20px;*/
+  /*margin-bottom: 20px;*/
 }
 
 .five-day-square {
@@ -70,9 +64,9 @@ body {
 
 #insert-detail {
   z-index: 2;
-  position: absolute;
-  top: -260px;
-  left: 0px;
+  /*position: absolute;*/
+  /*top: -260px;*/
+  /*left: 0px;*/
 }
 
 .detailed-weather {
