@@ -182,7 +182,7 @@ function getCurrentWeather(url) {
     currentWeatherHtml += `<p class="text-center m-0">H: ${data.main.temp_max.toFixed(
       0,
     )}°    L:${data.main.temp_min.toFixed(0)}°</p>`;
-    currentWeatherHtml += `<p class="text-center fs-1 m-0">${currentDate}</p>`;
+    currentWeatherHtml += `<p class="text-center m-0" id="daily-date">${currentDate}</p>`;
 
     //grabs detailed daily weather information and store it in a variable, then displays the compiled info a div with an ID of #todays-conditions
     let todaysConditionsHtml = ``;
@@ -245,9 +245,9 @@ function getFiveDayForecast(url) {
       data.list[i].weather[0].description = str;
 
       fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 p-2 five-day-square" id="five-day-card${i}">`;
-      fiveDayHtml += `<p class ="m-0">${month} ${(day += 1)} ${year}</p>`;
+      fiveDayHtml += `<p class ="m-0">${month} ${(day += 1)}</p>`;
       fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
-      fiveDayHtml += `<p class="d-flex justify-content-center fs-4 fw-bold m-0"> ${data.list[
+      fiveDayHtml += `<p class="d-flex justify-content-center m-0"> ${data.list[
         i
       ].main.temp_max.toFixed(0)}${degreeDisplay} / ${data.list[
         i
@@ -256,7 +256,7 @@ function getFiveDayForecast(url) {
 
       detailedHtml += `<div class="d-flex flex-column justify-content-start align-items-center gap-1 p-2 detailed-weather" id="condition${i}">`;
       detailedHtml += `<p class="m-0">Detailed Info</p>`;
-      detailedHtml += `<p class="m-0"><span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
+      detailedHtml += `<p class="m-0"><span>${data.list[i].weather[0].description}</span></p>`;
       detailedHtml += `<p class="m-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
       detailedHtml += `<p class="m-0">Real Feel: <span class="fw-bold">${data.list[
         i

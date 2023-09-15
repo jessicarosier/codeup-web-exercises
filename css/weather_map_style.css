@@ -21,11 +21,20 @@
 }
 
 #hero-city {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 #hero-p {
-  font-size: 90px;
+  font-size: 70px;
+}
+
+#daily-date {
+  font-size: 40px;
+}
+
+.left-side-wrapper {
+  max-width: 30%;
+  max-height: 80%;
 }
 
 .five-day-square {
@@ -38,9 +47,9 @@
   border-radius: 15px;
 }
 
-/*.five-day-square:hover {*/
-/*  height: 100px;*/
-/*}*/
+.five-day-square > p {
+  font-weight: bold;
+}
 
 .detailed-weather {
   width: 10%;
@@ -164,12 +173,76 @@
   width: 10%;
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1030px) {
+  #todays-weather {
+    font-size: 10px;
+  }
+
   #hero-city {
     font-size: 30px;
   }
 
   #hero-p {
-    font-size: 50px;
+    font-size: 40px;
+  }
+
+  #current-weather-img {
+    height: 50px;
+    width: 100px;
+  }
+
+  .five-day-square {
+    font-size: 5px;
+    width: 15.5%;
+    height: 180px;
+  }
+  .five-day-square > p {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .detailed-weather {
+    height: 10px;
+    font-size: 12px;
+    width: 15%;
+  }
+
+  #daily-date {
+    font-size: 25px;
+  }
+
+  .units-toggle {
+    width: 20%;
+    left: 48%;
+  }
+
+  #five-day-card0 {
+    bottom: 2050%;
+    left: 81%;
+  }
+
+  #condition0 {
+    bottom: 2050%;
+    left: 81.2%;
+  }
+
+  #five-day-card8 {
+    bottom: 1550%;
+    left: 81%;
+  }
+
+  #five-day-card16 {
+    bottom: 1050%;
+    left: 81%;
+  }
+
+  #five-day-card24 {
+    bottom: 550%;
+    left: 81%;
+  }
+
+  #five-day-card32 {
+    bottom: 50%;
+    left: 81%;
   }
 }
