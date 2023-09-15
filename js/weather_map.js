@@ -1,4 +1,9 @@
 //variables to store html that will be displayed on click event
+let unitOfMeasurment = "";
+let radioButtons = $(".units-toggle");
+let degreeDisplay;
+degreeDisplay = "°F";
+
 const date = new Date();
 let day = date.getDate();
 let month = "";
@@ -19,6 +24,7 @@ let monthNames = [
   { name: "December", number: 12 },
 ];
 
+//(Allows full month name to display in html) if the current month number value is equal to the number property value in the array, then current month is equal to the object name property value.
 for (let i = 0; i < monthNames.length; i++) {
   if (date.getMonth() + 1 === monthNames[i].number) {
     month = monthNames[i].name;
@@ -28,10 +34,18 @@ for (let i = 0; i < monthNames.length; i++) {
 let currentDate = `${month} ${day} ${year}`;
 
 //variable holding Open Weather Map API URL for API call to current weather conditions API
-let BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?&units=imperial&appid=${OPEN_WEATHER_APPID}&q=Converse,TX,USA`;
+// let BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}&q=Converse,TX,USA`;
+
+let BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${29.50652020966919}&lon=${-98.30651848969364}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
 
 //variable holding Open Weather Map API URL for API call to 5 day forecast API
 let FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?&units=imperial&appid=${OPEN_WEATHER_APPID}&zip=78109,US`;
+
+//event listener runs on page load to display default weather
+addEventListener("load", function (event) {
+  getCurrentWeather(BASE_WEATHER_URL);
+  getFiveDayForecast(FIVE_DAY_URL);
+});
 
 //adds mapbox API map to page, displays map in div with ID of #map
 mapboxgl.accessToken = MAPBOX_API_TOKEN;
@@ -52,16 +66,9 @@ let draggableMarker = new mapboxgl.Marker({
 
 let markerLngLat = draggableMarker.getLngLat();
 
-//event listener runs on page load to display default weather
-addEventListener("load", function (event) {
-  getCurrentWeather(BASE_WEATHER_URL);
-  getFiveDayForecast(FIVE_DAY_URL);
-});
-
 //Sends a call to the daily weather API , grabs specified current weather information and places info in a variable holding html. Then displays the html in a div with the  ID of #todays-weather. This function is called whenever a marker drag event or user input search event is triggered
 function getCurrentWeather(url) {
   $.get(url).done(function (data) {
-    console.log(data);
     //Takes description and capitalizes the first letter of each word
     let currentWeatherImg = ``;
     let currentBackground = ``;
@@ -84,7 +91,6 @@ function getCurrentWeather(url) {
       currentWeatherImg = "img/weather/wind.svg";
       currentBackground = "video/rain.mp4";
     } else if (data.weather[0].description.includes("clear")) {
-      console.log("clear");
       currentWeatherImg = "img/weather/sun.svg";
       currentBackground = "video/rain.mp4";
     } else if (data.weather[0].description.includes("rain")) {
@@ -108,11 +114,11 @@ function getCurrentWeather(url) {
     currentWeatherHtml += `<h1 class="text-center m-0" id="hero-city">${data.name}</h1>`;
     currentWeatherHtml += `<p class="text-center m-0" id="hero-p"><span class="fw-bold">${data.main.temp.toFixed(
       0,
-    )}°F</p></span>`;
+    )}${degreeDisplay}</p></span>`;
     currentWeatherHtml += `<p class="text-center m-0">${str}</p>`;
     currentWeatherHtml += `<p class="text-center m-0">H: ${data.main.temp_max.toFixed(
       0,
-    )}°    L:${data.main.temp_min.toFixed(0)}°</p> `;
+    )}°    L:${data.main.temp_min.toFixed(0)}°</p>`;
     currentWeatherHtml += `<p class="text-center fs-1 m-0">${currentDate}</p>`;
 
     //grabs detailed daily weather information and store it in a variable, then displays the compiled info a div with an ID of #todays-conditions
@@ -180,9 +186,9 @@ function getFiveDayForecast(url) {
       fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
       fiveDayHtml += `<p class="d-flex justify-content-center fs-4 fw-bold m-0"> ${data.list[
         i
-      ].main.temp_max.toFixed(0)}°F / ${data.list[i].main.temp_min.toFixed(
-        0,
-      )}°F</p>`;
+      ].main.temp_max.toFixed(0)}${degreeDisplay} / ${data.list[
+        i
+      ].main.temp_min.toFixed(0)}${degreeDisplay}</p>`;
       fiveDayHtml += `</div>`;
 
       detailedHtml += `<div class="d-flex flex-column justify-content-start align-items-center gap-1 p-2 detailed-weather" id="condition${i}">`;
@@ -251,8 +257,8 @@ searchForm.addEventListener(`submit`, function (event) {
     });
 
     //updates the API call URLs with the lat,long obtained from geocode function, then passes the new API cal URL into the functions that will display the new weather info html.
-    FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${results[1]}&lon=${results[0]}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
-    BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
+    FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+    BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
 
     getCurrentWeather(BASE_WEATHER_URL);
     getFiveDayForecast(FIVE_DAY_URL);
@@ -289,8 +295,8 @@ function reverseGeocode(coordinates, token) {
 // Event listener that fires on marker drag end. grabs the lat/long location of the marker when drag event ends, then re-defines the API call URLs with the new lat/long. Finally, calls the functions that update the weather information html being displayed.
 function onDragEnd() {
   markerLngLat = draggableMarker.getLngLat();
-  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
-  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
+  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
   map.flyTo({
     center: markerLngLat,
     zoom: 11,
@@ -302,3 +308,19 @@ function onDragEnd() {
 
 //event listener that runs onDragEnd function on marker drag end
 draggableMarker.on("dragend", onDragEnd);
+
+radioButtons.on("change", function (event) {
+  event.preventDefault();
+  markerLngLat = draggableMarker.getLngLat();
+  if (document.querySelector("#celsius").checked) {
+    unitOfMeasurment = "&units=metric";
+    degreeDisplay = "°C";
+  } else {
+    unitOfMeasurment = "&units=imperial";
+    degreeDisplay = "°F";
+  }
+  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  getCurrentWeather(BASE_WEATHER_URL);
+  getFiveDayForecast(FIVE_DAY_URL);
+});
