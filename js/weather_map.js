@@ -105,27 +105,27 @@ function getCurrentWeather(url) {
     data.weather[0].description = str;
 
     currentWeatherHtml += `<div class="d-flex flex-column">`;
-    currentWeatherHtml += `<h1 class="text-center" id="hero-city">${data.name}</h1>`;
-    currentWeatherHtml += `<p class="text-center" id="hero-p"><span class="fw-bold">${data.main.temp.toFixed(
+    currentWeatherHtml += `<h1 class="text-center m-0" id="hero-city">${data.name}</h1>`;
+    currentWeatherHtml += `<p class="text-center m-0" id="hero-p"><span class="fw-bold">${data.main.temp.toFixed(
       0,
     )}°F</p></span>`;
-    currentWeatherHtml += `<p class="text-center">${str}</p>`;
-    currentWeatherHtml += `<p class="text-center">H: ${data.main.temp_max.toFixed(
+    currentWeatherHtml += `<p class="text-center m-0">${str}</p>`;
+    currentWeatherHtml += `<p class="text-center m-0">H: ${data.main.temp_max.toFixed(
       0,
     )}°    L:${data.main.temp_min.toFixed(0)}°</p> `;
-    currentWeatherHtml += `<p class="text-center fs-1">${currentDate}</p>`;
+    currentWeatherHtml += `<p class="text-center fs-1 m-0">${currentDate}</p>`;
 
     //grabs detailed daily weather information and store it in a variable, then displays the compiled info a div with an ID of #todays-conditions
     let todaysConditionsHtml = ``;
     todaysConditionsHtml += `<div class="d-flex gap-2 flex-column justify-content-center mt-1">`;
-    todaysConditionsHtml += `<p class="text-center">Feels Like: ${data.main.feels_like.toFixed(
+    todaysConditionsHtml += `<p class="text-center m-0">Feels Like: ${data.main.feels_like.toFixed(
       0,
     )}°F</p>`;
-    todaysConditionsHtml += `<p class="text-center">Wind Speed: ${data.wind.speed.toFixed(
+    todaysConditionsHtml += `<p class="text-center m-0">Wind Speed: ${data.wind.speed.toFixed(
       0,
     )} mph</p>`;
-    todaysConditionsHtml += `<p class="text-center">Humidity: ${data.main.humidity}%</p>`;
-    todaysConditionsHtml += `<p class="text-center">Pressure: ${(
+    todaysConditionsHtml += `<p class="text-center m-0">Humidity: ${data.main.humidity}%</p>`;
+    todaysConditionsHtml += `<p class="text-center m-0">Pressure: ${(
       data.main.pressure / 33.864
     ).toFixed(2)} inHg</p>`;
     todaysConditionsHtml += `</div>`;
@@ -176,26 +176,26 @@ function getFiveDayForecast(url) {
       data.list[i].weather[0].description = str;
 
       fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 p-2 five-day-square" id="five-day-card${i}">`;
-      fiveDayHtml += `<p>${month} ${(day += 1)} ${year}</p>`;
+      fiveDayHtml += `<p class ="m-0">${month} ${(day += 1)} ${year}</p>`;
       fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
-      fiveDayHtml += `<p class="d-flex justify-content-center fs-4 fw-bold"> ${data.list[
+      fiveDayHtml += `<p class="d-flex justify-content-center fs-4 fw-bold m-0"> ${data.list[
         i
       ].main.temp_max.toFixed(0)}°F / ${data.list[i].main.temp_min.toFixed(
         0,
       )}°F</p>`;
       fiveDayHtml += `</div>`;
 
-      detailedHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-1 p-2 detailed-weather" id="condition${i}">`;
-      detailedHtml += `<p class="mb-0">Detailed Info</p>`;
-      detailedHtml += `<p class="mb-0"><span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
-      detailedHtml += `<p class="mb-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
-      detailedHtml += `<p class="mb-0">Real Feel: <span class="fw-bold">${data.list[
+      detailedHtml += `<div class="d-flex flex-column justify-content-start align-items-center gap-1 p-2 detailed-weather" id="condition${i}">`;
+      detailedHtml += `<p class="m-0">Detailed Info</p>`;
+      detailedHtml += `<p class="m-0"><span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
+      detailedHtml += `<p class="m-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
+      detailedHtml += `<p class="m-0">Real Feel: <span class="fw-bold">${data.list[
         i
       ].main.feels_like.toFixed(0)}°F</span></p>`;
-      detailedHtml += `<p>Wind <span class="fw-bold">${data.list[
+      detailedHtml += `<p class = "m-0">Wind <span class="fw-bold">${data.list[
         i
       ].wind.speed.toFixed(0)}mph</span></p>`;
-      detailedHtml += `<p>Pressure: <span class="fw-bold">${(
+      detailedHtml += `<p class="m-0">Pressure: <span class="fw-bold">${(
         data.list[i].main.pressure / 33.864
       ).toFixed(2)} inHg</span></p>`;
       detailedHtml += `</div>`;
