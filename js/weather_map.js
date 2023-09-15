@@ -175,7 +175,7 @@ function getFiveDayForecast(url) {
       str = str.join(" ");
       data.list[i].weather[0].description = str;
 
-      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 rounded p-2 five-day-square" id="five-day-card${i}">`;
+      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 p-2 five-day-square" id="five-day-card${i}">`;
       fiveDayHtml += `<p>${month} ${(day += 1)} ${year}</p>`;
       fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
       fiveDayHtml += `<p class="d-flex justify-content-center fs-4 fw-bold"> ${data.list[
@@ -185,7 +185,7 @@ function getFiveDayForecast(url) {
       )}°F</p>`;
       fiveDayHtml += `</div>`;
 
-      detailedHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-1 rounded p-2 detailed-weather" id="condition${i}">`;
+      detailedHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-1 p-2 detailed-weather" id="condition${i}">`;
       detailedHtml += `<p class="mb-0">Detailed Info</p>`;
       detailedHtml += `<p class="mb-0"><span class="fw-bold">${data.list[i].weather[0].description}</span></p>`;
       detailedHtml += `<p class="mb-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
