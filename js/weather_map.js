@@ -1,4 +1,4 @@
-//variables to store html that will be displayed on click event
+//variables used to display correct unit of measurement text, value changed based on radio button selection. Event listener located on line 318
 let unitOfMeasurment = "";
 let radioButtons = $(".units-toggle");
 let degreeDisplay;
@@ -31,15 +31,78 @@ for (let i = 0; i < monthNames.length; i++) {
   }
 }
 
+//re-formatted date to be displayed in weather cards
 let currentDate = `${month} ${day} ${year}`;
-
-//variable holding Open Weather Map API URL for API call to current weather conditions API
-// let BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}&q=Converse,TX,USA`;
 
 let BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${29.50652020966919}&lon=${-98.30651848969364}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
 
 //variable holding Open Weather Map API URL for API call to 5 day forecast API
 let FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?&units=imperial&appid=${OPEN_WEATHER_APPID}&zip=78109,US`;
+
+//variable holding Open Weather Map API URL for API call to OneCall Hourly forecast API
+let HOURLY_WEATHER_URL = `https://api.openweathermap.org/data/3.0/onecall?units=imperial&lat=${29.50652020966919}&lon=${-98.30651848969364}&appid=${OPEN_WEATHER_APPID}`;
+
+//Sends a call to the (one call) hourly API , grabs specified hourly forecast weather information and places info in a variable holding html. Then displays the html in a div with the  ID of//TODO: #todays-weather. This function is called whenever a marker drag event or user input search event is triggered
+$.get(HOURLY_WEATHER_URL).done(function (data) {
+  console.log(data.hourly);
+});
+function getHourlyWeather(url) {
+  $.get(url).done(function (data) {
+    //Takes description and capitalizes the first letter of each word
+    let hourlyWeatherImg = ``;
+    let hourlyWeatherHtml = ``;
+    let str = "";
+
+    //Takes description and capitalizes the first letter of each word
+    for (let i = 0; i < 12; i++) {
+      //conditional logic determines weatherImg displayed in card html
+      if (data.hourly[i].weather[0].description.includes("rain")) {
+        hourlyWeatherImg = "img/weather/sun-clouds-rain.svg";
+      } else if (data.hourly[i].weather[0].description.includes("clouds")) {
+        hourlyWeatherImg = "img/weather/clouds.svg";
+      } else if (data.hourly[i].weather[0].description.includes("snow")) {
+        hourlyWeatherImg = "img/weather/clouds-snow.svg";
+      } else if (data.hourly[i].weather[0].description.includes("lightning")) {
+        hourlyWeatherImg = "img/weather/lightning.svg";
+      } else if (data.hourly[i].weather[0].description.includes("windy")) {
+        hourlyWeatherImg = "img/weather/wind.svg";
+      } else if (data.hourly[i].weather[0].description.includes("clear")) {
+        hourlyWeatherImg = "img/weather/sun.svg";
+      } else {
+        hourlyWeatherImg = "img/weather/clouds.svg";
+      }
+
+      str = data.hourly[i].weather[0].description.split(" ");
+      str.forEach((word, index) => {
+        let firstLetter = word.charAt(0).toUpperCase();
+        let rest = word.slice(1).toLowerCase();
+        str[index] = firstLetter + rest;
+      });
+      str = str.join(" ");
+      data.hourly[i].weather[0].description = str;
+
+      hourlyWeatherHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 p-2 hourly-square" id="hourly-card${i}">`;
+      hourlyWeatherHtml += `<p class ="m-0">${month} ${(day += 1)} ${year}</p>`;
+      hourlyWeatherHtml += `<img src=${hourlyWeatherImg} class="weather-icon-img" />`;
+      hourlyWeatherHtml += `</div>`;
+      hourlyWeatherHtml += `<div class="d-flex flex-column justify-content-start align-items-center gap-1 p-2" id="hourly-condition${i}">`;
+      hourlyWeatherHtml += `<p class="m-0">Detailed Info</p>`;
+      hourlyWeatherHtml += `<p class="m-0"><span class="fw-bold">${data.hourly[i].weather[0].description}</span></p>`;
+      hourlyWeatherHtml += `<p class="m-0">Humidity: <span class="fw-bold">${data.hourly[i].humidity}%</span></p>`;
+      hourlyWeatherHtml += `<p class="m-0">Real Feel: <span class="fw-bold">${data.hourly[
+        i
+      ].feels_like.toFixed(0)}${degreeDisplay}</span></p>`;
+      hourlyWeatherHtml += `<p class = "m-0">Wind <span class="fw-bold">${data.hourly[
+        i
+      ].wind_speed.toFixed(0)}mph</span></p>`;
+      hourlyWeatherHtml += `<p class="m-0">Pressure: <span class="fw-bold">${(
+        data.hourly[i].pressure / 33.864
+      ).toFixed(2)} inHg</span></p>`;
+      hourlyWeatherHtml += `</div>`;
+    }
+    console.log(hourlyWeatherHtml);
+  });
+}
 
 //event listener runs on page load to display default weather
 addEventListener("load", function (event) {
@@ -126,7 +189,7 @@ function getCurrentWeather(url) {
     todaysConditionsHtml += `<div class="d-flex gap-2 flex-column justify-content-center mt-1">`;
     todaysConditionsHtml += `<p class="text-center m-0">Feels Like: ${data.main.feels_like.toFixed(
       0,
-    )}°F</p>`;
+    )}${degreeDisplay}</p>`;
     todaysConditionsHtml += `<p class="text-center m-0">Wind Speed: ${data.wind.speed.toFixed(
       0,
     )} mph</p>`;
@@ -197,7 +260,7 @@ function getFiveDayForecast(url) {
       detailedHtml += `<p class="m-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
       detailedHtml += `<p class="m-0">Real Feel: <span class="fw-bold">${data.list[
         i
-      ].main.feels_like.toFixed(0)}°F</span></p>`;
+      ].main.feels_like.toFixed(0)}${degreeDisplay}</span></p>`;
       detailedHtml += `<p class = "m-0">Wind <span class="fw-bold">${data.list[
         i
       ].wind.speed.toFixed(0)}mph</span></p>`;
@@ -259,9 +322,11 @@ searchForm.addEventListener(`submit`, function (event) {
     //updates the API call URLs with the lat,long obtained from geocode function, then passes the new API cal URL into the functions that will display the new weather info html.
     FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
     BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+    HOURLY_WEATHER_URL = `https://api.openweathermap.org/data/3.0/onecall?${unitOfMeasurment}&lat=${results[1]}&lon=${results[0]}&appid=${OPEN_WEATHER_APPID}`;
 
     getCurrentWeather(BASE_WEATHER_URL);
     getFiveDayForecast(FIVE_DAY_URL);
+    getHourlyWeather(HOURLY_WEATHER_URL);
 
     markerLngLat = draggableMarker.getLngLat();
   });
@@ -297,6 +362,7 @@ function onDragEnd() {
   markerLngLat = draggableMarker.getLngLat();
   BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
   FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  HOURLY_WEATHER_URL = `https://api.openweathermap.org/data/3.0/onecall?${unitOfMeasurment}&lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&appid=${OPEN_WEATHER_APPID}`;
   map.flyTo({
     center: markerLngLat,
     zoom: 11,
@@ -304,6 +370,7 @@ function onDragEnd() {
   });
   getCurrentWeather(BASE_WEATHER_URL);
   getFiveDayForecast(FIVE_DAY_URL);
+  getHourlyWeather(HOURLY_WEATHER_URL);
 }
 
 //event listener that runs onDragEnd function on marker drag end
@@ -321,6 +388,8 @@ radioButtons.on("change", function (event) {
   }
   BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
   FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  HOURLY_WEATHER_URL = `https://api.openweathermap.org/data/3.0/onecall?${unitOfMeasurment}&lat=${markerLngLat.lat}&lon=${markerLngLat.lng}&appid=${OPEN_WEATHER_APPID}`;
   getCurrentWeather(BASE_WEATHER_URL);
   getFiveDayForecast(FIVE_DAY_URL);
+  getHourlyWeather(HOURLY_WEATHER_URL);
 });
