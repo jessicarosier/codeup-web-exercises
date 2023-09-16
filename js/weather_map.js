@@ -43,6 +43,7 @@ let FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?&units=impe
 
 //event listener runs on page load to display default weather
 addEventListener("load", function (event) {
+  unitOfMeasurment = "&units=imperial";
   getCurrentWeather(BASE_WEATHER_URL);
   getFiveDayForecast(FIVE_DAY_URL);
 });
