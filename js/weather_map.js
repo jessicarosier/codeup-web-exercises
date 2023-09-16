@@ -139,29 +139,21 @@ function getCurrentWeather(url) {
     let str = "";
 
     if (data.weather[0].description.includes("rain")) {
-      currentBackground = "video/rain.mp4";
       currentWeatherImg = "img/weather/sun-clouds-rain.svg";
     } else if (data.weather[0].description.includes("clouds")) {
       currentWeatherImg = "img/weather/clouds.svg";
-      currentBackground = "video/clouds.mp4";
     } else if (data.weather[0].description.includes("snow")) {
       currentWeatherImg = "img/weather/clouds-snow.svg";
-      currentBackground = "video/sun.mp4";
     } else if (data.weather[0].description.includes("lightning")) {
       currentWeatherImg = "img/weather/lightning.svg";
-      currentBackground = "video/rain.mp4";
     } else if (data.weather[0].description.includes("windy")) {
       currentWeatherImg = "img/weather/wind.svg";
-      currentBackground = "video/rain.mp4";
     } else if (data.weather[0].description.includes("clear")) {
       currentWeatherImg = "img/weather/sun.svg";
-      currentBackground = "video/rain.mp4";
     } else if (data.weather[0].description.includes("rain")) {
       currentWeatherImg = "img/weather/sun-clouds-rain.svg";
-      currentBackground = "video/rain.mp4";
     } else {
       currentWeatherImg = "img/weather/clouds.svg";
-      currentBackground = "video/rain.mp4";
     }
 
     str = data.weather[0].description.split(" ");
@@ -204,7 +196,7 @@ function getCurrentWeather(url) {
       `<img src="${currentWeatherImg}" id="current-weather-image" />`,
     );
     $("#todays-conditions").html(todaysConditionsHtml);
-    $("video").html(`<source src="${currentBackground}" type="video/mp4" />`);
+    $("video").html(`<source src="video/clouds.mp4" type="video/mp4" />`);
   });
 }
 
@@ -213,6 +205,7 @@ function getFiveDayForecast(url) {
   $.get(url).done(function (data) {
     let str = "";
     let fiveDayHtml = ``;
+    let fiveDayLrg = ``;
     let weatherImg = "";
     let detailedHtml = "";
 
@@ -244,7 +237,8 @@ function getFiveDayForecast(url) {
       str = str.join(" ");
       data.list[i].weather[0].description = str;
 
-      fiveDayHtml += `<div class="d-flex flex-column justify-content-center align-items-center gap-2 p-2 five-day-square" id="five-day-card${i}">`;
+      //Creates weather squares for XL screen
+      fiveDayHtml += `<div class="flex-column justify-content-center align-items-center gap-2 p-2 five-day-square" id="five-day-card${i}">`;
       fiveDayHtml += `<p class ="m-0">${month} ${(day += 1)}</p>`;
       fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
       fiveDayHtml += `<p class="d-flex justify-content-center m-0"> ${data.list[
@@ -254,7 +248,19 @@ function getFiveDayForecast(url) {
       ].main.temp_min.toFixed(0)}${degreeDisplay}</p>`;
       fiveDayHtml += `</div>`;
 
-      detailedHtml += `<div class="d-flex flex-column justify-content-start align-items-center gap-1 p-2 detailed-weather" id="condition${i}">`;
+      //Creates weather tiles for L screen
+      fiveDayHtml += `<div class="flex-column justify-content-center align-items-center five-day-square-lrg" id="five-day-lrg${i}">`;
+      fiveDayHtml += `<p class ="m-0">${month} ${(day += 1)}</p>`;
+      fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img-lrg" />`;
+      fiveDayHtml += `<p class="d-flex justify-content-center m-0"> ${data.list[
+        i
+      ].main.temp_max.toFixed(0)}${degreeDisplay} / ${data.list[
+        i
+      ].main.temp_min.toFixed(0)}${degreeDisplay}</p>`;
+      fiveDayHtml += `</div>`;
+
+      //Creates detailed info card for XL screen
+      detailedHtml += `<div class="flex-column justify-content-start align-items-center gap-1 p-2 detailed-weather" id="condition${i}">`;
       detailedHtml += `<p class="m-0">Detailed Info</p>`;
       detailedHtml += `<p class="m-0"><span>${data.list[i].weather[0].description}</span></p>`;
       detailedHtml += `<p class="m-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
@@ -265,6 +271,22 @@ function getFiveDayForecast(url) {
         i
       ].wind.speed.toFixed(0)}mph</span></p>`;
       detailedHtml += `<p class="m-0">Pressure: <span class="fw-bold">${(
+        data.list[i].main.pressure / 33.864
+      ).toFixed(2)} inHg</span></p>`;
+      detailedHtml += `</div>`;
+
+      //Creates detailed info card for L screen
+      detailedHtml += `<div class="align-items-center gap-2 detailed-weather-lrg" id="condition-lrg${i}">`;
+      detailedHtml += `<p class="m-0 mx-3"> < </p>`;
+      detailedHtml += `<p class="m-0"><span>${data.list[i].weather[0].description}</span></p>`;
+      detailedHtml += `<p class="m-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
+      detailedHtml += `<p class="m-0">Real Feel: <span class="fw-bold">${data.list[
+        i
+      ].main.feels_like.toFixed(0)}${degreeDisplay}</span></p>`;
+      detailedHtml += `<p class = "m-0">Wind <span class="fw-bold">${data.list[
+        i
+      ].wind.speed.toFixed(0)}mph</span></p>`;
+      detailedHtml += `<p class="m-0 me-5">Pressure: <span class="fw-bold">${(
         data.list[i].main.pressure / 33.864
       ).toFixed(2)} inHg</span></p>`;
       detailedHtml += `</div>`;
