@@ -1,13 +1,16 @@
 "use strict";
 
-//variables used to display correct unit of measurement text, value changed based on radio button selection. Event listener located on line 318
-let unitOfMeasurment = "";
+/*variables used to display correct unit of measurement text, value changed based on radio button selection. Event listener located on line 318*/
+let unitOfMeasurment;
 let radioButtons = $(".units-toggle");
 let degreeDisplay;
 degreeDisplay = "°F";
+let windSpeedDisplay;
+windSpeedDisplay = "mph";
 
 const date = new Date();
 let day = date.getDate();
+let dayOfWeek = date.getDay();
 let month = "";
 let year = date.getFullYear();
 
@@ -26,7 +29,17 @@ let monthNames = [
   { name: "December", number: 12 },
 ];
 
-//(Allows full month name to display in html) if the current month number value is equal to the number property value in the array, then current month is equal to the object name property value.
+let dayNames = [
+  "Monday", //index 0
+  "Tuesday", //index 1
+  "Wednesday", //index 2
+  "Thursday", //index 3
+  "Friday", //index 4
+  "Saturday", //index 5
+  "Sunday", //index 6
+];
+
+/*(Allows full month name to display in html) if the current month number value is equal to the number property value in the array, then current month is equal to the object name property value*/
 for (let i = 0; i < monthNames.length; i++) {
   if (date.getMonth() + 1 === monthNames[i].number) {
     month = monthNames[i].name;
@@ -58,7 +71,7 @@ const map = new mapboxgl.Map({
   zoom: 9, // starting zoom
 });
 
-//adds draggable marker to map, initially sets it to default location until drag event or input city search event
+/*adds draggable marker to map, initially sets it to default location until drag event or input city search event*/
 let draggableMarker = new mapboxgl.Marker({
   draggable: true,
 })
@@ -67,7 +80,7 @@ let draggableMarker = new mapboxgl.Marker({
 
 let markerLngLat = draggableMarker.getLngLat();
 
-//Sends a call to the daily weather API , grabs specified current weather information and places info in a variable holding html. Then displays the html in a div with the  ID of #todays-weather. This function is called whenever a marker drag event or user input search event is triggered
+/*Sends a call to the daily weather API , grabs specified current weather information and places info in a variable holding html. Then displays the html in a div with the  ID of #todays-weather. This function is called whenever a marker drag event or user input search event is triggered*/
 function getCurrentWeather(url) {
   $.get(url).done(function (data) {
     //Takes description and capitalizes the first letter of each word
@@ -114,7 +127,7 @@ function getCurrentWeather(url) {
     )}°    L:${data.main.temp_min.toFixed(0)}°</p>`;
     currentWeatherHtml += `<p class="text-center m-0" id="daily-date">${currentDate}</p>`;
 
-    //grabs detailed daily weather information and store it in a variable, then displays the compiled info a div with an ID of #todays-conditions
+    /*grabs detailed daily weather information and store it in a variable, then displays the compiled info a div with an ID of #todays-conditions*/
     let todaysConditionsHtml = ``;
     todaysConditionsHtml += `<div class="d-flex gap-2 flex-column justify-content-center mt-1 todays-conditions">`;
     todaysConditionsHtml += `<p class="text-center m-0">Feels Like: ${data.main.feels_like.toFixed(
@@ -122,7 +135,7 @@ function getCurrentWeather(url) {
     )}${degreeDisplay}</p>`;
     todaysConditionsHtml += `<p class="text-center m-0">Wind Speed: ${data.wind.speed.toFixed(
       0,
-    )} mph</p>`;
+    )} ${windSpeedDisplay}</p>`;
     todaysConditionsHtml += `<p class="text-center m-0">Humidity: ${data.main.humidity}%</p>`;
     todaysConditionsHtml += `<p class="text-center m-0">Pressure: ${(
       data.main.pressure / 33.864
@@ -138,12 +151,12 @@ function getCurrentWeather(url) {
   });
 }
 
-//Sends an API call to weather map 5 day, loops through data to grab specified weather information for 5 consecutive days places info in a variable holding html. Then displays the html in a div with the  ID of #insert-weather. This function is called whenever a marker drag event or user input search event is triggered
+/*Sends an API call to weather map 5 day, loops through data to grab specified weather information for 5 consecutive days places info in a variable holding html. Then displays the html in a div with the  ID of #insert-weather. This function is called whenever a marker drag event or user input search event is triggered*/
 function getFiveDayForecast(url) {
   $.get(url).done(function (data) {
+    // console.log(data.list[0].dt_txt);
     let str = "";
     let fiveDayHtml = ``;
-    let fiveDayLrg = ``;
     let weatherImg = "";
     let detailedHtml = "";
 
@@ -175,9 +188,18 @@ function getFiveDayForecast(url) {
       str = str.join(" ");
       data.list[i].weather[0].description = str;
 
+      //increments the current day by one for each iteration (5 days)
+      let days = (day += 1);
+      //gets the actual day of week name from the dt in the data object
+      let newDate = new Date(data.list[i].dt * 1000);
+      console.log(newDate.getDay());
+      /*returns a number 0 - 6, each number correlates to the string stored at that index number in the dayNames array  //ex. 0 = Monday, 1 = Tuesday etc...*/
+      let dayName = dayNames[newDate.getDay()];
+
       //Creates weather squares for XL screen
       fiveDayHtml += `<div class="flex-column justify-content-center align-items-center gap-2 p-2 five-day-square" id="five-day-card${i}">`;
-      fiveDayHtml += `<p class ="m-0">${month} ${(day += 1)}</p>`;
+      fiveDayHtml += `${dayName}`;
+      fiveDayHtml += `<p class ="m-0">${month} ${days}</p>`;
       fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
       fiveDayHtml += `<p class="d-flex justify-content-center m-0"> ${data.list[
         i
@@ -187,8 +209,8 @@ function getFiveDayForecast(url) {
       fiveDayHtml += `</div>`;
 
       //Creates weather tiles for L/M screen
-      fiveDayHtml += `<div class="flex-column justify-content-center align-items-center five-day-square-lrg" id="five-day-lrg${i}">`;
-      fiveDayHtml += `<p class ="m-0">${month} ${(day += 1)}</p>`;
+      fiveDayHtml += `<div class="flex-column justify-content-center align-items-center text-white five-day-square-lrg" id="five-day-lrg${i}">`;
+      fiveDayHtml += `<p class ="m-0">${month} ${days}</p>`;
       fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img-lrg" />`;
       fiveDayHtml += `<p class="d-flex justify-content-center m-0"> ${data.list[
         i
@@ -198,8 +220,8 @@ function getFiveDayForecast(url) {
       fiveDayHtml += `</div>`;
 
       //Creates detailed info card for XL screen
-      detailedHtml += `<div class="flex-column justify-content-start align-items-center gap-1 p-2 detailed-weather" id="condition${i}">`;
-      detailedHtml += `<p class="m-0 fw-bold">View details</p>`;
+      detailedHtml += `<div class="flex-column justify-content-start align-items-start gap-1 p-2 detailed-weather" id="condition${i}">`;
+      detailedHtml += `<p class="m-0 fw-bold align-self-center">View details</p>`;
       detailedHtml += `<p class="m-0"><span>${data.list[i].weather[0].description}</span></p>`;
       detailedHtml += `<p class="m-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
       detailedHtml += `<p class="m-0">Real Feel: <span class="fw-bold">${data.list[
@@ -207,15 +229,15 @@ function getFiveDayForecast(url) {
       ].main.feels_like.toFixed(0)}${degreeDisplay}</span></p>`;
       detailedHtml += `<p class = "m-0">Wind <span class="fw-bold">${data.list[
         i
-      ].wind.speed.toFixed(0)}mph</span></p>`;
+      ].wind.speed.toFixed(0)}${windSpeedDisplay}</span></p>`;
       detailedHtml += `<p class="m-0">Pressure: <span class="fw-bold">${(
         data.list[i].main.pressure / 33.864
       ).toFixed(2)} inHg</span></p>`;
       detailedHtml += `</div>`;
 
       //Creates detailed info card for L/M screen
-      detailedHtml += `<div class="align-items-center gap-2 detailed-weather-lrg" id="condition-lrg${i}">`;
-      detailedHtml += `<p class="m-0 mx-3 fw-bold"> < </p>`;
+      detailedHtml += `<div class="align-items-start gap-2 detailed-weather-lrg" id="condition-lrg${i}">`;
+      detailedHtml += `<p class="m-0 mx-3 fw-bold align-self-center"> < </p>`;
       detailedHtml += `<p class="m-0"><span>${data.list[i].weather[0].description}</span></p>`;
       detailedHtml += `<p class="m-0">Humidity: <span class="fw-bold">${data.list[i].main.humidity}%</span></p>`;
       detailedHtml += `<p class="m-0">Real Feel: <span class="fw-bold">${data.list[
@@ -223,37 +245,15 @@ function getFiveDayForecast(url) {
       ].main.feels_like.toFixed(0)}${degreeDisplay}</span></p>`;
       detailedHtml += `<p class = "m-0">Wind <span class="fw-bold">${data.list[
         i
-      ].wind.speed.toFixed(0)}mph</span></p>`;
+      ].wind.speed.toFixed(0)}${windSpeedDisplay}</span></p>`;
       detailedHtml += `<p class="m-0 me-5">Pressure: <span class="fw-bold">${(
         data.list[i].main.pressure / 33.864
-      ).toFixed(2)} inHg</span></p>`;
+      ).toFixed(1)} inHg</span></p>`;
       detailedHtml += `</div>`;
     }
     $("#insert-weather").html(fiveDayHtml);
     $("#insert-detail").html(detailedHtml);
   });
-}
-
-//takes in a string value and MapBox API Key, returns array containing [lat, lon]
-function geocode(search, token) {
-  let baseUrl = "https://api.mapbox.com";
-  let endPoint = "/geocoding/v5/mapbox.places/";
-  return fetch(
-    baseUrl +
-      endPoint +
-      encodeURIComponent(search) +
-      ".json" +
-      "?" +
-      "access_token=" +
-      token,
-  )
-    .then(function (res) {
-      return res.json();
-      // to get all the data from the request, comment out the following three lines...
-    })
-    .then(function (data) {
-      return data.features[0].center;
-    });
 }
 
 //targets the input element with the ID of #address-search-bar
@@ -279,7 +279,7 @@ searchForm.addEventListener(`submit`, function (event) {
       speed: 0.7,
     });
 
-    //updates the API call URLs with the lat,long obtained from geocode function, then passes the new API cal URL into the functions that will display the new weather info html.
+    /*updates the API call URLs with the lat,long obtained from geocode function, then passes the new API cal URL into the functions that will display the new weather info html*/
     FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
     BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
 
@@ -290,32 +290,7 @@ searchForm.addEventListener(`submit`, function (event) {
   });
 });
 
-function reverseGeocode(coordinates, token) {
-  var baseUrl = "https://api.mapbox.com";
-  var endPoint = "/geocoding/v5/mapbox.places/";
-  return (
-    fetch(
-      baseUrl +
-        endPoint +
-        coordinates.lng +
-        "," +
-        coordinates.lat +
-        ".json" +
-        "?" +
-        "access_token=" +
-        token,
-    )
-      .then(function (res) {
-        return res.json();
-      })
-      // to get all the data from the request, comment out the following three lines...
-      .then(function (data) {
-        return data.features[0].place_name;
-      })
-  );
-}
-
-// Event listener that fires on marker drag end. grabs the lat/long location of the marker when drag event ends, then re-defines the API call URLs with the new lat/long. Finally, calls the functions that update the weather information html being displayed.
+/*Event listener that fires on marker drag end. grabs the lat/long location of the marker when drag event ends, then re-defines the API call URLs with the new lat/long. Finally, calls the functions that update the weather information html being displayed*/
 function onDragEnd() {
   markerLngLat = draggableMarker.getLngLat();
   BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
@@ -333,15 +308,18 @@ function onDragEnd() {
 //event listener that runs onDragEnd function on marker drag end
 draggableMarker.on("dragend", onDragEnd);
 
+/*event listener for F°/C° radio buttons, toggles the API get url between units=imperial to display temp in fahrenheit and units=metric to display degrees in celsius */
 radioButtons.on("change", function (event) {
   event.preventDefault();
   markerLngLat = draggableMarker.getLngLat();
   if (document.querySelector("#celsius").checked) {
     unitOfMeasurment = "&units=metric";
     degreeDisplay = "°C";
+    windSpeedDisplay = "km";
   } else {
     unitOfMeasurment = "&units=imperial";
     degreeDisplay = "°F";
+    windSpeedDisplay = "mph";
   }
   BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
   FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
