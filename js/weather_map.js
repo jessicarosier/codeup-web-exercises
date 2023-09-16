@@ -288,6 +288,8 @@ searchForm.addEventListener(`submit`, function (event) {
 
     markerLngLat = draggableMarker.getLngLat();
   });
+  //clears the search input
+  $("#address").val("");
 });
 
 /*Event listener that fires on marker drag end. grabs the lat/long location of the marker when drag event ends, then re-defines the API call URLs with the new lat/long. Finally, calls the functions that update the weather information html being displayed*/
