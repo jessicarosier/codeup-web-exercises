@@ -27,6 +27,10 @@
   font-size: 70px;
 }
 
+.todays-conditions {
+  font-size: 20px;
+}
+
 #daily-date {
   font-size: 40px;
 }
@@ -172,7 +176,7 @@
   margin: 0;
   padding: 0;
   width: 30%;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 #todays-weather-hero {
@@ -352,6 +356,10 @@
   .five-day-square-lrg {
     width: 15%;
   }
+  .detailed-weather-lrg {
+    width: 45%;
+  }
+
   #five-day-lrg0 {
     position: absolute;
     bottom: 1980%;
@@ -410,5 +418,13 @@
     position: absolute;
     bottom: 276%;
     left: 80%;
+  }
+
+  #condition-lrg0:hover,
+  #condition-lrg8:hover,
+  #condition-lrg16:hover,
+  #condition-lrg24:hover,
+  #condition-lrg32:hover {
+    left: 41%;
   }
 }
