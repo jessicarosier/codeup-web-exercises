@@ -10,7 +10,6 @@ windSpeedDisplay = "mph";
 
 const date = new Date();
 let day = date.getDate();
-let dayOfWeek = date.getDay();
 let month = "";
 let year = date.getFullYear();
 
@@ -188,11 +187,10 @@ function getFiveDayForecast(url) {
       str = str.join(" ");
       data.list[i].weather[0].description = str;
 
-      //increments the current day by one for each iteration (5 days)
-      let days = (day += 1);
       //gets the actual day of week name from the dt in the data object
       let newDate = new Date(data.list[i].dt * 1000);
-      console.log(newDate.getDay());
+      let days = newDate.getDate();
+      console.log(newDate.getDate());
       /*returns a number 0 - 6, each number correlates to the string stored at that index number in the dayNames array  //ex. 0 = Monday, 1 = Tuesday etc...*/
       let dayName = dayNames[newDate.getDay()];
 
