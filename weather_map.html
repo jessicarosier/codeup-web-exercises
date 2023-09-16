@@ -34,10 +34,8 @@
   <body>
     <div class="page-wrapper">
       <!--      main section - entire page      -->
-      <!--      <main class="container-fluid main-wrapper">-->
-      <div class="row">
-        <!--          left column holding daily weather conditions-->
-
+      <main class="row">
+        <!--      Radio buttons to toggle between Fahrenheit and Celsius      -->
         <form class="btn-group units-toggle" data-toggle="buttons">
           <label class="btn btn-primary">
             <input
@@ -61,7 +59,7 @@
             C°
           </label>
         </form>
-
+        <!--          Video background for current weather container      -->
         <video
           autoplay
           muted
@@ -70,11 +68,12 @@
           id="todays-weather-video"
         ></video>
 
-        <!--          <video autoplay muted loop></video>-->
+        <!--          left column holding daily weather conditions      -->
         <div
           class="left-side-wrapper flex-column justify-content-center"
           id="todays-weather-hero"
         >
+          <!--          Search field      -->
           <form class="d-flex flex-column flex-md-row gap-2" id="search-form">
             <label for="address"></label>
             <input
@@ -97,10 +96,12 @@
             id="todays-img"
             class="flex-column justify-content-center align-items-center"
           ></div>
+          <!--          HTML content generated in JS      -->
           <div
             id="todays-weather"
             class="d-flex flex-column justify-content-center"
           ></div>
+          <!--          HTML content generated in JS      -->
           <div
             id="todays-conditions"
             class="d-flex flex-column justify-content-center"
@@ -117,10 +118,12 @@
             class="d-flex flex-column w-100 justify-content-center px-2"
             id="weather-holder-row"
           >
+            <!--          HTML content generated in JS      -->
             <div
               id="insert-weather"
               class="d-flex p-2 gap-2 justify-content-center"
             ></div>
+            <!--          HTML content generated in JS      -->
             <div
               id="insert-detail"
               class="d-flex p-2 gap-2 justify-content-center"
@@ -128,7 +131,7 @@
             <!--              </div>-->
           </div>
         </section>
-      </div>
+      </main>
       <!--      </main>-->
     </div>
     <!--    jQuery CDN    -->
