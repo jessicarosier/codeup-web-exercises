@@ -146,7 +146,7 @@ function getCurrentWeather(url) {
       `<img src="${currentWeatherImg}" id="current-weather-image" />`,
     );
     $("#todays-conditions").html(todaysConditionsHtml);
-    $("video").html(`<source src="video/clouds.mp4" type="video/mp4" />`);
+    $("video").html(`<source src="video/cloud1.mp4" type="video/mp4" />`);
   });
 }
 
