@@ -73,6 +73,7 @@ const map = new mapboxgl.Map({
 /*adds draggable marker to map, initially sets it to default location until drag event or input city search event*/
 let draggableMarker = new mapboxgl.Marker({
   draggable: true,
+  color: "red",
 })
   .setLngLat([-98.30651848969364, 29.50652020966919])
   .addTo(map);

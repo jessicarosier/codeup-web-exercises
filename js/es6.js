@@ -35,7 +35,7 @@ const users = [
 // declared as `const`
 const name = "Jessica Rosier";
 const email = "jessica.c.rosier1@gmail.com";
-const languages = ["javascript", "css", "html", "java"];
+const languages = ["javascript", "css", "html"];
 
 // TODO: rewrite the object literal using object property shorthand
 users.push({
@@ -57,7 +57,7 @@ users.forEach(function (user) {
 });
 
 // TODO: replace `var` with `let` in the following declaration
-var developers = [];
+let developers = [];
 users.forEach(function (user) {
   // TODO: rewrite the code below to use object destructuring assignment
   //       note that you can also use destructuring assignment in the function
