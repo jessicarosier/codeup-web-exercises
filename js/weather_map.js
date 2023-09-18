@@ -3,10 +3,8 @@
 /*variables used to display correct unit of measurement text, value changed based on radio button selection. Event listener located on line 318*/
 let unitOfMeasurment;
 let radioButtons = $(".units-toggle");
-let degreeDisplay;
-degreeDisplay = "°F";
-let windSpeedDisplay;
-windSpeedDisplay = "mph";
+let degreeDisplay = "°F";
+let windSpeedDisplay = "mph";
 
 const date = new Date();
 let day = date.getDate();
@@ -198,7 +196,7 @@ function getFiveDayForecast(url) {
       //Creates weather squares for XL screen
       fiveDayHtml += `<div class="flex-column justify-content-center align-items-center gap-2 p-2 five-day-square" id="five-day-card${i}">`;
       fiveDayHtml += `${dayName}`;
-      fiveDayHtml += `<p class ="m-0">${month} ${days}</p>`;
+      fiveDayHtml += `<p class ="m-0">${month} ${(days += 1)}</p>`;
       fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
       fiveDayHtml += `<p class="d-flex justify-content-center m-0"> ${data.list[
         i
@@ -308,6 +306,23 @@ function onDragEnd() {
 
 //event listener that runs onDragEnd function on marker drag end
 draggableMarker.on("dragend", onDragEnd);
+
+//event listener that runs when the user clicks anywhere on the map
+map.on(`click`, function (event) {
+  console.log(event);
+  console.log(event.lngLat);
+  draggableMarker.setLngLat([event.lngLat.lng, event.lngLat.lat]);
+  markerLngLat = draggableMarker.getLngLat();
+  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${event.lngLat.lat}&lon=${event.lngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${event.lngLat.lat}&lon=${event.lngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  map.flyTo({
+    center: markerLngLat,
+    zoom: 11,
+    speed: 0.7,
+  });
+  getCurrentWeather(BASE_WEATHER_URL);
+  getFiveDayForecast(FIVE_DAY_URL);
+});
 
 /*event listener for F°/C° radio buttons, toggles the API get url between units=imperial to display temp in fahrenheit and units=metric to display degrees in celsius */
 radioButtons.on("change", function (event) {
