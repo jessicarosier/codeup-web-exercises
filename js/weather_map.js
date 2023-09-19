@@ -1,4 +1,6 @@
 "use strict";
+// import { MAPBOX_API_TOKEN, OPEN_WEATHER_APPID, OMDB_KEY } from "./keys.js";
+import keys from "./keys.js";
 
 /*variables used to display correct unit of measurement text, value changed based on radio button selection. Event listener located on line 318*/
 let unitOfMeasurment;
@@ -46,10 +48,12 @@ for (let i = 0; i < monthNames.length; i++) {
 //re-formatted date to be displayed in weather cards
 let currentDate = `${month} ${day} ${year}`;
 
-let BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${29.50652020966919}&lon=${-98.30651848969364}&units=imperial&appid=${OPEN_WEATHER_APPID}`;
+let BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${29.50652020966919}&lon=${-98.30651848969364}&units=imperial&appid=${
+  keys.OPEN_WEATHER_APPID
+}`;
 
 //variable holding Open Weather Map API URL for API call to 5 day forecast API
-let FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?&units=imperial&appid=${OPEN_WEATHER_APPID}&zip=78109,US`;
+let FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?&units=imperial&appid=${keys.OPEN_WEATHER_APPID}&zip=78109,US`;
 
 //event listener runs on page load to display default weather
 addEventListener("load", function (event) {
@@ -59,7 +63,7 @@ addEventListener("load", function (event) {
 });
 
 //adds mapbox API map to page, displays map in div with ID of #map
-mapboxgl.accessToken = MAPBOX_API_TOKEN;
+mapboxgl.accessToken = keys.MAPBOX_API_TOKEN;
 const map = new mapboxgl.Map({
   container: "map", // container ID
   style: "mapbox://styles/mapbox/streets-v12", // style URL
@@ -267,7 +271,7 @@ searchForm.addEventListener(`submit`, function (event) {
   //stores the value of the object address property. This will be the string address the user typed in.
   let searchStr = formObj.address;
 
-  geocode(searchStr, MAPBOX_API_TOKEN).then(function (results) {
+  geocode(searchStr, keys.MAPBOX_API_TOKEN).then(function (results) {
     //sets the marker location to the lat,long returned from geocode function
     draggableMarker.setLngLat(results);
     map.flyTo({
@@ -277,8 +281,8 @@ searchForm.addEventListener(`submit`, function (event) {
     });
 
     /*updates the API call URLs with the lat,long obtained from geocode function, then passes the new API cal URL into the functions that will display the new weather info html*/
-    FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
-    BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+    FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${keys.OPEN_WEATHER_APPID}`;
+    BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}${unitOfMeasurment}&appid=${keys.OPEN_WEATHER_APPID}`;
 
     getCurrentWeather(BASE_WEATHER_URL);
     getFiveDayForecast(FIVE_DAY_URL);
@@ -292,8 +296,8 @@ searchForm.addEventListener(`submit`, function (event) {
 /*Event listener that fires on marker drag end. grabs the lat/long location of the marker when drag event ends, then re-defines the API call URLs with the new lat/long. Finally, calls the functions that update the weather information html being displayed*/
 function onDragEnd() {
   markerLngLat = draggableMarker.getLngLat();
-  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
-  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${keys.OPEN_WEATHER_APPID}`;
+  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${keys.OPEN_WEATHER_APPID}`;
 
   map.flyTo({
     center: markerLngLat,
@@ -313,8 +317,8 @@ map.on(`click`, function (event) {
   console.log(event.lngLat);
   draggableMarker.setLngLat([event.lngLat.lng, event.lngLat.lat]);
   markerLngLat = draggableMarker.getLngLat();
-  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${event.lngLat.lat}&lon=${event.lngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
-  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${event.lngLat.lat}&lon=${event.lngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${event.lngLat.lat}&lon=${event.lngLat.lng}${unitOfMeasurment}&appid=${keys.OPEN_WEATHER_APPID}`;
+  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${event.lngLat.lat}&lon=${event.lngLat.lng}${unitOfMeasurment}&appid=${keys.OPEN_WEATHER_APPID}`;
   map.flyTo({
     center: markerLngLat,
     zoom: 11,
@@ -337,8 +341,8 @@ radioButtons.on("change", function (event) {
     degreeDisplay = "°F";
     windSpeedDisplay = "mph";
   }
-  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
-  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${OPEN_WEATHER_APPID}`;
+  BASE_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${keys.OPEN_WEATHER_APPID}`;
+  FIVE_DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${markerLngLat.lat}&lon=${markerLngLat.lng}${unitOfMeasurment}&appid=${keys.OPEN_WEATHER_APPID}`;
 
   getCurrentWeather(BASE_WEATHER_URL);
   getFiveDayForecast(FIVE_DAY_URL);
