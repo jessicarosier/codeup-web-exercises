@@ -27,6 +27,10 @@
   font-size: 70px;
 }
 
+#address {
+  background-color: unset;
+  border: 1px solid black;
+}
 .todays-conditions {
   font-size: 20px;
 }
