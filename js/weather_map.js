@@ -1,5 +1,5 @@
 "use strict";
-// import { MAPBOX_API_TOKEN, OPEN_WEATHER_APPID, OMDB_KEY } from "./keys.js";
+// import { MAPBOX_API_TOKEN, OPEN_WEATHER_APPID } from "./keys.js";
 import keys from "./keys.js";
 
 /*variables used to display correct unit of measurement text, value changed based on radio button selection. Event listener located on line 318*/
@@ -193,7 +193,6 @@ function getFiveDayForecast(url) {
       //gets the actual day of week name from the dt in the data object
       let newDate = new Date(data.list[i].dt * 1000);
       let days = newDate.getDate();
-      console.log(newDate.getDate());
       /*returns a number 0 - 6, each number correlates to the string stored at that index number in the dayNames array  //ex. 0 = Monday, 1 = Tuesday etc...*/
       let dayName = dayNames[newDate.getDay()];
 
