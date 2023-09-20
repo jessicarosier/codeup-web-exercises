@@ -60,35 +60,36 @@
     ></script>
 
     <!--    Custom JS    -->
-    <script>
-      (function () {
-        "use strict";
-        // TODO: Create an AJAX GET request for the file under data/inventory.json
-        $.ajax("data/inventory.json").done(function (data) {
-          console.log(data);
-          console.log(data[0].categories);
+    <script type="module" src="js/ajax-store.js"></script>
+    <!--    <script>-->
+    <!--      (function () {-->
+    <!--        "use strict";-->
+    <!--        // TODO: Create an AJAX GET request for the file under data/inventory.json-->
+    <!--        $.ajax("data/inventory.json").done(function (data) {-->
+    <!--          console.log(data);-->
+    <!--          console.log(data[0].categories);-->
 
-          //HINT: You will want to target #insertProducts for your new HTML elements
-          let productDisplayEl = $("#insertProducts");
+    <!--          //HINT: You will want to target #insertProducts for your new HTML elements-->
+    <!--          let productDisplayEl = $("#insertProducts");-->
 
-          // TODO: Take the data from inventory.json and append it to the products table
-          let insertProducts = "";
-          for (let i = 0; i < data.length; i++) {
-            insertProducts += `<tr>`;
-            insertProducts += `<td class="border-end border-black">${data[i].title}</td>`;
-            insertProducts += `<td class="border-end border-black">${data[i].quantity}</td>`;
-            insertProducts += `<td class="border-end border-black">${data[i].price}</td>`;
-            insertProducts += `<td class="border-end border-black">${data[i].categories}</td>`;
-            insertProducts += `</tr>`;
-          }
-          productDisplayEl.html(insertProducts);
-        });
+    <!--          // TODO: Take the data from inventory.json and append it to the products table-->
+    <!--          let insertProducts = "";-->
+    <!--          for (let i = 0; i < data.length; i++) {-->
+    <!--            insertProducts += `<tr>`;-->
+    <!--            insertProducts += `<td class="border-end border-black">${data[i].title}</td>`;-->
+    <!--            insertProducts += `<td class="border-end border-black">${data[i].quantity}</td>`;-->
+    <!--            insertProducts += `<td class="border-end border-black">${data[i].price}</td>`;-->
+    <!--            insertProducts += `<td class="border-end border-black">${data[i].categories}</td>`;-->
+    <!--            insertProducts += `</tr>`;-->
+    <!--          }-->
+    <!--          productDisplayEl.html(insertProducts);-->
+    <!--        });-->
 
-        //Reloads the page when Refresh button is clicked
-        $("#refresh").on("click", function () {
-          location.reload();
-        });
-      })();
-    </script>
+    <!--        //Reloads the page when Refresh button is clicked-->
+    <!--        $("#refresh").on("click", function () {-->
+    <!--          location.reload();-->
+    <!--        });-->
+    <!--      })();-->
+    <!--    </script>-->
   </body>
 </html>

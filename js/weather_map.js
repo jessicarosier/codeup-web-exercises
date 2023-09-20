@@ -1,5 +1,5 @@
 "use strict";
-// import { MAPBOX_API_TOKEN, OPEN_WEATHER_APPID } from "./keys.js";
+
 import keys from "./keys.js";
 
 /*variables used to display correct unit of measurement text, value changed based on radio button selection. Event listener located on line 318*/
@@ -200,7 +200,7 @@ function getFiveDayForecast(url) {
       fiveDayHtml += `<div class="flex-column justify-content-center align-items-center gap-2 p-2 five-day-square" id="five-day-card${i}">`;
       fiveDayHtml += `${dayName}`;
       fiveDayHtml += `<p class ="m-0">${month} ${(days += 1)}</p>`;
-      fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img" />`;
+      fiveDayHtml += `<img src="${weatherImg}" class="weather-icon-img" />`;
       fiveDayHtml += `<p class="d-flex justify-content-center m-0"> ${data.list[
         i
       ].main.temp_max.toFixed(0)}${degreeDisplay} / ${data.list[
@@ -211,7 +211,7 @@ function getFiveDayForecast(url) {
       //Creates weather tiles for L/M screen
       fiveDayHtml += `<div class="flex-column justify-content-center align-items-center text-white five-day-square-lrg" id="five-day-lrg${i}">`;
       fiveDayHtml += `<p class ="m-0">${month} ${days}</p>`;
-      fiveDayHtml += `<img src=${weatherImg} class="weather-icon-img-lrg" />`;
+      fiveDayHtml += `<img src="${weatherImg}" class="weather-icon-img-lrg" />`;
       fiveDayHtml += `<p class="d-flex justify-content-center m-0"> ${data.list[
         i
       ].main.temp_max.toFixed(0)}${degreeDisplay} / ${data.list[
